@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class dbConnect {
+public class DBconnect {
 	static String driver = "org.mariadb.jdbc.Driver";
 	static String url = "jdbc:mariadb://localhost:3306/Hungry";
 	static String uid = "Hungry";
@@ -24,8 +24,8 @@ public class dbConnect {
 		 * SQL문 실행. SELECT문일 경우 executeQuery() 호출해서 
 		 * ResultSet 타입의 테이블 형식으로 결과를 가져옴
 		 * 
-		 * stmt.executeQuery(sql);   //Insert, update, delete 등 사용할떄(DB값이 문자열일 경우 ' ' 사용)
-		 * rs = stmt.executeQuery(sql); // select 사용할 때
+		 * stmt.executeQuery(sql);      // executeUpdate =  Insert, update, delete 등 사용할떄(DB값이 문자열일 경우 ' ' 사용)
+		 * rs = stmt.executeQuery(sql); // executeQuery = select 사용할 때
 		 * 
 		 * select로 가져온 값 보여주는 법
 		 * while(rs.next()){
