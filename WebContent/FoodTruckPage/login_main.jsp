@@ -4,23 +4,12 @@
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<title>Modern Business - Start Bootstrap Template</title>
-
-<!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="css/modern-business.css" rel="stylesheet">
+<jsp:include page="style.jsp"></jsp:include>
 
 </head>
 
 <body>
+
 
 	<!-- Navigation -->
 	<jsp:include page="nav.jsp"></jsp:include>
@@ -31,14 +20,27 @@
 	<div class="container col-lg-6 col-md-8 col-sm-6 col-xs-4">
 
 		<div class="jumbotron" style="padding-top: 100px; margin-top: 70px;">
-			<form method="post" action="member_signup.jsp">
+		<div class="content">
+			<form method="post" action="loginAction.jsp">
+				<h3 style="text-align: center;">로 그 인 화 면</h3>
+				<br>
+				<div>
+					<input type="text" class="form-control" id="userID" name="userID"
+						placeholder="아 이 디" maxlength="20">
+				</div>
+				<br>
+				<div>
+					<input type="password" class="form-control" id="userPassword"
+						name="userPassword" placeholder="비 밀 번 호" maxlength="20">
+				</div>
 				<br> <input type="submit" class="btn btn-info form-control"
-					value="일반회원 가입하기">
+					value="로 그 인">
+					
+					
+				
+
 			</form>
-			<form method="post" action="shop_signup.jsp">
-				<br> <input type="submit" class="btn btn-info form-control"
-					value="사업자회원 가입하기">
-			</form>
+			</div>
 		</div>
 	</div>
 

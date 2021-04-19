@@ -22,10 +22,10 @@
       <button class="btn btn-secondary my-2 my-sm-0" type="submit">지도</button>
     </form>
           <li class="nav-item">
-            <a class="nav-link" href="Login.jsp">로그인</a>
+            <a class="nav-link" href="login_main.jsp">로그인</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="signup.jsp">회원가입</a>
+            <a class="nav-link" href="signup_main.jsp">회원가입</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href=" ">리뷰 &nbsp &nbsp</a>
