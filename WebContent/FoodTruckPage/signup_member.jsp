@@ -17,7 +17,7 @@
 	<div class="container col-lg-6 col-md-8 col-sm-6 col-xs-4">
 
 		<div class="jumbotron" style="padding-top: 100px; margin-top: 70px;">
-<form method="post" action="signup_process.jsp">
+<form method="post" action="signup_member_process.jsp">
 						<h3 style="text-align: center;">일 반 회 원 가 입</h3>
 						<br>
 						<div class="form-row">

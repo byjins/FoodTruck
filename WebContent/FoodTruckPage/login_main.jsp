@@ -21,7 +21,7 @@
 
 		<div class="jumbotron" style="padding-top: 100px; margin-top: 70px;">
 		<div class="content">
-			<form method="post" action="loginAction.jsp">
+			<form method="post" action="login_Check.jsp">
 				<h3 style="text-align: center;">로 그 인 화 면</h3>
 				<br>
 				<div>
