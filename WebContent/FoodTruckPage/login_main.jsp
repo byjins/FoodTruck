@@ -20,26 +20,26 @@
 	<div class="container col-lg-6 col-md-8 col-sm-6 col-xs-4">
 
 		<div class="jumbotron" style="padding-top: 100px; margin-top: 70px;">
-		<div class="content">
-			<form method="post" action="login_Check.jsp">
-				<h3 style="text-align: center;">로 그 인 화 면</h3>
-				<br>
-				<div>
-					<input type="text" class="form-control" id="userID" name="userID"
-						placeholder="아 이 디" maxlength="20">
-				</div>
-				<br>
-				<div>
-					<input type="password" class="form-control" id="userPassword"
-						name="userPassword" placeholder="비 밀 번 호" maxlength="20">
-				</div>
-				<br> <input type="submit" class="btn btn-info form-control"
-					value="로 그 인">
-					
-					
-				
+			<div class="content">
+				<form method="post" action="login_Check.jsp">
+					<h3 style="text-align: center;">로 그 인 화 면</h3>
+					<br>
+					<div>
+						<input type="text" class="form-control" id="userID" name="userID"
+							placeholder="아 이 디" maxlength="20">
+					</div>
+					<br>
+					<div>
+						<input type="password" class="form-control" id="userPassword"
+							name="userPassword" placeholder="비 밀 번 호" maxlength="20">
+					</div>
+					<br> <input type="submit" class="btn btn-info form-control"
+						value="로 그 인">
 
-			</form>
+
+
+
+				</form>
 			</div>
 		</div>
 	</div>
