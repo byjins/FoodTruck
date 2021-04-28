@@ -3,6 +3,9 @@ package com.java.db.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.java.db.dto.MemberSignupDto;
 
@@ -61,5 +64,44 @@ public class MemberSignupDao {
 				e2.printStackTrace();
 			}
 		}
+	}
+	
+	public int idCheck(String id) {
+		String m_id = id;
+		Connection con = null;
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		String query = "select * from member_info where member_id=?";
+		try {
+			con = DriverManager.getConnection(url,uid,pwd);
+            pstmt = con.prepareStatement(query);
+            
+            pstmt.setString(1,m_id);
+            
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) {
+            	
+            	if(rs.getString("member_id").equals(m_id)) {
+            			return 1;  //아이디 중복
+            		}else{
+            			return 2; //아이디 중복 안됨
+            		}
+            	}	
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return 0;
 	}
 }
