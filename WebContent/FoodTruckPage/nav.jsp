@@ -13,6 +13,11 @@
 </style>
 </head>
 <body>
+<%
+String sessionId = (String)session.getAttribute("member_id");
+session.setMaxInactiveInterval(30*60);//세션유효시간 30분
+
+%>
 	<nav
 		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
@@ -30,24 +35,27 @@
 							<form action="map.jsp" class="form-inline my-2 my-lg-0">
 								<input type="text" style="width: 360px;" class="form-control"
 									placeholder="검색"> <span class="input-group-append">
-									<input type="submit" value="검색" button
-									class="btn btn-primary my-2 my-sm-0">
-								</button>
+									<input type="submit" value="검색" class="btn btn-primary my-2 my-sm-0">
 								</span>
 							</form>
 						</div>
-						<form action="map.jsp" class="form-inline my-2 my-lg-0">
-							<button class="btn btn-primary my-2 my-sm-0" type="submit">지도</button>
-						</form>
-						<a class="nav-link" href="login_main.jsp">로그인</a>
+					</div>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="signup_main.jsp">회원가입</a>
+				<li class="nav-item">
+					<form action="map.jsp" class="form-inline my-2 my-lg-0">
+						<button class="btn btn-primary my-2 my-sm-0" type="submit">지도</button>
+					</form>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="review_main.jsp">리뷰 &nbsp
-						&nbsp</a></li>
-				</li>
+				<% if(sessionId == null) {%>
+					<li class="nav-item"><a class="nav-link" href="login_main.jsp">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" href="signup_main.jsp">회원가입</a></li>
+				<% } else {%>
+				
+					<li class="nav-item"><a class="nav-link" href="login_main.jsp"><%=sessionId %>님</a></li>
+					<li class="nav-item"><a class="nav-link" href="logout_process.jsp">로그아웃</a></li>
+				<%} %>
+					<li class="nav-item"><a class="nav-link" href="review_main.jsp">리뷰 &nbsp&nbsp</a></li>
 			</ul>
-		</div>
 		</div>
 	</nav>
 </body>
