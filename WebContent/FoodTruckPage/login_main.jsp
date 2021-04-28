@@ -25,13 +25,13 @@
 				<h3 style="text-align: center;">로 그 인 화 면</h3>
 				<br>
 				<div>
-					<input type="text" class="form-control" id="userID" name="userID"
+					<input type="text" class="form-control" id="member_id" name="member_id"
 						placeholder="아 이 디" maxlength="20">
 				</div>
 				<br>
 				<div>
-					<input type="password" class="form-control" id="userPassword"
-						name="userPassword" placeholder="비 밀 번 호" maxlength="20">
+					<input type="password" class="form-control" id="member_pw"
+						name="member_pw" placeholder="비 밀 번 호" maxlength="20">
 				</div>
 				<br> <input type="submit" class="btn btn-info form-control"
 					value="로 그 인">
