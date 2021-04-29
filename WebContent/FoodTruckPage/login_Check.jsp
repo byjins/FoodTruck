@@ -23,20 +23,18 @@
 		id = request.getParameter("member_id");
 		pw = request.getParameter("member_pw");
 
+
 		int result = dao.login(id, pw);
 	
 		//로그인 회원 구분.
 		if (result == 1) {
-		session.setAttribute("member_id",id);//아이디 세션
-		session.setMaxInactiveInterval(30*60);//세션유효시간 30분
+		session.setAttribute("member_id1",id);//아이디 세션 사업자
 		out.print("회원 로그인 완료 아이디: " + id + " 비밀번호: " + pw );
 		response.sendRedirect("index.jsp");
 
 		} else if (result == 2) {
-			session.setAttribute("member_id",id);//아이디 세션
-			session.setMaxInactiveInterval(30*60);//세션유효시간 30분
+			session.setAttribute("member_id2",id);//아이디 세션 이용자
 			out.print("회원 로그인 완료 아이디: " + id + " 비밀번호: " + pw );
-
 			response.sendRedirect("index.jsp");
 		
 		

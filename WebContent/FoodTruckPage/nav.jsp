@@ -14,49 +14,76 @@
 </head>
 <body>
 <%
-String sessionId = (String)session.getAttribute("member_id");
-session.setMaxInactiveInterval(30*60);//세션유효시간 30분
-
+String sessionId1 = (String)session.getAttribute("member_id1");   //사업자
+String sessionId2 = (String)session.getAttribute("member_id2");   //이용자		 
 %>
-	<nav
-		class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<div class="container">
-			<a class="navbar-brand" href="index.jsp">거리에서</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-toggle="collapse" data-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<div class="collapse navbar-collapse" id="navbarResponsive">
-						<div id="searchbtn">
-							<form action="map.jsp" class="form-inline my-2 my-lg-0">
-								<input type="text" style="width: 360px;" class="form-control"
-									placeholder="검색"> <span class="input-group-append">
-									<input type="submit" value="검색" class="btn btn-primary my-2 my-sm-0">
-								</span>
-							</form>
-						</div>
-					</div>
-				</li>
-				<li class="nav-item">
-					<form action="map.jsp" class="form-inline my-2 my-lg-0">
-						<button class="btn btn-primary my-2 my-sm-0" type="submit">지도</button>
-					</form>
-				</li>
-				<% if(sessionId == null) {%>
-					<li class="nav-item"><a class="nav-link" href="login_main.jsp">로그인</a></li>
-					<li class="nav-item"><a class="nav-link" href="signup_main.jsp">회원가입</a></li>
-				<% } else {%>
-				
-					<li class="nav-item"><a class="nav-link" href="login_main.jsp"><%=sessionId %>님</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout_process.jsp">로그아웃</a></li>
-				<%} %>
-					<li class="nav-item"><a class="nav-link" href="review_main.jsp">리뷰 &nbsp&nbsp</a></li>
-			</ul>
-		</div>
-	</nav>
+
+	<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.jsp">거리에서</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+ 
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+      
+        <ul class="navbar-nav xs-auto">
+	
+          <%if (sessionId1 == null && sessionId2 == null) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="login_main.jsp">로그인</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="signup_main.jsp">회원가입</a>
+          </li>
+          
+          <!-- 사장님 로그인 -->
+          <%}else if(sessionId1 != null){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="myinfo.jsp"><%=sessionId1 %>님</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout_process.jsp">로그아웃</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout_process.jsp">가게관리</a>
+          </li>
+          
+          <!-- 이용자 로그인 -->
+          <%} else if(sessionId2 != null){ %> 
+          <li class="nav-item">
+            <a class="nav-link" href="myinfo.jsp"><%=sessionId2 %>님</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout_process.jsp">로그아웃</a>
+          </li>
+
+          <%} %>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">가게정보</a>
+          </li>
+    	
+		  <li class="nav-item">
+			<form action="map.jsp">
+				<button type="submit" class="btn btn-light">지도</button>
+			</form>
+          </li>
+       
+        </ul>
+     	<ul class="navbar-nav ml-auto xs-auto">
+        	<li class="nav-item">
+     				<form class="form-inline ">
+     					 <div class="input-group">
+     	 				 <input class="form-control col-xs-8 col-sm-8 col-md-8 col-lg-8 " type="text" placeholder="검색">
+     	 				 <span class="input-group-append">
+      	 				   <button class="btn btn-secondary " type="submit" action ="">검색</button>
+      	 				 </span>
+      	 				 </div>
+     				</form>
+     		</li>
+     	</ul>
+      </div>
+    </div>
+  </nav>
 </body>
 </html>

@@ -1,8 +1,8 @@
 package com.java.db.dto;
 
-public class MemberLoginDto {
+public class MemberDto {
 	
-	public MemberLoginDto(String id, String pw, String name, String age, String phone, int num) {
+	public MemberDto(String id, String pw, String name, int age, String phone, int num) {
 		super();
 		this.id = id;
 		this.pw = pw;
@@ -11,9 +11,9 @@ public class MemberLoginDto {
 		this.phone = phone;
 		this.num = num;
 	}
-	public MemberLoginDto() {}
-	String id,pw,name,age,phone;
-	int num;
+	public MemberDto() {}
+	String id,pw,name,phone;
+	int age,num;
 	public String getId() {
 		return id;
 	}
@@ -32,10 +32,10 @@ public class MemberLoginDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 	public String getPhone() {
