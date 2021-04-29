@@ -49,15 +49,15 @@ public class MemberLoginDao {
 	            
 	            if(rs.next()) {
 	              
-	            	System.out.println("µğºñ  °ª È®ÀÎ"+member_id+"/"+member_pw);
+	            	System.out.println("ì•„ì´ë”” ë¹„ë°€ë²ˆí˜¸"+member_id+"/"+member_pw);
 	            	
 	            	
 	            	if(rs.getString("member_pw").equals(member_pw)) {
 	            		
 	            		if(rs.getInt("member_num")==1) {
-	            			return 1;  //»ç¾÷ÀÚ
+	            			return 1;  //ì‚¬ì—…ì
 	            		}else if(rs.getInt("member_num")==0) {
-	            			return 2; //È¸¿ø
+	            			return 2; //ì´ìš©ì
 	            		}
 	            		
 	            	}	
@@ -65,11 +65,11 @@ public class MemberLoginDao {
 	               
 	        }catch(Exception e) {
 
-	            e.printStackTrace();    // ¿¹¿ÜÃ³¸®
+	            e.printStackTrace();   
 
 	        }
 
-	        return -1; //¾ÆÀÌµğ,ºñ¹ø¿À·ù
+	        return -1; //ë¡œê·¸ì¸ ì‹¤íŒ¨
 	  
 	    }
 	
