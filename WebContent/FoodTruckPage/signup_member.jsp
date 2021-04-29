@@ -5,24 +5,25 @@
 
 <head>
 <jsp:include page="style.jsp"></jsp:include>
+<script>
+	function checkID(){
+
+	}
+</script>
 </head>
 
 <body>
-<%MemberSignupDao ck = new MemberSignupDao();%>
-<script type ="text/javascript">
-	function checkID() {
-		if(docuemnt.form1.id.value==""){
-			alert("ID를 입력하세요!");
-			document.form1.id.focus();
-		}else{
-			<%
-			
-			%>
-		}
-	}
-	</script>
-	
-
+<script>
+   function checkConfirm(){
+      var form = document.form1;
+      var id = form1.userID.value;
+      
+      <%
+      MemberSignupDao m = new MemberSignupDao();
+      //int i = m.idCheck();
+      %>
+   }
+</script>
 	<!-- Navigation -->
 	<jsp:include page="nav.jsp"></jsp:include>
 
@@ -35,18 +36,23 @@
 		<form name = "form1" method="post" action="signup_member_process.jsp">
 						<h3 style="text-align: center;">일 반 회 원 가 입</h3>
 						<br>
-						<div class="form-group row">
-						<div class="col-sm-9">
+						<!-- <div class="form-group row">
+						<div class="col-sm-12 ">
         					<input type="text" class="form-control" id="userID" name="userID" placeholder="아 이 디" maxlength="20">
+        					<input type="button" class="btn btn-primary" value="중복확인" onClick="checkID(userID)">
     					</div>
-    					 <div class="col-sm-3">
-        				<input type="button" class="btn btn-primary" value="중복확인" onClick="checkID()">
-   						 </div>
-    					<input type="hidden" name="isDuplication" value="udUncheck">
+						</div> -->
+						<div class = "input-group">
+							<input type="text" class="form-control" id="userID" name="userID" placeholder="아 이 디" maxlength="20">
+							<span class="input-group-append">
+							<input type="button" class="btn btn-primary" value="중복확인" onClick="checkConfirm()">
+							</span>
 						</div>
 						<br>
 						<div class="form-row">
+						<div class="col-sm-12">
 							<input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="비 밀 번 호" maxlength="20">
+							</div>
 						</div>
 						<br>
 						<div class="form-row">
@@ -61,7 +67,7 @@
 							<input type="text" class="form-control" id="userPhone" name="userPhone" placeholder="전화번호 (-를 빼고입력)" maxlength="20">
 						</div>
 						<br>
-						<br> <input type="submit" class="btn btn-info form-control" value="가입하기">
+						<br> <input type="submit" class="btn btn-info form-control" value="가입하기" onClick="checkConfirm()">
 					</form>
 		</div>
 	</div>

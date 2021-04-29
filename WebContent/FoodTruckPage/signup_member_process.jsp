@@ -17,11 +17,7 @@
 	String memberage = request.getParameter("userAge");
 	String mPhone = request.getParameter("userPhone");
 
-	/*  if (userid.equals("ppwm111") && password.equals("1111")) {
-		response.sendRedirect("index.jsp");
-	} else {
-		response.sendRedirect("404.jsp");
-	} */
+
 	
 	MemberSignupDto msignupdto = new MemberSignupDto(userid,password,username,memberage,mPhone);
 	MemberSignupDao msignupdao = new MemberSignupDao(); 
@@ -37,5 +33,19 @@
 	
 	response.sendRedirect("index.jsp");
 	%>
+	<script>
+	var regPid = /^[A-Za-z0-9+]{6,15}$/;
+	var regPwd = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+
+	function checkConfirm(){
+		var form = document.form1;
+		var id = form.userID.value;
+		
+		alert(id);
+		
+	}
+
+
+	</script>
 </body>
 </html>
