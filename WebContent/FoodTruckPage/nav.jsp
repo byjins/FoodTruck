@@ -60,7 +60,7 @@ String sessionId2 = (String)session.getAttribute("member_id2");   //이용자
 
           <%} %>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">가게정보</a>
+            <a class="nav-link" href="shop_info.jsp">가게정보</a>
           </li>
     	
 		  <li class="nav-item">
