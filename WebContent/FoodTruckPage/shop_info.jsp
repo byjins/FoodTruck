@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ page import="com.java.db.dao.ShopInfoDao"%>
+<%@ page import="com.java.db.dto.ShopInfoDto" %>
+<%@ page import="java.util.*"%>
+
 <!DOCTYPE html>
 
 
@@ -66,10 +71,35 @@
 					<div class="shop md-4">
 						<div class ="shop-body">
 						<hr>
-						<h5 style="text-align: center;"><b>가게 이름</b></h5> 
+						<%!
+							String S_name, S_intro;
+							Double S_score, S_areax, S_areay;
+						
+						%>
+						<%
+						ShopInfoDto dto = new ShopInfoDto();
+						ShopInfoDao dao = new ShopInfoDao();
+							
+							dto = dao.shopinfo("1");	
+							
+							S_name = dto.getShopName();
+							S_intro = dto.getShopIntro();
+							S_score = dto.getShopScore();
+							S_areax = dto.getShopAreaX();
+							S_areay = dto.getShopAreaY();
+							
+							
+							
+							
+						%>
+						<h5 style="text-align: center;"><b><%=S_name %></b></h5> 
 						<hr>
-						<h4><b>가게 상세 정보</b></h4>
-						<h5>상세 내용</h5>
+						<h4><b>상세 정보</b></h4><br>
+						<h5><b>가게소개</b></h5>
+						<h5>=> <%=S_intro %></h5>
+						<h5>평점 : <%=S_score %></h5>
+						<h5>가게x좌표 : <%=S_areax %> </h5>
+						<h5>가게y좌표 : <%=S_areay %></h5>
 						<hr>
 						</div>
 					</div>
