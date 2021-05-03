@@ -55,9 +55,9 @@ public class MemberLoginDao {
 	            	if(rs.getString("member_pw").equals(member_pw)) {
 	            		
 	            		if(rs.getInt("member_num")==1) {
-	            			return 1;  //사업자
-	            		}else if(rs.getInt("member_num")==0) {
-	            			return 2; //이용자
+	            			return 1;  //이용자
+	            		}else if(rs.getInt("member_num")==2) {
+	            			return 2; //사업자
 	            		}
 	            		
 	            	}	

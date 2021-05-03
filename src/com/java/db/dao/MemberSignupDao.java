@@ -36,7 +36,7 @@ public class MemberSignupDao {
 			pstmt.setString(3, usernName);
 			pstmt.setInt(4, Integer.parseInt(userAge));
 			pstmt.setString(5, userPhone);
-			pstmt.setInt(6, 0);
+			pstmt.setInt(6, 1);
 
 			return pstmt.executeUpdate();
 		} catch (Exception e) {

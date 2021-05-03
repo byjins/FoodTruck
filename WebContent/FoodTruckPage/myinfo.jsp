@@ -20,8 +20,8 @@
 	
 		
 		
-		String sessionId1 = (String)session.getAttribute("member_id1");   //사업자
-		String sessionId2 = (String)session.getAttribute("member_id2");   //이용자
+		String sessionId1 = (String)session.getAttribute("member_id1");   //이용자
+		String sessionId2 = (String)session.getAttribute("member_id2");   //사업자
 		
 		
 		
