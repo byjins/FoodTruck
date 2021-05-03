@@ -27,13 +27,14 @@
 		int result = dao.login(id, pw);
 	
 		//로그인 회원 구분.
+		//이용자
 		if (result == 1) {
-		session.setAttribute("member_id1",id);//아이디 세션 사업자
+		session.setAttribute("member_id1",id);
 		out.print("회원 로그인 완료 아이디: " + id + " 비밀번호: " + pw );
 		response.sendRedirect("index.jsp");
-
+		//사업자
 		} else if (result == 2) {
-			session.setAttribute("member_id2",id);//아이디 세션 이용자
+			session.setAttribute("member_id2",id);
 			out.print("회원 로그인 완료 아이디: " + id + " 비밀번호: " + pw );
 			response.sendRedirect("index.jsp");
 		
