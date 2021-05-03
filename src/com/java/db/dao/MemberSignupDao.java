@@ -52,7 +52,7 @@ public class MemberSignupDao {
 				e2.printStackTrace();
 			}
 		}
-		return -1; //µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return -1; //ì˜¤ë¥˜
 	}
 
 	public int idCheck(String id) {
@@ -64,9 +64,9 @@ public class MemberSignupDao {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next() || id.equals("")) {
-				return 0; //ÀÌ¹ÌÁ¸ÀçÇÏ´Â È¸¿ø
+				return 0; //ì´ìš©ìê°€ ìˆëŠ”ê²½ìš°
 			}else {
-				return 1; //°¡ÀÔ °¡´ÉÇÑ È¸¿ø ¾ÆÀÌµğ
+				return 1; //ì´ìš©ìê°€ ì—†ì„ê²½ìš°
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -78,7 +78,7 @@ public class MemberSignupDao {
 				e.printStackTrace();
 			}
 		}
-		return -1; //µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return -1; //ì˜¤ë¥˜
 	}
 	
 	public int phoneCheck(String phonenum) {
@@ -90,9 +90,9 @@ public class MemberSignupDao {
 			pstmt.setString(1, phonenum);
 			rs = pstmt.executeQuery();
 			if(rs.next() || phonenum.equals("")) {
-				return 0; //ÀÌ¹ÌÁ¸ÀçÇÏ´Â È¸¿ø
+				return 0; //ì‚¬ìš©ì¤‘ì¸ ë²ˆí˜¸ì¼ê²½ìš°
 			}else {
-				return 1; //°¡ÀÔ °¡´ÉÇÑ È¸¿ø ¾ÆÀÌµğ
+				return 1; //ì‚¬ìš©ì—†ì€ ë²ˆí˜¸ì¼ê²½ìš°
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -104,7 +104,7 @@ public class MemberSignupDao {
 				e.printStackTrace();
 			}
 		}
-		return -1; //µ¥ÀÌÅÍº£ÀÌ½º ¿À·ù
+		return -1; //ì˜¤ë¥˜
 	}
 	
 	

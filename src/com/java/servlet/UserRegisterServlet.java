@@ -30,14 +30,14 @@ public class UserRegisterServlet extends HttpServlet {
 		if(userid ==null||userid.equals("")||password1==null||password1.equals("")
 				||password2 ==null||password2.equals("")||username==null||username.equals("")||
 						memberage ==null||memberage.equals("")||mPhone==null||mPhone.equals("")) {
-			request.getSession().setAttribute("messageType", "¿À·ù ¸Ş½ÃÁö");
-			request.getSession().setAttribute("messageContent", "¸ğµç ³»¿ëÀ» ÀÔ·ÂÇÏ¼¼¿ä");
+			request.getSession().setAttribute("messageType", "ì˜¤ë¥˜ ë©”ì‹œì§€");
+			request.getSession().setAttribute("messageContent", "ëª¨ë“  ë‚´ìš©ì„ ì…ë ¥í•˜ì„¸ìš”");
 			response.sendRedirect("FoodTruckPage/signup_member.jsp");
 			return;
 		}
 		if(!password1.equals(password2)) {
-			request.getSession().setAttribute("messageType", "¿À·ù ¸Ş½ÃÁö");
-			request.getSession().setAttribute("messageContent", "ºñ¹Ğ¹øÈ£°¡ ¼­·Î ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù");
+			request.getSession().setAttribute("messageType", "ì˜¤ë¥˜ ë©”ì‹œì§€");
+			request.getSession().setAttribute("messageContent", "ë¹„ë°€ë²ˆí˜¸ê°€ ì„œë¡œ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤");
 			response.sendRedirect("FoodTruckPage/signup_member.jsp");
 			return;
 		}
@@ -54,26 +54,26 @@ public class UserRegisterServlet extends HttpServlet {
 				int result = new MemberSignupDao().mInsert(userid,password1,username,memberage,mPhone);
 				
 				if(1==result) { 
-					request.getSession().setAttribute("messageType", "¼º°ø¸Ş½ÃÁö");
-					request.getSession().setAttribute("messageContent", "È¸¿ø°¡ÀÔ¿¡ ¼º°øÇß½À´Ï´Ù!");
+					request.getSession().setAttribute("messageType", "ì„±ê³µë©”ì‹œì§€");
+					request.getSession().setAttribute("messageContent", "íšŒì›ê°€ì…ì— ì„±ê³µí–ˆìŠµë‹ˆë‹¤!");
 					response.sendRedirect("FoodTruckPage/signup_member.jsp");
 					return;
 				}
 				else {
-					request.getSession().setAttribute("messageType", "¿À·ù ¸Ş½ÃÁö");
-					request.getSession().setAttribute("messageContent", "ÀÌ¹Ì Á¸ÀçÇÏ´Â È¸¿ø ¶Ç´Â »ç¿ëÁßÀÎ ÀüÈ­¹øÈ£ÀÔ´Ï´Ù!");
+					request.getSession().setAttribute("messageType", "ì˜¤ë¥˜ ë©”ì‹œì§€");
+					request.getSession().setAttribute("messageContent", "ì´ë¯¸ ì¡´ì¬í•˜ëŠ” íšŒì› ë˜ëŠ” ì‚¬ìš©ì¤‘ì¸ ì „í™”ë²ˆí˜¸ì…ë‹ˆë‹¤!");
 					response.sendRedirect("FoodTruckPage/signup_member.jsp");
 					return;
 				}
 			}else {
-				request.getSession().setAttribute("messageType", "¿À·ù ¸Ş½ÃÁö");
-				request.getSession().setAttribute("messageContent", "ÀÌ¹Ì Á¸ÀçÇÏ´Â È¸¿ø ¶Ç´Â »ç¿ëÁßÀÎ ÀüÈ­¹øÈ£ÀÔ´Ï´Ù!");
+				request.getSession().setAttribute("messageType", "ì˜¤ë¥˜ ë©”ì‹œì§€");
+				request.getSession().setAttribute("messageContent", "ì´ë¯¸ ì¡´ì¬í•˜ëŠ” íšŒì› ë˜ëŠ” ì‚¬ìš©ì¤‘ì¸ ì „í™”ë²ˆí˜¸ì…ë‹ˆë‹¤!");
 				response.sendRedirect("FoodTruckPage/signup_member.jsp");
 				return;
 			}
 		}else {
-			request.getSession().setAttribute("messageType", "¿À·ù ¸Ş½ÃÁö");
-			request.getSession().setAttribute("messageContent", "È¸¿øÁ¤º¸¸¦ Á¦´ë·Î ÀÔ·ÂÇØÁÖ¼¼¿ä!");
+			request.getSession().setAttribute("messageType", "ì˜¤ë¥˜ ë©”ì‹œì§€");
+			request.getSession().setAttribute("messageContent", "íšŒì›ì •ë³´ë¥¼ ì œëŒ€ë¡œ ì…ë ¥í•´ì£¼ì„¸ìš”!");
 			response.sendRedirect("FoodTruckPage/signup_member.jsp");
 			return;
 		}

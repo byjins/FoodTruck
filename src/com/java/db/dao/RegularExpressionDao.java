@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class RegularExpressionDao {
 
 	
-	  public static boolean regularID(String id) { //°ø¹éÁ¦°Å String id1 =
+	  public static boolean regularID(String id) { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ String id1 =
 			/*
 			 * Pattern.compile("\\s").matcher(id).replaceAll(""); String id2 =
 			 * id1.replaceAll(" ", "");
@@ -28,7 +28,7 @@ public class RegularExpressionDao {
 		}
 
 		public static boolean regularName(String name) {
-			if (Pattern.matches("^[°¡-ÆR]{2,4}$", name)) {
+			if (Pattern.matches("^[ê°€-íž£]{2,4}$", name)) {
 				return true;
 
 			} else {
