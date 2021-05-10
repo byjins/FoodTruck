@@ -1,14 +1,12 @@
 package com.java.db.dao;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+public class ShopLoginDao {
 
-public class MemberLoginDao {
-	
 	static String driver = "org.mariadb.jdbc.Driver";
 	static String url = "jdbc:mariadb://localhost:3306/Hungry";
 	static String uid = "Hungry";
@@ -21,7 +19,7 @@ public class MemberLoginDao {
 
 	
 	
-	public MemberLoginDao() {
+	public ShopLoginDao() {
 		try {
 			Class.forName(driver);
 			
@@ -30,20 +28,19 @@ public class MemberLoginDao {
 		}
 	}
 	
-	 public int login(String member_id, String member_pw) {
+	 public int login(String shop_id, String shop_pw) {
 		 	
 
-	        String query = "select * from member_info where member_id = ? and member_pw = ?";
+	        String query = "select * from shop_manager where shop_id = ? and shop_pw = ?";
 
 
 	        try {
 	        	con = DriverManager.getConnection(url,uid,pwd);
 	            pstmt = con.prepareStatement(query);
 	            
-	            pstmt.setString(1,member_id);
-	            pstmt.setString(2,member_pw);
-	            
-	            
+	            pstmt.setString(1,shop_id);
+	            pstmt.setString(2,shop_pw);
+	            	            
 	            rs = pstmt.executeQuery();
 	            
 	         
