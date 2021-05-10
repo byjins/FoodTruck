@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.java.db.dao.MemberSignupDao;
+import com.java.db.dao.ShopSignupDao;
 
 @WebServlet("/UserRegisterCheckServlet")
 public class UserRegisterCheckServlet extends HttpServlet {
@@ -20,10 +21,14 @@ public class UserRegisterCheckServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		String userid = request.getParameter("userID");
 		String userphone = request.getParameter("userPhone");
+		
+		int result = new ShopSignupDao().shopIdCheck(userid);
 		if(userid==null) {
 			
-		}else {
+		}else if(userid!=null&&1==result){
 			response.getWriter().write(new MemberSignupDao().idCheck(userid)+"");
+		}else {
+			
 		}
 		
 		if(userphone==null) {

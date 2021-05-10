@@ -3,7 +3,7 @@ package com.java.servlet;
 import java.util.regex.Pattern;
 
 public class test {
-	 public static boolean regularID(String id) { //°ø¹éÁ¦°Å String id1 =
+	 public static boolean regularID(String id) { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ String id1 =
 			/*
 			 * Pattern.compile("\\s").matcher(id).replaceAll(""); String id2 =
 			 * id1.replaceAll(" ", "");
@@ -23,14 +23,25 @@ public class test {
 				return false;
 			}
 		}
+	 
+	 public static boolean regularNum(String num) {
+			if (Pattern.matches("[\\d$-]{22,22}", num)) {
+				return true;
+
+			} else {
+				return false;
+			}
+		}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//String pattern = "^[°¡-ÆR]{2,4}$"; //ÇÑ±Û
-		//String pattern = "^[a-zA-z0-9]{6,15}$";//¾ÆÀÌµğ
-		//String pattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$"; ºñ¹Ğ¹øÈ£
+		//String pattern = "^[ï¿½ï¿½-ï¿½R]{2,4}$"; //ï¿½Ñ±ï¿½
+		//String pattern = "^[a-zA-z0-9]{6,15}$";//ï¿½ï¿½ï¿½Ìµï¿½
+		//String pattern = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$"; ï¿½ï¿½Ğ¹ï¿½È£
 		//String pattern = "^01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}$";
-		String id = "01088149999";
-		if(true ==test.regularPhone(id)) {
+		String pattern = "^[0-9](?=.*?[-]).{22,22}$";
+		//String parttern = "[\\d$-]{22,22}"; //ìˆ«ìì™€ íŠ¹ìˆ˜ë¬¸ì - ë§Œí—ˆìš©
+		String id = "0000000";
+		if(true ==test.regularNum(id)) {
 			System.out.println("true");
 		}else {
 			System.out.println("false");

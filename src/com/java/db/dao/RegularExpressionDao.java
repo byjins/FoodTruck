@@ -49,5 +49,14 @@ public class RegularExpressionDao {
 				return false;
 			}
 		}
+		
+		public static boolean regularShopNum(String shopNum) {
+			if (Pattern.matches("[\\d$-]{22,22}", shopNum)) {
+				return true;
+
+			} else {
+				return false;
+			}
+		}
 	 
 }

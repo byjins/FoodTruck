@@ -27,7 +27,7 @@ public class MemberSignupDao {
 		PreparedStatement pstmt = null;
 		//ResultSet rs =null;
 		
-		String query = "insert into member_info values(?,?,?,?,?,?)";
+		String query = "insert into member_info values(?,?,?,?,?)";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -36,7 +36,6 @@ public class MemberSignupDao {
 			pstmt.setString(3, usernName);
 			pstmt.setInt(4, Integer.parseInt(userAge));
 			pstmt.setString(5, userPhone);
-			pstmt.setInt(6, 1);
 
 			return pstmt.executeUpdate();
 		} catch (Exception e) {

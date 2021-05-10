@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.java.db.dao.MemberSignupDao;
 import com.java.db.dao.RegularExpressionDao;
+import com.java.db.dao.ShopSignupDao;
 
 public class UserRegisterServlet extends HttpServlet {
 	private static final long serialVersionUID= 1L;
@@ -50,7 +51,8 @@ public class UserRegisterServlet extends HttpServlet {
 				 {
 			int phoneresult = new MemberSignupDao().phoneCheck(mPhone);
 			int idresult = new MemberSignupDao().idCheck(userid);
-			if(1==phoneresult&&1==idresult) {
+			int shopidresult = new ShopSignupDao().shopIdCheck(userid);
+			if(1==phoneresult&&1==idresult&&1==shopidresult) {
 				int result = new MemberSignupDao().mInsert(userid,password1,username,memberage,mPhone);
 				
 				if(1==result) { 
