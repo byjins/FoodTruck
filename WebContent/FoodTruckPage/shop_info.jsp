@@ -1,3 +1,5 @@
+<%@page import="com.java.db.dao.MenuDao"%>
+<%@page import="com.java.db.dto.MenuDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -80,7 +82,7 @@
 						ShopInfoDto dto = new ShopInfoDto();
 						ShopInfoDao dao = new ShopInfoDao();
 							
-							dto = dao.shopinfo("1");	
+							dto = dao.shopinfo("shop_num");	
 							
 							S_name = dto.getShopName();
 							S_intro = dto.getShopIntro();
@@ -130,7 +132,7 @@
 			<!-- 메뉴  -->
 			<div class="card my-4">
 				<h5 class="card-header"><b>가게 메뉴</b></h5>
-				<div class="card-body">메뉴 이름 가격</div>
+				<div class="card-body"></div>
 			</div>
 			
 			
