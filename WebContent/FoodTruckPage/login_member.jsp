@@ -3,10 +3,13 @@
 <html lang="en">
 
 <head>
+
 <jsp:include page="style.jsp"></jsp:include>
+
 </head>
 
 <body>
+
 
 	<!-- Navigation -->
 	<jsp:include page="nav.jsp"></jsp:include>
@@ -17,14 +20,27 @@
 	<div class="container col-lg-6 col-md-8 col-sm-6 col-xs-4">
 
 		<div class="jumbotron" style="padding-top: 100px; margin-top: 70px;">
-			<form method="post" action="login_member.jsp">
+		<div class="content">
+			<form method="post" action="../LoginMember">
+				<h3 style="text-align: center;">로 그 인 화 면</h3>
+				<br>
+				<div>
+					<input type="text" class="form-control" id="member_id" name="member_id"
+						placeholder="아 이 디" maxlength="20">
+				</div>
+				<br>
+				<div>
+					<input type="password" class="form-control" id="member_pw"
+						name="member_pw" placeholder="비 밀 번 호" maxlength="20">
+				</div>
 				<br> <input type="submit" class="btn btn-info form-control"
-					value="일반회원 로그인하기">
+					value="로 그 인">
+					
+					
+				
+
 			</form>
-			<form method="post" action="login_shop.jsp">
-				<br> <input type="submit" class="btn btn-info form-control"
-					value="사업자회원 로그인하기">
-			</form>
+			</div>
 		</div>
 	</div>
 

@@ -14,8 +14,8 @@
 </head>
 <body>
 <%
-String sessionId1 = (String)session.getAttribute("member_id1");   //사업자
-String sessionId2 = (String)session.getAttribute("member_id2");   //이용자		 
+String mId = (String)session.getAttribute("member_id");   //사업자
+String sId = (String)session.getAttribute("shop_id");   //이용자		 
 %>
 
 	<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
@@ -29,7 +29,7 @@ String sessionId2 = (String)session.getAttribute("member_id2");   //이용자
       
         <ul class="navbar-nav xs-auto">
 	
-          <%if (sessionId1 == null && sessionId2 == null) { %>
+          <%if (mId == null && sId == null) { %>
           <li class="nav-item">
             <a class="nav-link" href="login_main.jsp">로그인</a>
           </li>
@@ -38,9 +38,9 @@ String sessionId2 = (String)session.getAttribute("member_id2");   //이용자
           </li>
           
           <!-- 사장님 로그인 -->
-          <%}else if(sessionId1 != null){ %>
+          <%}else if(sId != null){ %>
           <li class="nav-item">
-            <a class="nav-link" href="myinfo.jsp"><%=sessionId1 %>님</a>
+            <a class="nav-link" href="myinfo.jsp"><%=sId %>님</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="logout_process.jsp">로그아웃</a>
@@ -48,18 +48,36 @@ String sessionId2 = (String)session.getAttribute("member_id2");   //이용자
           <li class="nav-item">
             <a class="nav-link" href="logout_process.jsp">가게관리</a>
           </li>
-          
-          <!-- 이용자 로그인 -->
-          <%} else if(sessionId2 != null){ %> 
           <li class="nav-item">
-            <a class="nav-link" href="myinfo.jsp"><%=sessionId2 %>님</a>
+              <li class="nav-item">
+            <a class="nav-link" href="shop_info.jsp">가게정보</a>
+          </li>
+    	
+		  <li class="nav-item">
+			<form action="map.jsp">
+				<button type="submit" class="btn btn-light">지도</button>
+			</form>
+          </li>
+      	 <li>
+			<form action="shop_start.jsp">
+				<button type="submit" class="btn btn-info">영업시작</button>
+			</form>
+          </li>
+            
+ 		 <li>
+			<form action="map.jsp">
+				<button type="submit" class="btn btn-info">영업종료</button>
+			</form>
+          </li>
+          <!-- 이용자 로그인 -->
+          <%}else if(mId != null){ %> 
+          <li class="nav-item">
+            <a class="nav-link" href="myinfo.jsp"><%=mId %>님</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="logout_process.jsp">로그아웃</a>
           </li>
-
-          <%} %>
-          <li class="nav-item">
+    	<li class="nav-item">
             <a class="nav-link" href="shop_info.jsp">가게정보</a>
           </li>
     	
@@ -69,6 +87,8 @@ String sessionId2 = (String)session.getAttribute("member_id2");   //이용자
 			</form>
           </li>
        
+          <%} %>
+      
         </ul>
      	<ul class="navbar-nav ml-auto xs-auto">
         	<li class="nav-item">
