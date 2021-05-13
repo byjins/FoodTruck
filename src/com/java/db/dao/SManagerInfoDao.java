@@ -5,11 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.java.db.dto.MemberDto;
+import com.java.db.dto.SManagerInfoDto;
 
-
-
-public class MemberInfoDao {
+public class SManagerInfoDao {
 	static String driver = "org.mariadb.jdbc.Driver";
 	static String url = "jdbc:mariadb://localhost:3306/Hungry";
 	static String uid = "Hungry";
@@ -22,7 +20,7 @@ public class MemberInfoDao {
 
 	
 	
-	public MemberInfoDao() {
+	public SManagerInfoDao() {
 		try {
 			Class.forName(driver);
 			
@@ -31,16 +29,16 @@ public class MemberInfoDao {
 		}
 	}
 	
-	public MemberDto info(String member_id) {
+	
+	public SManagerInfoDto info(String shop_id) {
 
-        String query = "select * from member_info where member_id = ?";
-
-
+        String query = "select * from shop_manager where shop_id = ?";
+       
         try {
         	con = DriverManager.getConnection(url,uid,pwd);
             pstmt = con.prepareStatement(query);
             
-            pstmt.setString(1,member_id);
+            pstmt.setString(1,shop_id);
             
             rs = pstmt.executeQuery();
             
@@ -48,22 +46,25 @@ public class MemberInfoDao {
 
             
             if(rs.next()) {
-            	String id = rs.getString("member_id");
-				String pw = rs.getString("member_pw");
-				String name = rs.getString("member_name");
-				String phone = rs.getString("member_phone");
-				int age = rs.getInt("member_age");
-
+            	String num = rs.getString("shop_num");
+            	String val = rs.getString("shop_val");
+            	String id = rs.getString("shop_id");
+				String pw = rs.getString("shop_pw");
+				String sName = rs.getString("shop_name");
+				String adress = rs.getString("shop_adress");
+				String phone = rs.getString("shop_phone");
+				String aName  = rs.getString("admin_name");
 				
 				
-				MemberDto dto = new MemberDto(id,pw,name,age,phone);
+				
+				SManagerInfoDto dto = new SManagerInfoDto(num,val,id,pw,sName,adress,phone,aName);
+				
 				return dto;
-				
 				
             }
                
         }catch(Exception e) {
-
+        	
             e.printStackTrace();   
 
         }finally {

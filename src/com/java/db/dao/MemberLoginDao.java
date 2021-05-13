@@ -44,13 +44,13 @@ public class MemberLoginDao {
 	            pstmt.setString(2,member_pw);
 	            
 	            
-	            rs = pstmt.executeQuery();
+	           rs = pstmt.executeQuery();
 	            
+	            if(rs.next()) {
+	            	return 1;
+	            }
 	         
-	        	if(rs.next()) {
-	        		return 1; //로그인성공
-				}
-	       
+	        
 	               
 	        }catch(Exception e) {
 
@@ -66,7 +66,7 @@ public class MemberLoginDao {
 	        	}
 	        }
 
-	        return -1; //로그인 실패
+	        return -1;
 	  
 	    }
 
