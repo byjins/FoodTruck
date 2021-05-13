@@ -1,3 +1,5 @@
+<%@page import="com.java.db.dao.SManagerInfoDao"%>
+<%@page import="com.java.db.dto.SManagerInfoDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="com.java.db.dao.MemberInfoDao"%>	
@@ -8,26 +10,26 @@
 
 <jsp:include page="style.jsp"></jsp:include>
 
-	<%! String id; %>
-
+	
 </head>
 
 <body>
 
 	<%
-		MemberDto dto = new MemberDto();
-		MemberInfoDao infoDao = new MemberInfoDao();
-	
+		MemberDto mDto = new MemberDto();
+		MemberInfoDao mInfoDao = new MemberInfoDao();
+		
+		SManagerInfoDto sDto = new SManagerInfoDto();
+		SManagerInfoDao sInfoDao = new SManagerInfoDao();
 		
 		
-		String sessionId1 = (String)session.getAttribute("member_id1");   //이용자
-		String sessionId2 = (String)session.getAttribute("member_id2");   //사업자
+		String mId = (String)session.getAttribute("member_id");   //이용자
+		String sId = (String)session.getAttribute("shop_id");   //사업자
 		
 		
 		
-		dto = infoDao.info(sessionId1);
-
-		
+		mDto = mInfoDao.info(mId);
+		sDto = sInfoDao.info(sId);		
 
 	%>
 
@@ -36,10 +38,10 @@
 
 
 	<div class="container">
-
 		<br/><br/><br/><br/><br/><br/>
 
-
+<% if(mId!=null){ %>
+<%System.out.println(mDto); %>
   <table class="table">
     <thead class="thead-light">
       <tr>
@@ -49,30 +51,74 @@
     </thead>
     <tbody>
       <tr>
-        <td>구분</td>
-        <td><%=dto.getNum()%></td>
-      </tr>
-      <tr>
         <td>아이디</td>
-        <td><%=dto.getId().toString() %></td>
+        <td><%=mDto.getId().toString() %></td>
 
       </tr>
       <tr>
         <td>이름</td>
-        <td><%=dto.getName().toString() %></td>
+        <td><%=mDto.getName().toString() %></td>
 
       </tr>
       <tr>
         <td>나이</td>
-        <td><%=dto.getAge()%></td>
+        <td><%=mDto.getAge()%></td>
       </tr>
       <tr>
         <td>핸드폰번호</td>
-        <td><%=dto.getPhone().toString() %></td>
+        <td><%=mDto.getPhone().toString() %></td>
       </tr>
       
     </tbody>
   </table>
+  
+  
+  <!-- 사업자 정보 -->
+  
+  
+  <%}else if(sId != null){%>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>사업자정보</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>아이디</td>
+        <td><%=sDto.getId().toString() %></td>
+      </tr>
+      <tr>
+        <td>관리자이름</td>
+        <td><%=sDto.getAdminName().toString() %></td>
+      </tr>
+
+      <tr>
+        <td>핸드폰번호</td>
+        <td><%=sDto.getPhone().toString() %></td>
+      </tr>
+
+      <tr>
+        <td>가게등록번호</td>
+        <td><%=sDto.getNum().toString()%></td>
+      </tr>
+      <tr>
+        <td>가게이름</td>
+        <td><%=sDto.getShopName().toString() %></td>
+      </tr>
+      <tr>
+        <td>가게구분</td>
+        <td><%=sDto.getVal().toString()%></td>
+      </tr>
+       <tr>
+        <td>가게주소</td>
+        <td><%=sDto.getAdress().toString()%></td>
+      </tr>
+    </tbody>
+  </table>
+  <%} %>
+  
 </div>
 
 </body>

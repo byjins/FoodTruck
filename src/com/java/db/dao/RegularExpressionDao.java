@@ -10,7 +10,7 @@ public class RegularExpressionDao {
 			 * Pattern.compile("\\s").matcher(id).replaceAll(""); String id2 =
 			 * id1.replaceAll(" ", "");
 			 */
-			if (Pattern.matches("^[a-zA-z0-9]{6,15}$", id)) {
+			if (Pattern.matches("^[a-zA-z0-9]{6,15}\s$", id)) {
 				return true;
 
 			} else {

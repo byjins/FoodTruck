@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -115,11 +116,52 @@
 					// 마커와 인포윈도우를 표시합니다
 					displayMarker(locPosition, message);
 					<%
+					
+					String driver = "org.mariadb.jdbc.Driver";
+					String url = "jdbc:mariadb://localhost:3306/Hungry";
+					String uid = "Hungry";
+					String pwd = "123456";
+					
+					Connection con = null;
+					PreparedStatement pstmt = null;
+					ResultSet rs = null;
+					
+					
 					String sId = (String)session.getAttribute("shop_id");//사업자 세션 받아욤
-					if(sId != null)
-					{
-						
-					};
+					String num=null;
+					 String query = "select shop_num from shop_info where shop_id = ?";
+						 try {
+							Class.forName(driver);
+							
+							} catch (Exception e) {
+							e.printStackTrace();
+							}
+
+				        try {
+				        	con = DriverManager.getConnection(url,uid,pwd);
+				            pstmt = con.prepareStatement(query);
+				            
+				            pstmt.setString(1,sId);
+				            
+				            rs = pstmt.executeQuery();
+				            
+
+				            if(rs.next()) {
+				            	num = rs.getString("shop_num");
+				            }
+				               
+				        }catch(Exception e) {
+
+				            e.printStackTrace();   
+
+				        }
+					
+						if(sId != null)
+						{
+						 	ShopGeolocationDao SGdao = new ShopGeolocationDao();
+							SGdao.updateDao(lat, lon, num);
+						 	
+						};
 					%>
 
 				});
@@ -131,6 +173,8 @@
 				displayMarker(locPosition, message);
 			}
 
+			
+			
 			// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 			function displayMarker(locPosition, message) {
 
