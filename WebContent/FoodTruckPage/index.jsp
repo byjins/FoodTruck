@@ -21,17 +21,17 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+        <div class="carousel-item active" style="background-image: url(img/slide1.jpg)">
           <div class="carousel-caption d-none d-md-block">
-            <h3>First Slide</h3>
-            <p>This is a description for the first slide.</p>
+            <h3>첫번째슬라이드</h3>
+            <p>슬라이드 내용이 들어갑니다</p>
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+        <div class="carousel-item" style="background-image: url(img/slide2.jpg)">
           <div class="carousel-caption d-none d-md-block">
-            <h3>Second Slide</h3>
-            <p>This is a description for the second slide.</p>
+            <h3>두번째슬라이드</h3>
+            <p>슬라이드 내용이 들어갑니다</p>
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
