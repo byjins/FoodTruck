@@ -6,16 +6,54 @@
 <meta charset="EUC-KR">
 <title>로그인</title>
 
+
+
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=34c55d8cdebc3f1d7c40139f7c31e99d"></script>
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
+		<!-- services 라이브러리 불러오기 -->
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
+		<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+
+
+
 <style type="text/css">
 #searchbtn {
 	margin: 0px 130px 0px 0px;
 }
 </style>
 </head>
+  <script>
+    function openPosition(){
+   if (navigator.geolocation) {
+            
+
+            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+            navigator.geolocation.getCurrentPosition(function(position) {
+               
+               var areaX = position.coords.latitude; // 위도
+               var areaY = position.coords.longitude; // 경도
+
+       
+               window.open('map.jsp?areaX=' + areaX + "&areaY="+ areaY);
+       
+               
+            });
+
+         } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+            var error = "실패했습니다"; 
+         }
+    }
+
+   </script>
 <body>
 <%
-String mId = (String)session.getAttribute("member_id");   //사업자
-String sId = (String)session.getAttribute("shop_id");   //이용자		 
+	String mId = (String)session.getAttribute("member_id");   //사업자
+	String sId = (String)session.getAttribute("shop_id");   //이용자		 
 %>
 
 	<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
@@ -59,9 +97,9 @@ String sId = (String)session.getAttribute("shop_id");   //이용자
 			</form>
           </li>
       	 <li>
-			<form action="shop_start.jsp">
-				<button type="submit" class="btn btn-info">영업시작</button>
-			</form>
+
+				<input type="button" class="btn btn-info" onclick="openPosition()" value = "영업시작">		
+		
           </li>
             
  		 <li>
