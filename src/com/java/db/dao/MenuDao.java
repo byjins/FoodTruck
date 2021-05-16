@@ -55,13 +55,13 @@ public class MenuDao {
 				dtos.add(dto);
 				
 			}
-			for(int i=0; i<dtos.size(); i++) {
+			for (int i = 0; i < dtos.size(); i++) {
 				System.out.println(dtos.get(i).getMenuNum());
 				System.out.println(dtos.get(i).getMenuName());
 				System.out.println(dtos.get(i).getMenuPrice());
 				System.out.println(dtos.get(i).getMenuIntro());
 			}
-			return dtos;
+				return dtos;
 			
 		} catch (Exception e) {
 			e.printStackTrace();
