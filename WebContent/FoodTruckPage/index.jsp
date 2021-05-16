@@ -1,14 +1,20 @@
+<%@page import="com.java.db.dto.SManagerInfoDto"%>
+<%@page import="com.java.db.dao.ShopInfoDao"%>
+<%@page import="com.java.db.dto.ShopInfoDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="utf-8">
 
 <head>
-
+<!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <jsp:include page="style.jsp"></jsp:include>
 </head>
-
 <body>
+
 
   <!-- Navigation -->
 	<jsp:include page = "nav.jsp"/>
@@ -28,7 +34,7 @@
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url(img/slide2.jpg)">
+        <div class="carousel-item" style="background-image: u	rl(img/slide2.jpg)">
           <div class="carousel-caption d-none d-md-block">
             <h3>두번째슬라이드</h3>
             <p>슬라이드 내용이 들어갑니다</p>
@@ -58,111 +64,124 @@
 
     <h1 class="my-4"></h1>
 
-    <!-- Marketing Icons Section -->
+
+    <!-- Portfolio Section -->
+    <h2>푸드트럭</h2>
     <div class="row">
-      <div class="col-lg-4 mb-4">
+    <% ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
+	ShopInfoDao dao1 = new ShopInfoDao();
+    ShopInfoDao dao2 = new ShopInfoDao();
+    SManagerInfoDto dto = new SManagerInfoDto();
+    dtos = dao1.shopSelect();  
+   
+
+	%>
+	
+	<%
+	for(int i=0;i<3;i++) {
+		 dto = dao2.indexShopinfo(dtos.get(i).getShopNum());
+	%>
+    <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+            <a href="#"><%=dto.getShopName()%></a>
+          </h4>
+          <p class="card-text"><%=dtos.get(i).getShopIntro()%></p>
+        </div>
+         <div class="card-footer" align = "right">
+          <a href="#" class="btn btn-primary">가게정보</a>
+        </div>
+      </div>
+    </div>
+<%
+}
+%>
+	</div>
+
+      <h2>거리가게</h2>
+      <div class="row">
+      <div class="col-lg-4 col-sm-6 portfolio-item">
         <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            <h4 class="card-title">
+              <a href="#">가게이름4</a>
+            </h4>
+            <p class="card-text">가게설명이 들어갈자리입니다.</p>
           </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
+           <div class="card-footer" align = "right">
+            <a href="#" class="btn btn-primary">가게정보</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 mb-4">
+      <div class="col-lg-4 col-sm-6 portfolio-item">
         <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+            <h4 class="card-title">
+              <a href="#">가게이름5</a>
+            </h4>
+            <p class="card-text">가게설명이 들어갈자리입니다.</p>
           </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
+           <div class="card-footer" align = "right">
+            <a href="#" class="btn btn-primary">가게정보</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 mb-4">
+      <div class="col-lg-4 col-sm-6 portfolio-item">
         <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
+          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
           <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            <h4 class="card-title">
+              <a href="#">가게이름6</a>
+            </h4>
+            <p class="card-text">가게설명이 들어갈자리입니다.</p>
           </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
+           <div class="card-footer" align = "right">
+            <a href="#" class="btn btn-primary">가게정보</a>
           </div>
         </div>
       </div>
     </div>
     <!-- /.row -->
 
-    <!-- Portfolio Section -->
-    <h2>Portfolio Heading</h2>
 
+	<h2>공지사항</h2>
+	<!-- 사진없는곳 (버튼눌러서 공지사항확인 ???) -->
+    <!-- Marketing Icons Section -->
     <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <h4 class="card-header">가게이름</h4>
           <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+            <p class="card-text">공지사항내용</p>
+          </div>
+          <div class="card-footer" align="right">
+            <a href="#" class="btn btn-primary">가게정보</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <h4 class="card-header">가게이름2</h4>
           <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Two</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
+            <p class="card-text">공지사항내용</p>
+          </div>
+          <div class="card-footer" align="right">
+            <a href="#" class="btn btn-primary">가게정보</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
+      <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+          <h4 class="card-header">가게이름3</h4>
           <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Three</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
+            <p class="card-text">공지사항내용</p>
           </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Four</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Five</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Six</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
+          <div class="card-footer" align="right">
+            <a href="#" class="btn btn-primary">가게정보</a>
           </div>
         </div>
       </div>
@@ -176,14 +195,14 @@
     <hr>
 
     <!-- Call to Action Section -->
-    <div class="row mb-4">
+    <!-- <div class="row mb-4">
       <div class="col-md-8">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
       </div>
       <div class="col-md-4">
         <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
       </div>
-    </div>
+    </div> -->
 
   </div>
   <!-- /.container -->
@@ -191,9 +210,7 @@
   <!-- Footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  
 
 </body>
 

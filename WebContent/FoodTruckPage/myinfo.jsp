@@ -38,7 +38,7 @@
 
 
 	<div class="container">
-		<br/><br/><br/><br/><br/><br/>
+		<br/><br/><br/><br/>
 
 <% if(mId!=null){ %>
 <%System.out.println(mDto); %>
@@ -46,7 +46,9 @@
     <thead class="thead-light">
       <tr>
         <th>회원정보</th>
-        <th></th>
+        <th class="text-right">
+		<input type="button" value="정보수정" onclick="javascript:window.location='modify.jsp'">
+		</th>
       </tr>
     </thead>
     <tbody>
@@ -81,7 +83,9 @@
     <thead class="thead-light">
       <tr>
         <th>사업자정보</th>
-        <th></th>
+        <th class="text-right">
+		<input type="button" value="정보수정" onclick="javascript:window.location='modify.jsp'">
+		</th>
       </tr>
     </thead>
     <tbody>
@@ -113,7 +117,7 @@
       </tr>
        <tr>
         <td>가게주소</td>
-        <td><%=sDto.getAdress().toString()%></td>
+        <td><%=sDto.getAdress()%></td>
       </tr>
     </tbody>
   </table>
