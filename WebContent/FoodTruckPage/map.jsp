@@ -1,4 +1,13 @@
 
+
+<%@page import="com.java.db.dao.SManagerInfoDao"%>
+<%@page import="com.java.db.dto.SManagerInfoDto"%>
+<%@page import="com.java.db.dto.ShopInfoDto"%>
+<%@page import="com.java.db.dao.ShopGeolocationDao"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -58,12 +67,38 @@
 </head>
 
 <body>
+
 	<!-- Navigation -->
 	<jsp:include page="nav.jsp"></jsp:include> 
 
 	<!-- Page Content -->
 	<div class="container">
 
+			<%
+		
+	         
+             String sId = (String)session.getAttribute("shop_id");//사업자 세션 받아욤
+               
+             String num = null;
+	         String shopName = null; 
+               if(sId != null)
+               {
+            	   double areaX = Double.parseDouble(request.getParameter("areaX"));
+        		   double areaY = Double.parseDouble(request.getParameter("areaY"));
+                    
+        		   SManagerInfoDto smDto = new SManagerInfoDto();
+            	   SManagerInfoDao smDao = new SManagerInfoDao();
+            	   
+            	   smDto = smDao.info(sId);
+            	   
+            	   num = smDto.getNum().toString();
+
+                   ShopGeolocationDao SgDao = new ShopGeolocationDao();
+                   SgDao.updateDao(areaX, areaY, num);
+                   
+                   shopName = smDto.getShopName().toString();
+               }
+            %>
 		<!-- 카카오 맵 -->
 		<div id="map" style="width: 100%; height: 623px;"></div>
 
@@ -97,73 +132,24 @@
 			};
 
 			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-			
-			
-			
+		
 
 			// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 			if (navigator.geolocation) {
-
+				
+		
 				// GeoLocation을 이용해서 접속 위치를 얻어옵니다
 				navigator.geolocation.getCurrentPosition(function(position) {
 					
 					var lat = position.coords.latitude, // 위도
 					lon = position.coords.longitude; // 경도
 					
-					var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-					message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+					var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+					var message = "<%=shopName%>";
 					
 					// 마커와 인포윈도우를 표시합니다
 					displayMarker(locPosition, message);
-					<%
-					
-					String driver = "org.mariadb.jdbc.Driver";
-					String url = "jdbc:mariadb://localhost:3306/Hungry";
-					String uid = "Hungry";
-					String pwd = "123456";
-					
-					Connection con = null;
-					PreparedStatement pstmt = null;
-					ResultSet rs = null;
-					
-					
-					String sId = (String)session.getAttribute("shop_id");//사업자 세션 받아욤
-					String num=null;
-					 String query = "select shop_num from shop_info where shop_id = ?";
-						 try {
-							Class.forName(driver);
-							
-							} catch (Exception e) {
-							e.printStackTrace();
-							}
-
-				        try {
-				        	con = DriverManager.getConnection(url,uid,pwd);
-				            pstmt = con.prepareStatement(query);
-				            
-				            pstmt.setString(1,sId);
-				            
-				            rs = pstmt.executeQuery();
-				            
-
-				            if(rs.next()) {
-				            	num = rs.getString("shop_num");
-				            }
-				               
-				        }catch(Exception e) {
-
-				            e.printStackTrace();   
-
-				        }
-					
-						if(sId != null)
-						{
-						 	ShopGeolocationDao SGdao = new ShopGeolocationDao();
-							SGdao.updateDao(lat, lon, num);
-						 	
-						};
-					%>
-
+				
 				});
 
 			} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -171,10 +157,10 @@
 				var locPosition = new kakao.maps.LatLng(33.450701, 126.570667), message = '위치를 받아올 수 없어요..'
 
 				displayMarker(locPosition, message);
-			}
+			}  
+			
 
-			
-			
+			 
 			// 지도에 마커와 인포윈도우를 표시하는 함수입니다
 			function displayMarker(locPosition, message) {
 
