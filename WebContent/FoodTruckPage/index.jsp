@@ -69,17 +69,16 @@
     <h2>푸드트럭</h2>
     <div class="row">
     <% ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
-	ShopInfoDao dao1 = new ShopInfoDao();
-    ShopInfoDao dao2 = new ShopInfoDao();
+	ShopInfoDao dao = new ShopInfoDao();
     SManagerInfoDto dto = new SManagerInfoDto();
-    dtos = dao1.shopSelect();  
+    dtos = dao.shopSelect();  
    
 
 	%>
 	
 	<%
 	for(int i=0;i<3;i++) {
-		 dto = dao2.indexShopinfo(dtos.get(i).getShopNum());
+		 dto = dao.indexShopinfo(dtos.get(i).getShopNum());
 	%>
     <div class="col-lg-4 col-sm-6 portfolio-item">
       <div class="card h-100">
