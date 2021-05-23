@@ -171,7 +171,7 @@
 
  			
  			<%
- 			 sdtos = sdao.shopStatSelect("1"); 
+ 			sdtos = sdao.shopStatSelect("1"); 
 		    for(int i = 0; i<sdtos.size(); i++) {%>
 
 		    // 마커 이미지의 이미지 크기 입니다
@@ -195,7 +195,7 @@
 		    <%smdtos = smdao.infoAll(sdtos.get(i).getShopNum());//현재 영업중인 거게의 정보를 가져온다
 		 	for(int q = 0; q<smdtos.size(); q++) {%>
 		 		
-		 		var iwContent = '<%=smdtos.get(q).getShopName()%>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		 		var iwContent = '<a href ="/FoodTruck/FoodTruckPage/shop_info.jsp?shop_num=<%=sdtos.get(i).getShopNum()%>"><%=smdtos.get(q).getShopName()%></a>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 			
 			<%}%>	
 			//'<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>'

@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.java.db.dto.MapShopInfoDto;
 import com.java.db.dto.MemberDto;
 import com.java.db.dto.SManagerInfoDto;
 import com.java.db.dto.ShopInfoDto;
