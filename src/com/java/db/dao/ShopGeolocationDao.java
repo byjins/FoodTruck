@@ -24,8 +24,8 @@ public class ShopGeolocationDao {
 		}
 	}
 	
-	public void updateDao(Double posx,Double posy,String shop_num) {
-		String query = "update shop_info set shop_areax = ? , shop_areay = ? where shop_num = ? ";
+	public void updateDao(Double posx,Double posy,String shop_num ,  int shop_stat) {
+		String query = "update shop_info set shop_areax = ? , shop_areay = ?,shop_stat = ? where shop_num = ? ";
 		
 		try {
         	con = DriverManager.getConnection(url,uid,pwd);
@@ -33,7 +33,8 @@ public class ShopGeolocationDao {
             
             pstmt.setDouble(1,posx);
             pstmt.setDouble(2,posy);
-            pstmt.setString(3,shop_num);
+            pstmt.setInt(3, shop_stat);
+            pstmt.setString(4,shop_num);
             
             pstmt.executeUpdate();
             System.out.println("/x/"+posx+"/y/"+posy+"/번호/"+shop_num);
