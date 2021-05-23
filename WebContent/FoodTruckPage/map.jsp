@@ -1,5 +1,8 @@
 
 
+<%@page import="com.java.db.dto.MapShopInfoDto"%>
+<%@page import="com.java.db.dao.ShopInfoDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.java.db.dao.SManagerInfoDao"%>
 <%@page import="com.java.db.dto.SManagerInfoDto"%>
 <%@page import="com.java.db.dto.ShopInfoDto"%>
@@ -74,31 +77,17 @@
 	<!-- Page Content -->
 	<div class="container">
 
-			<%
-		
-	         
-             String sId = (String)session.getAttribute("shop_id");//사업자 세션 받아욤
+	
                
-             String num = null;
-	         String shopName = null; 
-               if(sId != null)
-               {
-            	   double areaX = Double.parseDouble(request.getParameter("areaX"));
-        		   double areaY = Double.parseDouble(request.getParameter("areaY"));
-                    
-        		   SManagerInfoDto smDto = new SManagerInfoDto();
-            	   SManagerInfoDao smDao = new SManagerInfoDao();
-            	   
-            	   smDto = smDao.info(sId);
-            	   
-            	   num = smDto.getNum().toString();
-
-                   ShopGeolocationDao SgDao = new ShopGeolocationDao();
-                   SgDao.updateDao(areaX, areaY, num);
-                   
-                   shopName = smDto.getShopName().toString();
-               }
-            %>
+   			<%//정현------- 가게 출력
+	
+				ArrayList<SManagerInfoDto> smdtos = new ArrayList<SManagerInfoDto>();
+				SManagerInfoDao smdao = new SManagerInfoDao();
+	
+				ArrayList<MapShopInfoDto> sdtos = new ArrayList<MapShopInfoDto>();
+				ShopInfoDao sdao = new ShopInfoDao();
+  	
+			%>
 		<!-- 카카오 맵 -->
 		<div id="map" style="width: 100%; height: 623px;"></div>
 
@@ -132,11 +121,11 @@
 			};
 
 			var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-		
 
-			// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+		
+		 	// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 			if (navigator.geolocation) {
-				
+		
 		
 				// GeoLocation을 이용해서 접속 위치를 얻어옵니다
 				navigator.geolocation.getCurrentPosition(function(position) {
@@ -145,11 +134,9 @@
 					lon = position.coords.longitude; // 경도
 					
 					var locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-					var message = "<%=shopName%>";
-					
-					// 마커와 인포윈도우를 표시합니다
-					displayMarker(locPosition, message);
-				
+
+					map.setCenter(locPosition);
+	
 				});
 
 			} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
@@ -158,33 +145,115 @@
 
 				displayMarker(locPosition, message);
 			}  
-			
 
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+		    mapOption = { 
+		        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+		        level: 3 // 지도의 확대 레벨
+		    };
+
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		
+
+		
+		
+		
+		// 마커 이미지의 이미지 주소입니다
+		var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+
+
+		
+		
+
+		
 			 
-			// 지도에 마커와 인포윈도우를 표시하는 함수입니다
-			function displayMarker(locPosition, message) {
+			 
 
-				// 마커를 생성합니다
-				var marker = new kakao.maps.Marker({
-					map : map,
-					position : locPosition
-				});
+ 			
+ 			<%
+ 			 sdtos = sdao.shopStatSelect("1"); 
+		    for(int i = 0; i<sdtos.size(); i++) {%>
 
-				var iwContent = message, // 인포윈도우에 표시할 내용
-				iwRemoveable = true;
+		    // 마커 이미지의 이미지 크기 입니다
+		    var imageSize = new kakao.maps.Size(24, 35); 
+		    
+		    // 마커 이미지를 생성합니다    
+		    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
 
-				// 인포윈도우를 생성합니다
-				var infowindow = new kakao.maps.InfoWindow({
-					content : iwContent,
-					removable : iwRemoveable
-				});
+		    var positionX = <%=sdtos.get(i).getShopAreaX()%>;
+		    var positionY = <%=sdtos.get(i).getShopAreaY()%>;
+		    var latlng = new kakao.maps.LatLng(positionX,positionY)
+		    
+		    var marker = new kakao.maps.Marker({
+		        map: map // 마커를 표시할 지도
+		        ,position:latlng      			
+		        ,image : markerImage // 마커 이미지 
+		    });
 
-				// 인포윈도우를 마커위에 표시합니다 
-				infowindow.open(map, marker);
+		    
 
-				// 지도 중심좌표를 접속위치로 변경합니다
-				map.setCenter(locPosition);
-			}
+		    <%smdtos = smdao.infoAll(sdtos.get(i).getShopNum());//현재 영업중인 거게의 정보를 가져온다
+		 	for(int q = 0; q<smdtos.size(); q++) {%>
+		 		
+		 		var iwContent = '<%=smdtos.get(q).getShopName()%>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			
+			<%}%>	
+			//'<div style="padding:5px;">Hello World! <br><a href="https://map.kakao.com/link/map/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/Hello World!,33.450701,126.570667" style="color:blue" target="_blank">길찾기</a></div>'
+		    
+		
+		    var iwPosition = latlng; //인포윈도우 표시 위치입니다
+
+		    
+			// 인포윈도우를 생성합니다
+			var infowindow = new kakao.maps.InfoWindow({
+		    position : iwPosition, 
+		    content : iwContent 
+			});
+		  
+			// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+			infowindow.open(map, marker);
+		    <%}%> 
+		    
+ 
+ 
+			
+		    /*  		var positions = [
+		    {
+		        title: '카카오', 
+		        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+		    },
+		    {
+		        title: '생태연못', 
+		        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+		    },
+		    {
+		        title: '텃밭', 
+		        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
+		    },
+		    {
+		        title: '근린공원',
+		        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
+		    }
+		]; 
+		 
+			
+		 	
+		 	for (var i = 0; i < positions.length; i ++) {
+		 		    
+		 		    // 마커 이미지의 이미지 크기 입니다
+		 		    var imageSize = new kakao.maps.Size(24, 35); 
+		 		    
+		 		    // 마커 이미지를 생성합니다    
+		 		    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+		 		    
+		 		    // 마커를 생성합니다
+		 		    var marker = new kakao.maps.Marker({
+		 		        map: map // 마커를 표시할 지도
+		 		        ,position: new kakao.maps.LatLng(33.450936, 126.569477) // 마커를 표시할 위치
+		 		        ,image : markerImage // 마커 이미지 
+		 		    });
+		 		}  
+			*/
 
 			//오른쪽 +,-, 스카이뷰
 

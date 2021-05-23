@@ -39,7 +39,7 @@
                var areaY = position.coords.longitude; // 경도
 
        
-               window.open('map.jsp?areaX=' + areaX + "&areaY="+ areaY);
+               location.href=('shop_open_process.jsp?areaX=' + areaX + "&areaY="+ areaY);
        
                
             });
@@ -74,6 +74,11 @@
           <li class="nav-item">
             <a class="nav-link" href="signup_main.jsp">회원가입</a>
           </li>
+         <li class="nav-item">
+			<form action="map.jsp">
+				<button type="submit" class="btn btn-light">지도</button>
+			</form>
+          </li>
           
           <!-- 사장님 로그인 -->
           <%}else if(sId != null){ %>
@@ -103,7 +108,7 @@
           </li>
             
  		 <li>
-			<form action="map.jsp">
+			<form action="shop_close_process.jsp">
 				<button type="submit" class="btn btn-info">영업종료</button>
 			</form>
           </li>
