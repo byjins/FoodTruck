@@ -104,21 +104,24 @@ public class ShopInfoDao {
 		return dtos;
 	}
 	
-	public SManagerInfoDto indexShopinfo(String shopnum) {
+	public ShopInfoDto indexShopinfo(String shopnum) {
 		
-		SManagerInfoDto dto = new SManagerInfoDto();
-        String query = "select * from shop_manager where shop_num = ?";
+		ShopInfoDto dto = new ShopInfoDto();
+        String query = "select A.shop_intro,A.shop_img, B.shop_name from shop_manager B, shop_info A where A.shop_num = ? AND B.shop_num=?";
 
 		try {
 			con = DriverManager.getConnection(url, uid, pwd);
 			pstmt = con.prepareStatement(query);
 			
 			pstmt.setString(1, shopnum);
+			pstmt.setString(2, shopnum);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				
 					dto.setShopName(rs.getString("shop_name"));
+					dto.setShopIntro(rs.getString("shop_intro"));
+					dto.setShopimg(rs.getString("shop_img"));
 					
 					return dto;
 				
@@ -130,6 +133,47 @@ public class ShopInfoDao {
 		}
 		return dto;
 
+	}
+
+	// 가게 영업중인지 검색.
+	public ArrayList<MapShopInfoDto> shopStatSelect(String s_stat) {
+
+		String query = "select * from shop_info where shop_stat = ?";
+		ArrayList<MapShopInfoDto> dtos = new ArrayList<MapShopInfoDto>();
+		try {
+			con = DriverManager.getConnection(url, uid, pwd);
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setString(1, s_stat);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String shop_num = rs.getString("shop_num");
+				Double shop_score = rs.getDouble("shop_score");
+				Double areax = rs.getDouble("shop_areax");
+				Double areay = rs.getDouble("shop_areay");
+				String shop_intro = rs.getString("shop_intro");
+				String shop_stat = rs.getString("shop_stat");
+
+				MapShopInfoDto dto = new MapShopInfoDto(shop_num, shop_score, areax, areay, shop_intro, shop_stat);
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dtos;
 	}
 	
 

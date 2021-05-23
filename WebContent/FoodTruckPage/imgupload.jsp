@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+		<form action="uploadOK.jsp" method="post" enctype="multipart/form-data">
+			파일 첨부 : <input type = "file" name = "test"> <br/>
+			<input type="submit" value="업로드">
+		</form>
 </body>
 </html>

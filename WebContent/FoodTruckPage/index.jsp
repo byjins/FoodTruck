@@ -68,35 +68,54 @@
     <!-- Portfolio Section -->
     <h2>푸드트럭</h2>
     <div class="row">
-    <% ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
+    <% 
+    ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
 	ShopInfoDao dao = new ShopInfoDao();
-    SManagerInfoDto dto = new SManagerInfoDto();
+    ShopInfoDto dto = new ShopInfoDto();
     dtos = dao.shopSelect();  
-   
-
 	%>
 	
 	<%
 	for(int i=0;i<3;i++) {
-		 dto = dao.indexShopinfo(dtos.get(i).getShopNum());
+		dto = dao.indexShopinfo(dtos.get(i).getShopNum());
+		if(null==dto.getShopName()){
 	%>
+		    <div class="col-lg-4 col-sm-6 portfolio-item">
+		      <div class="card h-100">
+		        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		        <div class="card-body">
+		          <h4 class="card-title">
+		            <a href="#">가게정보없음</a>
+		          </h4>
+		          <p class="card-text">정보없음</p>
+		        </div>
+		         <div class="card-footer" align = "right">
+		          <a href="#" class="btn btn-primary">가게정보</a>
+		        </div>
+		      </div>
+		    </div>
+	<% } else if(null!=dto.getShopName()){%>
     <div class="col-lg-4 col-sm-6 portfolio-item">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+      <% if(null==dto.getShopimg()){%>
+    	  <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+    	 <%}else {%>
+        <a href="#"><img class="card-img-top" src=<%=dto.getShopimg()%> alt=""></a>
+		<% } %>  
         <div class="card-body">
           <h4 class="card-title">
-            <a href="#"><%=dto.getShopName()%></a>
-          </h4>
-          <p class="card-text"><%=dtos.get(i).getShopIntro()%></p>
-        </div>
+		            <a href="#"><%=dto.getShopName() %></a>
+		          </h4>
+			          <p class="card-text"><%=dto.getShopIntro() %></p>
+		        </div>
          <div class="card-footer" align = "right">
           <a href="#" class="btn btn-primary">가게정보</a>
         </div>
       </div>
     </div>
 <%
-}
-%>
+	}
+}%>
 	</div>
 
       <h2>거리가게</h2>

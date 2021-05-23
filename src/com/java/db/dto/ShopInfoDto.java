@@ -7,6 +7,7 @@ public class ShopInfoDto {
 	private Double shopAreaX = null;
 	private Double shopAreaY = null;
 	private String shopIntro = null;
+	private String shopimg = null;
 	
 	
 	public ShopInfoDto() {
@@ -61,4 +62,13 @@ public class ShopInfoDto {
 	public void setShopName(String shopName) {
 		this.shopName = shopName;
 	}
+
+	public String getShopimg() {
+		return shopimg;
+	}
+
+	public void setShopimg(String shopimg) {
+		this.shopimg = shopimg;
+	}
+	
 }
