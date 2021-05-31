@@ -65,6 +65,7 @@ public class ReviewDao {
 		ArrayList<ReviewDto> dtos = new ArrayList<ReviewDto>();
 		
 		int review_num = 0;
+		String review_id = null;
 		String review_date = null;
 		String review_comment = null;
 		Double review_score = null;
@@ -77,6 +78,7 @@ public class ReviewDao {
 			rs = pstmt.executeQuery();
 		
 			while(rs.next()) {
+				review_id = rs.getString("member_id");
 				review_num = rs.getInt("review_num");
 				review_date = rs.getString("review_date");
 				review_comment = rs.getString("review_comment");
@@ -88,6 +90,7 @@ public class ReviewDao {
 				
 				}
 				for(int i = 0; i<dtos.size(); i++) {
+					System.out.println(dtos.get(i).getMemberId());
 					System.out.println(dtos.get(i).getReviewNum());
 					System.out.println(dtos.get(i).getReviewDate());
 					System.out.println(dtos.get(i).getReviewComment());
