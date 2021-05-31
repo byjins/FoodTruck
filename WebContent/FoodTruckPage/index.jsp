@@ -109,7 +109,7 @@
 			          <p class="card-text"><%=dto.getShopIntro() %></p>
 		        </div>
          <div class="card-footer" align = "right">
-          <a href="#" class="btn btn-primary">가게정보</a>
+          <a href="shop_info.jsp?shop_num=<%=dto.getShopNum()%>" class="btn btn-primary">가게정보</a>
         </div>
       </div>
     </div>

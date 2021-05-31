@@ -13,13 +13,13 @@
 <script type = "text/javascript">
 function passwordCheckFunction(){
 	var reg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
-	var userPassword1 = $('#userPassword1').val();
-	var userPassword2 = $('#userPassword2').val();
+	var password1 = $('#password1').val();
+	var password2 = $('#password2').val();
 	
-	if(userPassword1 != userPassword2){
+	if(password1 != password2){
 		$('#passwordCheckMessage').html('&nbsp&nbsp&nbsp두 비밀번호가 일치하지않습니다.');
 	}
-	else if(false === reg.test(userPassword1)){
+	else if(false === reg.test(password1)){
 			//$('#passwordCheckMessage').html('8~15자리, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
 			$('#passwordCheckMessage').html('&nbsp&nbsp8~15자리, 숫자/대문자/소문자/특수문자를 모두 포함해야 합니다.');
 	}else{
@@ -41,16 +41,17 @@ function passwordCheckFunction(){
 			<!-- <form name = "form1" method="post" action="signup_member_process.jsp"> -->
 			<h3 style="text-align: center;">비밀번호 변경</h3>
 			<br>
-			<form>
+			<form action="../ChangePw" method = "post">
+			<input type="hidden" id="id" name="id" value="<%=id%>">
 			<div class="col-sm-12">
-				<input type="password" class="form-control" id="userPassword1"
-					name="userPassword1" onkeyup="passwordCheckFunction();"
+				<input type="password" class="form-control" id="password1"
+					name="password1" onkeyup="passwordCheckFunction();"
 					placeholder="비 밀 번 호" maxlength="12">
 			</div>
 			<br> <br>
 			<div class="col-sm-12">
-				<input type="password" class="form-control" id="userPassword2"
-					name="userPassword2" onkeyup="passwordCheckFunction();"
+				<input type="password" class="form-control" id="password2"
+					name="password2" onkeyup="passwordCheckFunction();"
 					placeholder="비 밀 번 호 확 인" maxlength="12">
 			</div>
 			<div class="col-sm-12">

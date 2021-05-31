@@ -24,18 +24,18 @@
 	<div class="container col-lg-6 col-md-8 col-sm-6 col-xs-4">
 		<div class="jumbotron" style="padding-top: 100px; margin-top: 70px;">
 			<!-- <form name = "form1" method="post" action="signup_member_process.jsp"> -->
-			<h3 style="text-align: center;">아이디 검색결과</h3>
+			<h3 style="text-align: center;">비빌번호 변경 결과</h3>
 			<br/><br/>
-			<% if(id!=null){%><h2>아이디 : <%=id %></h2><%}
+			<% if(id!=null){%><h2>&nbsp;&nbsp;아이디 : <%=id %> 의 비밀번호가 변경되었습니다.</h2><%}
 			else {%><h2>일치하는 아이디가 없습니다.</h2><%} %>
 			<br/><br/>
-			<form action = "find_pw.jsp">
-			<input type="submit" class="btn btn-info form-control" value="비밀번호 찾기">
+			<form action = "login_member.jsp">
+			<input type="submit" class="btn btn-info form-control" value="로그인하러가기">
 			</form>
 		</div>
 	</div>
 
-<!-- 	<div class="modal fade col-lg-6 col-md-8 col-sm-6 col-xs-4"
+	<div class="modal fade col-lg-6 col-md-8 col-sm-6 col-xs-4"
 		id="checkModal" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="vertical-alignment-helper ">
 			<div class="modal-dialog vertical-align-center ">
@@ -54,7 +54,7 @@
 				</div>
 			</div>
 		</div>
-	</div> -->
+	</div>
 
 
 	<!-- /.container -->
