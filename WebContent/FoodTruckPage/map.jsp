@@ -76,7 +76,11 @@
 
 	<!-- Page Content -->
 	<div class="container">
-
+   <%
+    	String searchTxt = request.getParameter("search"); 
+            		
+        System.out.println(searchTxt);
+    %>
 	
                
    			<%//정현------- 가게 출력
