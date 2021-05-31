@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import = "com.java.db.dao.SManagerInfoDao" %>	
+<%@page import = "com.java.db.dto.SManagerInfoDto" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,10 +92,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="logout_process.jsp">가게관리</a>
-          </li>
-          <li class="nav-item">
-              <li class="nav-item">
-            <a class="nav-link" href="shop_info.jsp">가게정보</a>
           </li>
     	
 		  <li class="nav-item">
