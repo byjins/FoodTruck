@@ -8,8 +8,16 @@ public class ReviewDto {
 	private String shopNum = null;
 	private String reviewComment = null;
 
-	public ReviewDto(int reviewNum, String reviewDate, String reviewComment, Double reviewScore) {
+	public ReviewDto( int reviewNum, String reviewDate, String reviewComment, Double reviewScore) {
+
 		this.reviewNum = reviewNum;
+		this.reviewDate = reviewDate;
+		this.reviewComment = reviewComment;
+		this.reviewScore = reviewScore;
+	}
+	
+	public ReviewDto(String memberid, String reviewDate, String reviewComment, Double reviewScore) {
+		this.memberId = memberid;
 		this.reviewDate = reviewDate;
 		this.reviewComment = reviewComment;
 		this.reviewScore = reviewScore;

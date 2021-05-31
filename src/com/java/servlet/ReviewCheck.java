@@ -42,7 +42,7 @@ public class ReviewCheck extends HttpServlet {
 		dao.insert_review(id, num, comment, score);
 		
 		try {
-			response.sendRedirect("FoodTruckPage/shop_info.jsp");
+			response.sendRedirect("FoodTruckPage/shop_info.jsp?shop_num=" + num);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
