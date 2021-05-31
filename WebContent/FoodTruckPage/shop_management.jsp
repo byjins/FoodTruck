@@ -101,7 +101,6 @@
 							%>
 
 							<%
-							String id = request.getParameter("id");
 							ShopInfoDto S_dto = new ShopInfoDto();
 							ShopInfoDao S_dao = new ShopInfoDao();
 
