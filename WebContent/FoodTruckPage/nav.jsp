@@ -135,11 +135,11 @@
         </ul>
      	<ul class="navbar-nav ml-auto xs-auto">
         	<li class="nav-item">
-     				<form class="form-inline ">
+     				<form class="form-inline " method = "get" action ="map.jsp">
      					 <div class="input-group">
-     	 				 <input class="form-control col-xs-8 col-sm-8 col-md-8 col-lg-8 " type="text" placeholder="검색">
+     	 				 <input class="form-control col-xs-8 col-sm-8 col-md-8 col-lg-8 " type="text" placeholder="검색" name = "search">
      	 				 <span class="input-group-append">
-      	 				   <button class="btn btn-secondary " type="submit" action ="">검색</button>
+      	 				   <input type="submit" class="btn btn-secondary"  value = "검색"/>
       	 				 </span>
       	 				 </div>
      				</form>
