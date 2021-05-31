@@ -108,7 +108,7 @@ public class ShopInfoDao {
 	public ShopInfoDto indexShopinfo(String shopnum) {
 		
 		ShopInfoDto dto = new ShopInfoDto();
-        String query = "select A.shop_intro,A.shop_img, B.shop_name from shop_manager B, shop_info A where A.shop_num = ? AND B.shop_num=?";
+        String query = "select A.shop_intro,A.shop_img, B.shop_name,B.shop_num from shop_manager B, shop_info A where A.shop_num = ? AND B.shop_num=?";
 
 		try {
 			con = DriverManager.getConnection(url, uid, pwd);
@@ -121,6 +121,7 @@ public class ShopInfoDao {
 			if(rs.next()) {
 				
 					dto.setShopName(rs.getString("shop_name"));
+					dto.setShopNum(rs.getString("shop_num"));
 					dto.setShopIntro(rs.getString("shop_intro"));
 					dto.setShopimg(rs.getString("shop_img"));
 					

@@ -129,6 +129,7 @@ public class SManagerInfoDao {
 		ResultSet rs = null;
 		String query = "select * from shop_manager where shop_id = ? and admin_name = ? and shop_phone=?";
 		try {
+			con = DriverManager.getConnection(url,uid,pwd);
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, id);
 			pstmt.setString(2, name);

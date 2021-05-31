@@ -130,6 +130,7 @@ public class MemberInfoDao {
 			ResultSet rs = null;
 			String query = "select * from member_info where member_id = ? and member_name = ? and member_phone=?";
 			try {
+				con = DriverManager.getConnection(url,uid,pwd);
 				pstmt = con.prepareStatement(query);
 				pstmt.setString(1, id);
 				pstmt.setString(2, name);
