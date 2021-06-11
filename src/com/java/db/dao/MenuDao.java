@@ -76,8 +76,66 @@ public class MenuDao {
 		}
 		
 		return dtos;
+	}
+	
+	public void menu_insert(String shopnum, String name, int price, String intro) {
+		String query = "insert into menu(shop_num, menu_name, menu_price, menu_intro) values (?,?,?,?)";
 		
+		try {
+			con = DriverManager.getConnection(url, uid, pwd);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, shopnum);
+			pstmt.setString(2, name);
+			pstmt.setInt(3, price);
+			pstmt.setString(4, intro);
+			
+			
+			int result = pstmt.executeUpdate();
+			
+			if(1 == result) {
+				System.out.println("메뉴 추가 성공");
+			} else {
+				System.out.println("메뉴 추가 실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(con != null) con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void menu_delete(String shopnum, String menunum) {
+		String query ="delete from menu where shop_num=? and menu_num=?";
 		
+		try {
+			con = DriverManager.getConnection(url, uid, pwd);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, shopnum);
+			pstmt.setString(2, menunum);
+			
+			int result = pstmt.executeUpdate();
+			
+			if(1 == result) {
+				System.out.println("메뉴 삭제 성공");
+			} else {
+				System.out.println("메뉴 삭제 실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (con != null) con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
 	}
 	
 }
