@@ -64,6 +64,25 @@
 	function PageMove(page, shop_num) {
 		location.href = "shop_info.jsp?shop_num=" + shop_num + "&page=" + page;
 	}
+	
+	function infomodi() {
+		var s_intro = infomodify.introarea.value;
+		
+		if(s_intro == "") {
+			 alert("가게소개를 적어주세요.");
+		} else if(s_intro != ""){
+			alert("가게소개를 수정합니다.");
+			infomodify.method = "post";
+			infomodify.action = "../ShopIntroModify";
+			infomodify.submit();
+		}
+	}
+	
+	function plusmenu() {
+		 var plus_window;
+		 plus_window = window.open("menu_plus.jsp", "menuplus" , "width=500, height=450, left=900, top=150");
+		 document.forms['menuplus'].submit();
+	}
 </script>
 
 </head>
@@ -131,9 +150,15 @@
 							<br>
 							<h5>
 								<b>가게소개</b>
+								
 							</h5>
 							<h5>
-								=><%=S_intro%></h5>
+								<form name="infomodify" action="../ShopIntroModify" method="post">
+									<input type="hidden" name="shop_num" value="<%=num%>">
+									<textarea name="introarea" class="form-control" rows="3" placeholder="<%=S_intro %>" style="resize: none; font-size: 15pt;"></textarea>
+									<input type="button" class="btn btn-primary" value="가게정보 수정"  onclick="infomodi()" style="float:right; margin-top:-150px;"/>
+								</form>
+							</h5>
 							<h5>
 								평점 :<%=S_score%></h5>
 							<h5>
@@ -278,6 +303,7 @@
 									<th>메뉴이름</th>
 									<th>메뉴가격</th>
 									<th>메뉴소개</th>
+									<th>삭제</th>
 								</tr>
 								<%
 								for (int i = 0; i < M_dtos.size(); i++) {
@@ -293,11 +319,21 @@
 									<td><%=M_name%></td>
 									<td><%=M_price%></td>
 									<td><%=M_intro%></td>
+									<td><form action="../MenuDelete" method="post">
+										<input type="hidden" id="shop_num" name ="shop_num" value=<%=num %> />
+										<input type="hidden" id="menu_num" name ="menu_num" value=<%=M_num %> />
+										<input type="submit" class="btn btn-primary" value="삭제" />
+										</form>
+									</td>
 									<%
 									}
 									%>
 								</tr>
 							</table>
+							<form action="menu_plus.jsp" name="menuplus" method="post" target="menuplus">
+								<input type="hidden" name="shop_num" value="<%=num%>">
+								<input type="button" class="btn btn-primary" value="메뉴추가" onclick="plusmenu()" style="float:right; margin-left:10px;"/>
+							</form>
 						</div>
 					</div>
 

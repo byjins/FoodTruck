@@ -243,4 +243,40 @@ public class ShopInfoDao {
 		}
 		return dtos;
 	}
+	
+	public void shop_update(String shopnum, String intro) {
+		String query = "update shop_info set shop_intro=? where shop_num=?";
+		
+		try {
+			con = DriverManager.getConnection(url, uid, pwd);
+			pstmt = con.prepareStatement(query);
+
+			pstmt.setString(1, intro);
+			pstmt.setString(2, shopnum);
+			int result = pstmt.executeUpdate();
+			
+			if(1 == result) {
+				System.out.println("가게정보 수정 완료");
+			} else {
+				System.out.println("가게정보 수정 실패");
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+	}
+	
 }
