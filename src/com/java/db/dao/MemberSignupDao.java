@@ -62,7 +62,7 @@ public class MemberSignupDao {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			if(rs.next() || id.equals("")) {
+			if(rs.next()) {
 				return 0; //이용자가 있는경우
 			}else {
 				return 1; //이용자가 없을경우

@@ -117,8 +117,7 @@
                			  <select name="shopval" class="form-select" aria-label="Default select example">
                			<option value="없음" selected>선택</option>
 						<option value="푸드트럭">푸드트럭</option>
-						<option value="판매대">판매대</option>
-						<option value="구두수선">구두수선</option>
+						<option value="거리가게">거리가게</option>
 						</select>
               			</span>
 						</div>

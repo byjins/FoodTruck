@@ -1,3 +1,4 @@
+<%@page import="com.java.db.dao.ShopInfoDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import = "com.java.db.dao.SManagerInfoDao" %>	
@@ -7,20 +8,6 @@
 <head>
 <meta charset="EUC-KR">
 <title>로그인</title>
-
-
-
-		<script type="text/javascript"
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=34c55d8cdebc3f1d7c40139f7c31e99d"></script>
-		<script type="text/javascript"
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=LIBRARY"></script>
-		<!-- services 라이브러리 불러오기 -->
-		<script type="text/javascript"
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services"></script>
-		<!-- services와 clusterer, drawing 라이브러리 불러오기 -->
-		<script type="text/javascript"
-			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
-
 
 
 <style type="text/css">
@@ -83,7 +70,10 @@
           </li>
           
           <!-- 사장님 로그인 -->
-          <%}else if(sId != null){ %>
+          <%}else if(sId != null){ 
+          SManagerInfoDto sdto = new SManagerInfoDto();
+          SManagerInfoDao sdao = new SManagerInfoDao();
+          sdto = sdao.info(sId);%>
           <li class="nav-item">
             <a class="nav-link" href="myinfo.jsp"><%=sId %>님</a>
           </li>
@@ -91,7 +81,7 @@
             <a class="nav-link" href="logout_process.jsp">로그아웃</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="logout_process.jsp">가게관리</a>
+            <a class="nav-link" href="shop_management.jsp?shop_num=<%=sdto.getNum()%>">가게관리</a>
           </li>
     	
 		  <li class="nav-item">
