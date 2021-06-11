@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.java.servlet.InfoSelector"%>
 <%@page import="com.java.db.dto.SManagerInfoDto"%>
 <%@page import="com.java.db.dao.ShopInfoDao"%>
 <%@page import="com.java.db.dto.ShopInfoDto"%>
@@ -12,6 +14,66 @@
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <jsp:include page="style.jsp"></jsp:include>
+<script type = "text/javascript">
+	$(document).ready(function(){
+		$("#val").change(function(){
+			alert("1")
+			$.ajax({
+				type : 'POST',
+				url : '../IndexOptionValue',
+				data : {"val": $("#val option:selected").val()},
+				success : function(){
+
+			 <% 
+					if(request.getAttribute("dtos")!=null){
+					@SuppressWarnings("unchecked")
+					ArrayList<ShopInfoDto> rdtos = (ArrayList<ShopInfoDto>)request.getAttribute("dtos");
+					ShopInfoDto rdt = new ShopInfoDto();
+					 for(int i=0;i<3;i++) {
+						rdt = rdtos.get(i);
+						if(null==rdt.getShopName()){
+							rdt.setShopName("가게이름없음");
+							rdt.setShopimg(null);
+							rdt.setShopIntro("");
+							rdt.setShopNum("");
+							rdt.setShopScore(0.0);
+						}%>
+						alert("aca");
+						var st = <%=i%>
+						alert("acasdgvs");
+						alert(st);
+						$("#<%=i%>_img").text("<%=rdt.getShopimg()%>");
+						$("#<%=i%>_intro").text("<%=rdt.getShopIntro()%>");
+						$("#<%=i%>_num").text("<%=rdt.getShopNum()%>");
+						$("#<%=i%>_name").text("<%=rdt.getShopName()%>");
+						$("#item").load(window.location.href + " #item");
+						
+						
+						<% 
+					 }
+						%>
+						
+						
+						
+						
+						
+						
+					
+							
+							
+							<%
+						} 
+				
+			
+			
+			%>
+					
+				}
+				
+			})
+		})
+	})
+</script>
 </head>
 <body>
 
@@ -34,7 +96,7 @@
           </div>
         </div>
         <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: u	rl(img/slide2.jpg)">
+        <div class="carousel-item" style="background-image: url(img/slide2.jpg)">
           <div class="carousel-caption d-none d-md-block">
             <h3>두번째슬라이드</h3>
             <p>슬라이드 내용이 들어갑니다</p>
@@ -66,56 +128,64 @@
 
 
     <!-- Portfolio Section -->
-    <h2>푸드트럭</h2>
-    <div class="row">
-    <% 
-    ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
+    <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th><h4>가게정보</h4></th>
+        <th class="text-right">
+		<h5><select name="val" id = "val" class="form-select">
+               		<option value="no" selected>선택</option>
+					<option value="shop_score">평점순</option>
+					<option value="review">리뷰순</option></select></h5>
+		</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+    <div class="row" id="data">
+    <% ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
 	ShopInfoDao dao = new ShopInfoDao();
     ShopInfoDto dto = new ShopInfoDto();
     dtos = dao.shopSelect();  
-	%>
-	
-	<%
+
+    
 	for(int i=0;i<3;i++) {
 		dto = dao.indexShopinfo(dtos.get(i).getShopNum());
 		if(null==dto.getShopName()){
-	%>
-		    <div class="col-lg-4 col-sm-6 portfolio-item">
-		      <div class="card h-100">
-		        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-		        <div class="card-body">
-		          <h4 class="card-title">
-		            <a href="#">가게정보없음</a>
-		          </h4>
-		          <p class="card-text">정보없음</p>
-		        </div>
-		         <div class="card-footer" align = "right">
-		          <a href="#" class="btn btn-primary">가게정보</a>
-		        </div>
-		      </div>
-		    </div>
-	<% } else if(null!=dto.getShopName()){%>
-    <div class="col-lg-4 col-sm-6 portfolio-item">
+			dto.setShopName("가게이름없음");
+			dto.setShopAreaX(0.0);
+			dto.setShopAreaY(0.0);
+			dto.setShopIntro("");
+			dto.setShopNum("");
+			dto.setShopScore(0.0);
+		}
+		%>
+    <div class="col-lg-4 col-sm-6 portfolio-item" id='item'>
       <div class="card h-100">
+      <a href="#">
+      <img class="card-img-top" id='<%=i %>_img' 
       <% if(null==dto.getShopimg()){%>
-    	  <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-    	 <%}else {%>
-        <a href="#"><img class="card-img-top" src=<%=dto.getShopimg()%> alt=""></a>
-		<% } %>  
+    	  src="http://placehold.it/700x400"
+    	  <%}else { %>
+         src=<%=dto.getShopimg()%> 
+         
+        <%  }%>
+         alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
-		            <a href="#"><%=dto.getShopName() %></a>
+		            <a href="#" id="<%=i %>_name"><%=dto.getShopName()  %></a>
 		          </h4>
-			          <p class="card-text"><%=dto.getShopIntro() %></p>
+			          <p class="card-text" id="<%=i %>_intro"><%=dto.getShopIntro() %></p>
 		        </div>
          <div class="card-footer" align = "right">
-          <a href="shop_info.jsp?shop_num=<%=dto.getShopNum()%>" class="btn btn-primary">가게정보</a>
+          <a href="shop_info.jsp?shop_num=<%=dto.getShopNum()%>"id='<%=i %>_num' class="btn btn-primary">가게정보</a>
         </div>
       </div>
     </div>
-<%
-	}
-}%>
+    <%
+		}
+    %>
 	</div>
 
       <h2>거리가게</h2>
@@ -166,9 +236,9 @@
     <!-- /.row -->
 
 
-	<h2>공지사항</h2>
-	<!-- 사진없는곳 (버튼눌러서 공지사항확인 ???) -->
-    <!-- Marketing Icons Section -->
+	<!-- <h2>공지사항</h2>
+	사진없는곳 (버튼눌러서 공지사항확인 ???)
+    Marketing Icons Section
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
@@ -203,7 +273,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- /.row -->
 
     <!-- Features Section -->

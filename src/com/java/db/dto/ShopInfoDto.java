@@ -14,7 +14,7 @@ public class ShopInfoDto {
 		
 	}
 	
-	public ShopInfoDto(String shopNum, Double shopScore, Double shopAreaX, Double shopAreaY, String shopIntro, String shopName) {
+	public ShopInfoDto(String shopNum, Double shopScore, Double shopAreaX, Double shopAreaY, String shopIntro, String shopimg, String shopName) {
 		super();
 		this.shopNum = shopNum;
 		this.shopScore = shopScore;
@@ -22,6 +22,7 @@ public class ShopInfoDto {
 		this.shopAreaY = shopAreaY;
 		this.shopIntro = shopIntro;
 		this.shopName = shopName;
+		this.shopimg = shopimg;
 	}
 
 

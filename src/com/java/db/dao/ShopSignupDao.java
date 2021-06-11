@@ -64,7 +64,7 @@ public class ShopSignupDao {
 		PreparedStatement pstmt = null;
 		// ResultSet rs =null;
 
-		String query = "insert into shop_info values(?,?,?,?,?,?)";
+		String query = "insert into shop_info values(?,?,?,?,?,?,?)";
 
 		try {
 			pstmt = con.prepareStatement(query);
@@ -73,7 +73,8 @@ public class ShopSignupDao {
 			pstmt.setDouble(3, 0);
 			pstmt.setDouble(4, 0);
 			pstmt.setString(5, null);
-			pstmt.setInt(6, 2);
+			pstmt.setString(6, null);
+			pstmt.setInt(7, 2);
 
 			return pstmt.executeUpdate();
 		} catch (Exception e) {

@@ -76,6 +76,24 @@
 	<!-- Page Content -->
 	<div class="container">
 
+		<%!String S_name, S_intro;
+		Double S_score, S_areax, S_areay;
+		String num;%>
+
+		<%
+		String id = request.getParameter("id");
+		ShopInfoDto S_dto = new ShopInfoDto();
+		ShopInfoDao S_dao = new ShopInfoDao();
+
+		num = request.getParameter("shop_num");
+		S_dto = S_dao.shopinfo(num);
+
+		S_name = S_dto.getShopName();
+		S_intro = S_dto.getShopIntro();
+		S_score = S_dto.getShopScore();
+		S_areax = S_dto.getShopAreaX();
+		S_areay = S_dto.getShopAreaY();
+		%>
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">가게 정보</h1>
 
@@ -87,33 +105,13 @@
 
 				<!-- 가게 메인 사진 -->
 				<div class="shop mb-4">
-					<img class="img-fluid rounded" src="http://placehold.it/1024x480"
-						alt="">
+					<img class="img-fluid rounded" src=<%=S_dto.getShopimg()%> alt="">
 					<hr>
 					<!-- 가게 정보 표시 -->
 					<div class="shop md-4">
 						<div class="shop-body">
 							<hr>
-							<%!
-							String S_name, S_intro;
-							Double S_score, S_areax, S_areay;
-							String num;
-							%>
-
-							<%
-							String id = request.getParameter("id");
-							ShopInfoDto S_dto = new ShopInfoDto();
-							ShopInfoDao S_dao = new ShopInfoDao();
-
-							num = request.getParameter("shop_num");
-							S_dto = S_dao.shopinfo(num);
-
-							S_name = S_dto.getShopName();
-							S_intro = S_dto.getShopIntro();
-							S_score = S_dto.getShopScore();
-							S_areax = S_dto.getShopAreaX();
-							S_areay = S_dto.getShopAreaY();
-							%>
+						
 
 							<h5 style="text-align: center;">
 								<b><%=S_name%></b>
