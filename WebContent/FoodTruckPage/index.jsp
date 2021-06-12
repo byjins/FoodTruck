@@ -1,5 +1,4 @@
 <%@page import="java.util.List"%>
-<%@page import="com.java.servlet.InfoSelector"%>
 <%@page import="com.java.db.dto.SManagerInfoDto"%>
 <%@page import="com.java.db.dao.ShopInfoDao"%>
 <%@page import="com.java.db.dto.ShopInfoDto"%>
