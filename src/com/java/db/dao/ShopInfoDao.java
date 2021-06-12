@@ -212,7 +212,6 @@ public class ShopInfoDao {
 			  		+ "GROUP BY a.shop_num\r\n"
 			  		+ "ORDER BY 1 DESC ";
 		}
-		System.out.println(query);
 		ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
 		try {
 			con = DriverManager.getConnection(url, uid, pwd);
@@ -331,6 +330,35 @@ public class ShopInfoDao {
 
 		}
 
+	}
+	
+	public void score_update(Double score, String shopnum) {
+		String query = "update shop_info set shop_score=? where shop_num=?";
+		
+		try {
+			con = DriverManager.getConnection(url, uid, pwd);
+			pstmt = con.prepareStatement(query);
+			pstmt.setDouble(1, score);
+			pstmt.setString(2, shopnum);
+			int result = pstmt.executeUpdate();
+			
+			if(1 == result) {
+				System.out.println("평점 수정 성공");
+			} else {
+				System.out.println("평점 수정 실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 	
 }
