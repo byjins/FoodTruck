@@ -60,12 +60,6 @@
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css" rel="stylesheet">
 
-<script>
-	function PageMove(page, shop_num) {
-		location.href = "shop_info.jsp?shop_num=" + shop_num + "&page=" + page;
-	}
-</script>
-
 </head>
 
 <body>
@@ -143,15 +137,13 @@
 								=><%=S_intro%></h5>
 							<h5>
 								평점 :<%=S_score%></h5>
-							<h5>
-								가게x좌표 :<%=S_areax%></h5>
-							<h5>
-								가게y좌표 :<%=S_areay%></h5>
 							<hr>
 
 						</div>
 					</div>
-
+					<%
+						S_dao.score_update(S_score, num);
+					%>
 					<!-- 댓글창 -->
 					<%
 					//날짜 표시
@@ -248,7 +240,7 @@
 						<ul class="pagination justify-content-center">
 							<c:forEach var="i" begin="<%=startpage%>" end="<%=endpage%>"
 								step="1">
-								<li class="page-item"><a class="page-link" href="javascript:PageMove(${i }, <%=num %>)"><c:out value="${i }" /></a></li>
+								<li class="page-item"><a class="page-link" href="shop_management.jsp?shop_num=<%=num %>&page=${i }"><c:out value="${i }" /></a></li>
 							</c:forEach>
 						</ul>
 					</div>

@@ -61,10 +61,6 @@
 <link href="css/modern-business.css" rel="stylesheet">
 
 <script>
-	function PageMove(page, shop_num) {
-		location.href = "shop_info.jsp?shop_num=" + shop_num + "&page=" + page;
-	}
-	
 	function infomodi() {
 		var s_intro = infomodify.introarea.value;
 		
@@ -171,12 +167,7 @@
 							</h5>
 							<h5>
 								평점 :<%=S_score%></h5>
-							<h5>
-								가게x좌표 :<%=S_areax%></h5>
-							<h5>
-								가게y좌표 :<%=S_areay%></h5>
 							<hr>
-
 						</div>
 					</div>
 
@@ -274,20 +265,10 @@
 						<!-- 페이징 -->
 
 						<ul class="pagination justify-content-center">
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">이전</span>
-							</a></li>
-
 							<c:forEach var="i" begin="<%=startpage%>" end="<%=endpage%>"
 								step="1">
-								<li class="page-item"><a class="page-link" href="javascript:PageMove(${i }, <%=num %>)"><c:out value="${i }" /></a></li>
+								<li class="page-item"><a class="page-link" href="shop_management.jsp?shop_num=<%=num %>&page=${i }"><c:out value="${i }" /></a></li>
 							</c:forEach>
-
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-									class="sr-only">다음</span>
-							</a></li>
 						</ul>
 					</div>
 					<!-- 메뉴  -->
