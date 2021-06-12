@@ -43,13 +43,13 @@
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
-		     <div class="carousel-item" style="background-image: url(img/slide3.jpg)">
+<!-- 		     <div class="carousel-item" style="background-image: url(img/slide3.jpg)">
           <div class="carousel-caption d-none d-md-block">
             <h3>Third Slide</h3>
             <p>This is a description for the third slide.</p>
           </div>
         </div>
-      </div>
+      </div> -->
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
