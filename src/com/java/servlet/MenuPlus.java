@@ -1,6 +1,8 @@
 package com.java.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +27,10 @@ public class MenuPlus extends HttpServlet {
 		action(request, response);
 	}
 
-	protected void action(HttpServletRequest request, HttpServletResponse response) {
+	protected void action(HttpServletRequest request, HttpServletResponse response) throws IOException{
+		response.setContentType("text/html; charset=euc-kr");
+		PrintWriter out = response.getWriter();
+		
 		String m_name = request.getParameter("menu_name");
 		String m_price = request.getParameter("menu_price");
 		String m_intro = request.getParameter("menu_intro");
@@ -35,11 +40,12 @@ public class MenuPlus extends HttpServlet {
 		MenuDao dao = new MenuDao();
 		dao.menu_insert(s_num, m_name, price, m_intro);
 
-		try {
-			response.sendRedirect("FoodTruckPage/shop_management.jsp?shop_num=" + s_num);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		String str = "";
+		str = "<script language='javascript'>";
+		str += "opener.window.location.reload();";
+		str += "window.close()";
+		str += "</script>";
+		out.print(str);
 
 	}
 }

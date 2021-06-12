@@ -80,7 +80,7 @@
     <% ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
 	ShopInfoDao dao = new ShopInfoDao();
     ShopInfoDto dto = new ShopInfoDto();
-    dtos = dao.shopvalSelect("shop_socre");
+    dtos = dao.shopvalSelect(true);
 
     
     for(int i=0;i<3;i++) {
@@ -122,7 +122,7 @@
   </table>
     <div class="row">
     <% 
-    dtos = dao.shopvalSelect("review");
+    dtos = dao.shopvalSelect(false);
 	for(int i=0;i<3;i++) {
 		dto = dtos.get(i);
 		%>

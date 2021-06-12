@@ -194,34 +194,31 @@ public class ShopInfoDao {
 
 	}
 	
-	public ArrayList<ShopInfoDto> shopvalSelect(String val) {
+	public ArrayList<ShopInfoDto> shopvalSelect(Boolean val) {
 		Connection con = null;
-		PreparedStatement pstmt = null;
+		Statement stmt = null;
 		ResultSet rs = null;
-		String query;
-		
-		if(val.equals("shop_score")) {
+		String query = "";
+		if(val){ 
 			query = "SELECT shop_info.*, shop_manager.shop_name FROM shop_info, shop_manager\r\n"
 					+ "WHERE shop_info.shop_num = shop_manager.shop_num\r\n"
 					+ "ORDER BY shop_score DESC";
-		}else{
+		}else{ 
 			//query = "SELECT * FROM shop_info, review WHERE shop_info.shop_num = review.shop_num  GROUP BY  review.shop_num ORDER BY COUNT(*) desc";
-			  query = "SELECT t.*,shop_manager.shop_name\r\n"
-			  		+ "from(SELECT ifnull(a.shop_num,'9999999-999-9999-99999') AS non ,b.*\r\n"
-			  		+ "FROM review a   RIGHT OUTER JOIN shop_info  b\r\n"
-			  		+ "ON a.shop_num =  b.shop_num \r\n"
-			  		+ "GROUP BY  b.shop_num\r\n"
-			  		+ "ORDER BY 1) t , shop_manager\r\n"
-			  		+ "WHERE t.shop_num = shop_manager.shop_num";
+			  query = "SELECT ifnull(a.shop_num,'0000000-000-0000-00000') AS non ,b.* , c.shop_name\r\n"
+			  		+ "FROM review a   RIGHT OUTER JOIN shop_info  b \r\n"
+			  		+ "ON a.shop_num =  b.shop_num JOIN shop_manager c \r\n"
+			  		+ "ON c.shop_num = b.shop_num\r\n"
+			  		+ "GROUP BY a.shop_num\r\n"
+			  		+ "ORDER BY 1 DESC ";
 		}
-		
 		ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
 		try {
 			con = DriverManager.getConnection(url, uid, pwd);
-			pstmt = con.prepareStatement(query);
+			stmt = con.createStatement();
 			//pstmt.setString(1, "val");
 			
-			rs = pstmt.executeQuery(query);
+			rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
 				String shop_num = rs.getString("shop_num");
@@ -253,8 +250,6 @@ public class ShopInfoDao {
 				e2.printStackTrace();
 			}
 		}
-		System.out.println(dtos.get(0).getShopName());
-		System.out.println(dtos.get(0).getShopIntro());
 		return dtos;
 	}
 	
@@ -335,6 +330,35 @@ public class ShopInfoDao {
 
 		}
 
+	}
+	
+	public void score_update(Double score, String shopnum) {
+		String query = "update shop_info set shop_score=? where shop_num=?";
+		
+		try {
+			con = DriverManager.getConnection(url, uid, pwd);
+			pstmt = con.prepareStatement(query);
+			pstmt.setDouble(1, score);
+			pstmt.setString(2, shopnum);
+			int result = pstmt.executeUpdate();
+			
+			if(1 == result) {
+				System.out.println("평점 수정 성공");
+			} else {
+				System.out.println("평점 수정 실패");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 	
 }
