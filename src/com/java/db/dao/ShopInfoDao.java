@@ -293,4 +293,48 @@ public class ShopInfoDao {
 
 	}
 	
+	public ArrayList<ShopInfoDto> shop_score(String shopnum) {
+		
+		ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
+		String query = "select round(avg(review_score),1) as avg_score from review where shop_num=?";
+		
+		Double score = null;
+		
+		try {
+			con = DriverManager.getConnection(url, uid, pwd);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, shopnum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				score = rs.getDouble("avg_score");
+				
+				ShopInfoDto dto = new ShopInfoDto(score);
+				dtos.add(dto);
+			}
+			
+			for(int i = 0; i<dtos.size(); i++) {
+				System.out.println(dtos.get(i).getShopScore());
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
+			return dtos;
+
+		}
+
+	}
+	
 }

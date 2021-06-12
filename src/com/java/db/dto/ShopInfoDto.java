@@ -14,6 +14,10 @@ public class ShopInfoDto {
 		
 	}
 	
+	public ShopInfoDto(Double shopScore) {
+		this.shopScore = shopScore;
+	}
+	
 	public ShopInfoDto(String shopNum, Double shopScore, Double shopAreaX, Double shopAreaY, String shopIntro, String shopimg, String shopName) {
 		super();
 		this.shopNum = shopNum;
