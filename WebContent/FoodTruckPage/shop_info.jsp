@@ -94,6 +94,16 @@
 		S_areax = S_dto.getShopAreaX();
 		S_areay = S_dto.getShopAreaY();
 		%>
+		
+		<!-- 평점 -->
+		<%
+		ArrayList<ShopInfoDto> S_dtos = new ArrayList<ShopInfoDto>();
+		S_dtos = S_dao.shop_score(num);
+		
+		for(int i = 0; i<S_dtos.size(); i++) {
+			S_score = S_dtos.get(i).getShopScore();
+		}
+		%>
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">가게 정보</h1>
 
@@ -105,7 +115,11 @@
 
 				<!-- 가게 메인 사진 -->
 				<div class="shop mb-4">
+				<%if(null==S_dto.getShopimg()){%>
+					<img class="img-fluid rounded" src="http://placehold.it/700x400" alt="">
+				<% }else{%>
 					<img class="img-fluid rounded" src=<%=S_dto.getShopimg()%> alt="">
+					<%} %>
 					<hr>
 					<!-- 가게 정보 표시 -->
 					<div class="shop md-4">
@@ -232,20 +246,10 @@
 						<!-- 페이징 -->
 
 						<ul class="pagination justify-content-center">
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">이전</span>
-							</a></li>
-
 							<c:forEach var="i" begin="<%=startpage%>" end="<%=endpage%>"
 								step="1">
 								<li class="page-item"><a class="page-link" href="javascript:PageMove(${i }, <%=num %>)"><c:out value="${i }" /></a></li>
 							</c:forEach>
-
-							<li class="page-item"><a class="page-link" href="#"
-								aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-									class="sr-only">다음</span>
-							</a></li>
 						</ul>
 					</div>
 					<!-- 메뉴  -->

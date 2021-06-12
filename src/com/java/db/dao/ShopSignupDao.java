@@ -72,7 +72,7 @@ public class ShopSignupDao {
 			pstmt.setDouble(2, 0);
 			pstmt.setDouble(3, 0);
 			pstmt.setDouble(4, 0);
-			pstmt.setString(5, null);
+			pstmt.setString(5, "가게소개없음");
 			pstmt.setString(6, null);
 			pstmt.setInt(7, 2);
 

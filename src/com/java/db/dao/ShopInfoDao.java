@@ -201,11 +201,18 @@ public class ShopInfoDao {
 		String query;
 		
 		if(val.equals("shop_score")) {
-			query = "SELECT * FROM shop_info ORDER BY "+val+ " DESC";
-		}else if(val.equals("review")){
-			query = "SELECT * FROM shop_info, review WHERE shop_info.shop_num = review.shop_num  GROUP BY  review.shop_num ORDER BY COUNT(*) desc";
-		}else {
-			query = "SELECT * FROM shop_info where shop_stat=1";
+			query = "SELECT shop_info.*, shop_manager.shop_name FROM shop_info, shop_manager\r\n"
+					+ "WHERE shop_info.shop_num = shop_manager.shop_num\r\n"
+					+ "ORDER BY shop_score DESC";
+		}else{
+			//query = "SELECT * FROM shop_info, review WHERE shop_info.shop_num = review.shop_num  GROUP BY  review.shop_num ORDER BY COUNT(*) desc";
+			  query = "SELECT t.*,shop_manager.shop_name\r\n"
+			  		+ "from(SELECT ifnull(a.shop_num,'9999999-999-9999-99999') AS non ,b.*\r\n"
+			  		+ "FROM review a   RIGHT OUTER JOIN shop_info  b\r\n"
+			  		+ "ON a.shop_num =  b.shop_num \r\n"
+			  		+ "GROUP BY  b.shop_num\r\n"
+			  		+ "ORDER BY 1) t , shop_manager\r\n"
+			  		+ "WHERE t.shop_num = shop_manager.shop_num";
 		}
 		
 		ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
@@ -223,8 +230,13 @@ public class ShopInfoDao {
 				Double areay = rs.getDouble("shop_areay");
 				String shop_intro = rs.getString("shop_intro");
 				String shop_img = rs.getString("shop_img");
+				String shop_name = rs.getString("shop_name");
 
-				ShopInfoDto dto = new ShopInfoDto(shop_num, shop_score, areax, areay, shop_intro, shop_img, null);
+				ShopInfoDto dto = new ShopInfoDto(shop_num, shop_score, areax, areay, shop_intro, shop_img, shop_name);
+				dtos.add(dto);
+			}
+			while(dtos.size()<3) {
+				ShopInfoDto dto = new ShopInfoDto("",0.0,0.0,0.0,"가게정보없음",null,"가게이름");
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -241,6 +253,8 @@ public class ShopInfoDao {
 				e2.printStackTrace();
 			}
 		}
+		System.out.println(dtos.get(0).getShopName());
+		System.out.println(dtos.get(0).getShopIntro());
 		return dtos;
 	}
 	
@@ -275,6 +289,50 @@ public class ShopInfoDao {
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
+		}
+
+	}
+	
+	public ArrayList<ShopInfoDto> shop_score(String shopnum) {
+		
+		ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
+		String query = "select round(avg(review_score),1) as avg_score from review where shop_num=?";
+		
+		Double score = null;
+		
+		try {
+			con = DriverManager.getConnection(url, uid, pwd);
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, shopnum);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				score = rs.getDouble("avg_score");
+				
+				ShopInfoDto dto = new ShopInfoDto(score);
+				dtos.add(dto);
+			}
+			
+			for(int i = 0; i<dtos.size(); i++) {
+				System.out.println(dtos.get(i).getShopScore());
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+
+			return dtos;
+
 		}
 
 	}
