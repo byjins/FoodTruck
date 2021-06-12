@@ -89,13 +89,6 @@ public class ReviewDao {
 				dtos.add(dto);
 				
 				}
-				for(int i = 0; i<dtos.size(); i++) {
-					System.out.println(dtos.get(i).getMemberId());
-					System.out.println(dtos.get(i).getReviewNum());
-					System.out.println(dtos.get(i).getReviewDate());
-					System.out.println(dtos.get(i).getReviewComment());
-					System.out.println(dtos.get(i).getreviewScore());
-			}
 				return dtos;
 				
 		} catch (Exception e) {
