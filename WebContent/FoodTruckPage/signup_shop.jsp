@@ -115,9 +115,7 @@
 							<input type="text" class="form-control" id="shopNum" name="shopNum" onkeyup = "checkShopNum();" placeholder="사업자번호" maxlength="22">
               			<span class="input-group-append">
                			  <select name="shopval" class="form-select" aria-label="Default select example">
-               			<option value="없음" selected>선택</option>
-						<option value="푸드트럭">푸드트럭</option>
-						<option value="거리가게">거리가게</option>
+               			<option value="푸드트럭" selected>푸드트럭</option>
 						</select>
               			</span>
 						</div>
