@@ -102,9 +102,19 @@
 	S_name = S_dto.getShopName();
 	S_intro = S_dto.getShopIntro();
 	S_score = S_dto.getShopScore();
-	S_areax = S_dto.getShopAreaX();
 	S_areay = S_dto.getShopAreaY();
 	%>
+	
+	<!-- 평점 -->
+		<%
+		ArrayList<ShopInfoDto> S_dtos = new ArrayList<ShopInfoDto>();
+		S_dtos = S_dao.shop_score(num);
+		
+		for(int i = 0; i<S_dtos.size(); i++) {
+			S_score = S_dtos.get(i).getShopScore();
+		}
+		%>
+		
 	<!-- Navigation -->
 	<jsp:include page="nav.jsp"></jsp:include>
 

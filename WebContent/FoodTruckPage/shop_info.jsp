@@ -94,6 +94,16 @@
 		S_areax = S_dto.getShopAreaX();
 		S_areay = S_dto.getShopAreaY();
 		%>
+		
+		<!-- 평점 -->
+		<%
+		ArrayList<ShopInfoDto> S_dtos = new ArrayList<ShopInfoDto>();
+		S_dtos = S_dao.shop_score(num);
+		
+		for(int i = 0; i<S_dtos.size(); i++) {
+			S_score = S_dtos.get(i).getShopScore();
+		}
+		%>
 		<!-- Page Heading/Breadcrumbs -->
 		<h1 class="mt-4 mb-3">가게 정보</h1>
 
