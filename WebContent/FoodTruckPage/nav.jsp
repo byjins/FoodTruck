@@ -108,10 +108,6 @@
           <li class="nav-item">
             <a class="nav-link" href="logout_process.jsp">로그아웃</a>
           </li>
-    	<li class="nav-item">
-            <a class="nav-link" href="shop_info.jsp">가게정보</a>
-          </li>
-    	
 		  <li class="nav-item">
 			<form action="map.jsp">
 				<button type="submit" class="btn btn-light">지도</button>
