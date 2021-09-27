@@ -7,36 +7,37 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.java.db.dao.SManagerInfoDao;
 import com.java.db.dao.ShopGeolocationDao;
 import com.java.db.dto.SManagerInfoDto;
 
 
-public class ShopClose extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
+public class ShopClose implements MainCommand {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String sId = (String) session.getAttribute("shop_id");//사업자 세션 받아욤
+		@Override
+		public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			HttpSession session = request.getSession();
+			String sId = (String) session.getAttribute("shop_id");//사업자 세션 받아욤
 
-		String num = null;
-		System.out.println("/세션값 : " + sId);
-		double areaX = 0.0;
-		double areaY = 0.0;
+			String num = null;
+			System.out.println("/세션값 : " + sId);
+			double areaX = 0.0;
+			double areaY = 0.0;
 
-		SManagerInfoDto smDto = new SManagerInfoDto();
-		SManagerInfoDao smDao = new SManagerInfoDao();
+			SManagerInfoDto smDto = new SManagerInfoDto();
+			SManagerInfoDao smDao = new SManagerInfoDao();
 
-		smDto = smDao.info(sId);
+			smDto = smDao.info(sId);
 
-		num = smDto.getNum().toString();
+			num = smDto.getNum().toString();
 
-		ShopGeolocationDao SgDao = new ShopGeolocationDao();
-		SgDao.updateDao(0.0, 0.0, num, 0);
+			ShopGeolocationDao SgDao = new ShopGeolocationDao();
+			
+			SgDao.updateDao(0.0, 0.0, num, 0);
+			
+			response.sendRedirect("index.jsp");
+		}
 		
-		response.sendRedirect("index.jsp");
-	}
-
 }

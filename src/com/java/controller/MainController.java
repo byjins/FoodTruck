@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.java.servlet.LoginMemberCMD;
+import com.java.servlet.LoginShopCMD;
+import com.java.servlet.MainCommand;
+import com.java.servlet.ShopClose;
+
 
 @WebServlet("*.do")
 public class MainController extends HttpServlet {
@@ -34,10 +39,20 @@ public class MainController extends HttpServlet {
 		if (cmd.equals("/main.do")) {
 			viewPage = "index.jsp";
 		}
-		
-		
 		else if (cmd.equals("/logout.do")) {
-			viewPage = "logout.jsp";
+			viewPage = "index.jsp";
+		}
+		else if (cmd.equals("/loginShop.do")) {
+			MainCommand sLogin = new LoginShopCMD();
+			sLogin.excute(request, response);
+		}
+		else if (cmd.equals("/loginMember.do")) {
+			MainCommand mLogin = new LoginMemberCMD();
+			mLogin.excute(request, response);
+		}
+		else if (cmd.equals("/writePost.do")) {
+			MainCommand sClose = new ShopClose();
+			sClose.excute(request, response);
 		}
 		
 		

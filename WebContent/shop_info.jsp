@@ -337,9 +337,8 @@ $(document).ready(function() {
 
          <!-- Sidebar Widgets Column  -->
          <div class="col-md-4">
-            <div class="menu">
             <!-- Side Widget -->
-               <div class="card my-4" style="width: 25rem;">
+               <div id="menu" class="card my-4" style="width: 25rem;">
                   <h5 class="card-header">가게 메뉴</h5>
                   <div class="card-body">
                   <%!   String M_name, M_intro;
@@ -383,7 +382,6 @@ $(document).ready(function() {
       <!-- /.Sidebar Widgets Column -->
          </div> 
           <!-- /.row -->
-      </div>
        <!-- /.container -->
    
       <!-- Footer -->
