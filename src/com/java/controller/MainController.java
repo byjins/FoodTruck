@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class MainController
- */
+
 @WebServlet("*.do")
 public class MainController extends HttpServlet {
 
@@ -32,17 +30,17 @@ public class MainController extends HttpServlet {
 		String ctx = request.getContextPath();
 		String cmd = uri.substring(ctx.length());
 
-		//연결 요청이 main.do로 들어왔을 때 처리
+		
 		if (cmd.equals("/main.do")) {
 			viewPage = "index.jsp";
 		}
 		
-		//연결 요청이 logout.do로 들어왔을 때 처리
+		
 		else if (cmd.equals("/logout.do")) {
 			viewPage = "logout.jsp";
 		}
 		
-		//viewPage가 null이 아닐 때만 forward시켜주자.
+		
 		if (viewPage != null) {
 			//해당 요청 viewPage에 맞는 jsp View로 forward
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
