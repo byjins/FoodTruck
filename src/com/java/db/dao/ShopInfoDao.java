@@ -53,7 +53,7 @@ public class ShopInfoDao {
 				dto.setShopIntro(rs.getString("shop_intro"));
 				dto.setShopimg(rs.getString("shop_img"));
 
-				System.out.println(dto.getShopNum());
+				System.out.println("getShopNum가게 번호:"+dto.getShopNum());
 				return dto;
 
 			}
