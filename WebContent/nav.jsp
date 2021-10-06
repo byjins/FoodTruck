@@ -47,7 +47,7 @@
 
 	<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.jsp">거리에서</a>
+      <a class="navbar-brand" href="main.do">거리에서</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -58,10 +58,10 @@
 	
           <%if (mId == null && sId == null) { %>
           <li class="nav-item">
-            <a class="nav-link" href="login_main.jsp">로그인</a>
+            <a class="nav-link" href="loginmain.do">로그인</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="signup_main.jsp">회원가입</a>
+            <a class="nav-link" href="loginshop.do">회원가입</a>
           </li>
          <li class="nav-item">
 			<form action="map.jsp">
