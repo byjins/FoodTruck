@@ -37,7 +37,7 @@ public class ShopGeolocationDao {
             pstmt.setString(4,shop_num);
             
             pstmt.executeUpdate();
-            System.out.println("/x/"+posx+"/y/"+posy+"/번호/"+shop_num);
+            System.out.println("/x/"+posx+"/y/"+posy+"/가게번호/"+shop_num);
             
         }catch(Exception e) {
 
