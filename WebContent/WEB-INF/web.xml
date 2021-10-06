@@ -9,24 +9,5 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  <servlet>
-  <servlet-name>UserRegisterServlet</servlet-name>
-  <servlet-class>com.java.servlet.UserRegisterServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  <servlet-name>UserRegisterServlet</servlet-name>
-  <url-pattern>/UserRegister</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  <servlet-name>ShopRegisterServlet</servlet-name>
-  <servlet-class>com.java.servlet.ShopRegisterServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  <servlet-name>ShopRegisterServlet</servlet-name>
-  <url-pattern>/ShopRegister</url-pattern>
-  </servlet-mapping>
+ 
 </web-app>

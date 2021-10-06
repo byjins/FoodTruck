@@ -20,18 +20,8 @@ public class UserRegisterCheckCMD implements MainCommand {
 		String userphone = request.getParameter("userPhone");
 		
 		int result = new ShopSignupDao().shopIdCheck(userid);
-		if(userid==null) {
-			
-		}else if(userid!=null&&1==result){
-			response.getWriter().write(new MemberSignupDao().idCheck(userid)+"");
-		}else {
-			
-		}
 		
-		if(userphone==null) {
-		}else {
-			response.getWriter().write(new MemberSignupDao().phoneCheck(userphone)+"");
-		}
-		
+		if(userid!=null&&1==result) {response.getWriter().write(new MemberSignupDao().idCheck(userid)+"");}
+		if(userphone!=null) {response.getWriter().write(new MemberSignupDao().phoneCheck(userphone)+"");}
 	}
 }

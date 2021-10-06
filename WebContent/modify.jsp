@@ -79,7 +79,7 @@
 
 <% if(mId!=null){ %>
 <%System.out.println(mDto); %>
-<form action="../MemberInfoModify" method="post">
+<form action="ChangePw.do" method="post">
   <table class="table">
     <thead class="thead-light">
     

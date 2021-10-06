@@ -28,7 +28,7 @@
                var areaY = position.coords.longitude; // 경도
 
        
-               location.href=('ShopOpen.do?areaX=' + areaX + "&areaY="+ areaY);
+               location.href=('shopopen.do?areaX=' + areaX + "&areaY="+ areaY);
        
                
             });
@@ -61,7 +61,7 @@
             <a class="nav-link" href="loginmain.do">로그인</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="loginshop.do">회원가입</a>
+            <a class="nav-link" href="signupmain.do">회원가입</a>
           </li>
          <li class="nav-item">
 			<form action="map.jsp">
@@ -75,10 +75,10 @@
           SManagerInfoDao sdao = new SManagerInfoDao();
           sdto = sdao.info(sId);%>
           <li class="nav-item">
-            <a class="nav-link" href="myinfo.jsp"><%=sId %>님</a>
+            <a class="nav-link" href="myinfo.do"><%=sId %>님</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="logout_process.jsp">로그아웃</a>
+            <a class="nav-link" href="logout.do">로그아웃</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="shop_management.jsp?shop_num=<%=sdto.getNum()%>">가게관리</a>
@@ -96,17 +96,17 @@
           </li>
             
  		 <li>
-			<form action="ShopClose.do">
+			<form action="shopclose.do">
 				<button type="submit" class="btn btn-info">영업종료</button>
 			</form>
           </li>
           <!-- 이용자 로그인 -->
           <%}else if(mId != null){ %> 
           <li class="nav-item">
-            <a class="nav-link" href="myinfo.jsp"><%=mId %>님</a>
+            <a class="nav-link" href="myinfo.do"><%=mId %>님</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="logout_process.jsp">로그아웃</a>
+            <a class="nav-link" href="logout.do">로그아웃</a>
           </li>
 		  <li class="nav-item">
 			<form action="map.jsp">

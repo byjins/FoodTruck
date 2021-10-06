@@ -8,9 +8,8 @@
 </head>
 <body> 
 <%
-
 	session.invalidate();
-	response.sendRedirect("index.jsp");
+	response.sendRedirect("main.do");
 	
 %>
 </body>

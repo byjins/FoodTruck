@@ -18,7 +18,7 @@
 		if(userID!=null&& true===regPid.test(userID)){
 			$.ajax({
 				type : 'POST',
-				url : '../UserRegisterCheckServlet',
+				url : 'UserRegisterCheck.do',
 				data : {userID: userID},
 				success : function(result){
 					if(result==1){
@@ -39,7 +39,7 @@
 		var userPhone = $('#userPhone').val();
 		$.ajax({
 			type : 'POST',
-			url : '../UserRegisterCheckServlet',
+			url : 'UserRegisterCheck.do',
 			data : {userPhone: userPhone},
 			success : function(result){
 				if(result==1){
@@ -81,7 +81,7 @@
 
 		<div class="jumbotron" style="padding-top: 100px; margin-top: 70px;">
 		<!-- <form name = "form1" method="post" action="signup_member_process.jsp"> -->
-		<form name = "form1" method="POST" action="../UserRegister">
+		<form name = "form1" method="POST" action="userRegister.do">
 						<h3 style="text-align: center;">일 반 회 원 가 입</h3>
 						<br>
 						<!-- <div class="form-group row">

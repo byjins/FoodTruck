@@ -33,13 +33,13 @@ public class ShopRegisterCMD implements MainCommand {
 						shopPhone ==null||shopPhone.equals("")) {
 			request.getSession().setAttribute("messageType", "오류 메시지");
 			request.getSession().setAttribute("messageContent", "모든 내용을 입력하세요");
-			response.sendRedirect("FoodTruckPage/signup_shop.jsp");
+			response.sendRedirect("signupshopview.do");
 			return;
 		}
 		if(!password1.equals(password2)) {
 			request.getSession().setAttribute("messageType", "오류 메시지");
 			request.getSession().setAttribute("messageContent", "비밀번호가 서로 일치하지 않습니다");
-			response.sendRedirect("FoodTruckPage/signup_shop.jsp");
+			response.sendRedirect("signupshopview.do");
 			return;
 		}
 		
@@ -61,30 +61,30 @@ public class ShopRegisterCMD implements MainCommand {
 					if (1 == result&&1==inforesult) {
 						request.getSession().setAttribute("messageType", "성공메시지");
 						request.getSession().setAttribute("messageContent", "회원가입에 성공했습니다!");
-						response.sendRedirect("FoodTruckPage/signup_shop.jsp");
+						response.sendRedirect("signupshopview.do");
 						return;
 					} else {
 						request.getSession().setAttribute("messageType", "오류 메시지");
 						request.getSession().setAttribute("messageContent", "이미 존재하는 회원 또는 사용중인 전화번호입니다!");
-						response.sendRedirect("FoodTruckPage/signup_shop.jsp");
+						response.sendRedirect("signupshopview.do");
 						return;
 					}
 				}else {
 					request.getSession().setAttribute("messageType", "오류 메시지");
 					request.getSession().setAttribute("messageContent", "분류를 선택해주세요!");
-					response.sendRedirect("FoodTruckPage/signup_shop.jsp");
+					response.sendRedirect("signupshopview.do");
 					return;
 				}
 			} else {
 				request.getSession().setAttribute("messageType", "오류 메시지");
 				request.getSession().setAttribute("messageContent", "이미 존재하는 회원 또는 사용중인 전화번호입니다!");
-				response.sendRedirect("FoodTruckPage/signup_shop.jsp");
+				response.sendRedirect("signupshopview.do");
 				return;
 			}
 		} else {
 			request.getSession().setAttribute("messageType", "오류 메시지");
 			request.getSession().setAttribute("messageContent", "회원정보를 제대로 입력해주세요!");
-			response.sendRedirect("FoodTruckPage/signup_shop.jsp");
+			response.sendRedirect("signupshopview.do");
 			return;
 		}
 		 

@@ -47,7 +47,7 @@
       <tr>
         <th>회원정보</th>
         <th class="text-right">
-		<input type="button" value="정보수정" onclick="javascript:window.location='modify.jsp'">
+		<input type="button" value="정보수정" onclick="javascript:window.location='modify.do'">
 		</th>
       </tr>
     </thead>
@@ -84,7 +84,7 @@
       <tr>
         <th>사업자정보</th>
         <th class="text-right">
-		<input type="button" value="정보수정" onclick="javascript:window.location='modify.jsp'">
+		<input type="button" value="정보수정" onclick="javascript:window.location='modify.do'">
 		</th>
       </tr>
     </thead>

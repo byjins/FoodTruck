@@ -19,7 +19,7 @@
 		if(shopNum!=null && true==regNum.test(shopNum)){
 			$.ajax({
 				type : 'POST',
-				url : '../ShopRegisterCheckServlet',
+				url : 'ShopRegisterCheck.do',
 				data : {shopNum: shopNum},
 				success : function(result){
 					if(result==1){
@@ -42,7 +42,7 @@
 		if(shopID!=null && true==regPid.test(shopID)){
 			$.ajax({
 				type : 'POST',
-				url : '../ShopRegisterCheckServlet',
+				url : 'ShopRegisterCheck.do',
 				data : {shopID: shopID},
 				success : function(result){
 					if(result==1){
@@ -79,7 +79,7 @@
 		if(shopPhone!=null && true==reg.test(shopPhone)){
 		$.ajax({
 			type : 'POST',
-			url : '../ShopRegisterCheckServlet',
+			url : 'ShopRegisterCheck.do',
 			data : {shopPhone: shopPhone},
 			success : function(result){
 				if(result==1){
@@ -108,7 +108,7 @@
 	<div class="container col-lg-6 col-md-8 col-sm-6 col-xs-4">
 
 		<div class="jumbotron" style="padding-top: 100px; margin-top: 70px;">
-		<form method="POST" action="../ShopRegister">
+		<form method="POST" action="ShopRegister.do">
 						<h3 style="text-align: center;">사 업 자 회 원 가 입</h3>
 						<br>
 						<div class = "input-group">

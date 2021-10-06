@@ -29,7 +29,7 @@
 			<% if(id!=null){%><h2>&nbsp;&nbsp;아이디 : <%=id %> 의 비밀번호가 변경되었습니다.</h2><%}
 			else {%><h2>일치하는 아이디가 없습니다.</h2><%} %>
 			<br/><br/>
-			<form action = "login_member.jsp">
+			<form action = "loginmain.do">
 			<input type="submit" class="btn btn-info form-control" value="로그인하러가기">
 			</form>
 		</div>

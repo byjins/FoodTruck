@@ -21,23 +21,14 @@ public class ShopRegisterCheckCMD implements MainCommand {
 		String shopnum = request.getParameter("shopNum");
 		
 		int result = new MemberSignupDao().idCheck(shopid);
-		if(shopid==null) {
-			
-		}else if(shopid!=null && 1==result){
+		if(shopid!=null && 1==result) {
 			response.getWriter().write(new ShopSignupDao().shopIdCheck(shopid)+"");
-		}else {
-			
 		}
 		
-		if(shopphone==null) {
-		}else {
-			response.getWriter().write(new ShopSignupDao().shopPhoneCheck(shopphone)+"");
+		if(shopphone!=null) {response.getWriter().write(new ShopSignupDao().shopPhoneCheck(shopphone)+"");
 		}
-		
 		if(shopnum!=null&&1==new ShopSignupDao().shopNumCheck(shopnum)&&1==new ShopSignupDao().shopinfoNumCheck(shopnum)) {
 			response.getWriter().write(new ShopSignupDao().shopNumCheck(shopnum)+"");
-		}else {
-			
 		}
 		
 	}
