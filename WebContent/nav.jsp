@@ -28,7 +28,7 @@
                var areaY = position.coords.longitude; // 경도
 
        
-               location.href=('shop_open_process.jsp?areaX=' + areaX + "&areaY="+ areaY);
+               location.href=('ShopOpen.do?areaX=' + areaX + "&areaY="+ areaY);
        
                
             });
@@ -96,7 +96,7 @@
           </li>
             
  		 <li>
-			<form action="shop_close_process.jsp">
+			<form action="ShopClose.do">
 				<button type="submit" class="btn btn-info">영업종료</button>
 			</form>
           </li>

@@ -14,7 +14,7 @@ import com.java.db.dao.ShopGeolocationDao;
 import com.java.db.dto.SManagerInfoDto;
 
 
-public class ShopClose implements MainCommand {
+public class ShopCloseCMD implements MainCommand {
 
 		@Override
 		public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

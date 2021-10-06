@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.java.servlet.LoginMemberCMD;
 import com.java.servlet.LoginShopCMD;
 import com.java.servlet.MainCommand;
-import com.java.servlet.ShopClose;
+import com.java.servlet.ShopCloseCMD;
+import com.java.servlet.ShopOpenCMD;
 
 
 @WebServlet("*.do")
@@ -50,8 +51,11 @@ public class MainController extends HttpServlet {
 			MainCommand mLogin = new LoginMemberCMD();
 			mLogin.excute(request, response);
 		}
-		else if (cmd.equals("/writePost.do")) {
-			MainCommand sClose = new ShopClose();
+		else if (cmd.equals("/ShopOpen.do")) {
+			MainCommand sOpen = new ShopOpenCMD();
+			sOpen.excute(request, response);
+		}else if (cmd.equals("/ShopClose.do")) {
+			MainCommand sClose = new ShopCloseCMD();
 			sClose.excute(request, response);
 		}
 		

@@ -13,13 +13,9 @@ import com.java.db.dao.ShopGeolocationDao;
 import com.java.db.dto.SManagerInfoDto;
 
 
-public class ShopOpen extends HttpServlet {
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class ShopOpenCMD implements MainCommand {
+	@Override
+	public void excute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String sId = (String)session.getAttribute("shop_id");//사업자 세션 받아욤
         
@@ -51,6 +47,7 @@ public class ShopOpen extends HttpServlet {
           else {
        	   response.sendRedirect("map.jsp");
           }
+		
 	}
 
 }
