@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.java.servlet.ChangePwCMD;
+import com.java.servlet.FindIdCMD;
+import com.java.servlet.FindPwCMD;
 import com.java.servlet.LoginMemberCMD;
 import com.java.servlet.LoginShopCMD;
 import com.java.servlet.MainCommand;
+import com.java.servlet.MemberInfoModifyCMD;
 import com.java.servlet.ShopCloseCMD;
+import com.java.servlet.ShopInfoModifyCMD;
 import com.java.servlet.ShopIntroModifyCMD;
 import com.java.servlet.ShopOpenCMD;
 import com.java.servlet.ShopRegisterCMD;
@@ -51,6 +55,25 @@ public class MainController extends HttpServlet {
 		// 로그아웃 눌렀을때
 		else if (cmd.equals("/logout.do")) {
 			viewPage = "logout_process.jsp";
+		}
+		// 아이디찾기 뷰 페이지
+		else if (cmd.equals("/findIdView.do")) {
+			viewPage = "find_id.jsp";
+		}
+		// 패스워드찾기 뷰 페이지
+		else if (cmd.equals("/findPwView.do")) {
+			viewPage = "find_pw.jsp";
+		}
+		// 아이디 찾기 기능
+		else if (cmd.equals("/findId.do")) {
+			MainCommand findId = new FindIdCMD();
+			findId.excute(request, response);
+		}
+		// 비밀번호 찾기 기능 (FindPwCMD 에서 sendRedirect 했을때 어떻게 .do로 넘기나?
+		// 그냥 .do?로 해서 넘기면 되나? 그러면 url에 ?값은 어떻게 받지?)
+		else if (cmd.equals("/findPw.do")) {
+			MainCommand findPw = new FindPwCMD();
+			findPw.excute(request, response);
 		}
 		// 로그인 메인 뷰 페이지
 		else if (cmd.equals("/loginmain.do")) {
@@ -122,17 +145,24 @@ public class MainController extends HttpServlet {
 		else if (cmd.equals("/myinfo.do")) {
 			viewPage = "myinfo.jsp";
 		}
-		// 정보수정 클릭 <--------여기까지는 함
+		// 정보수정 클릭
 		else if (cmd.equals("/modify.do")) {
 			viewPage = "modify.jsp";
 		}
-		// 비밀번호 변경 <-------이게 왜안돼?
-		else if (cmd.equals("/ChangePw.do")) {
-			MainCommand ChangePw = new ChangePwCMD();
-			ChangePw.excute(request, response);
+		// 유저 비밀번호 변경
+		else if (cmd.equals("/mebmerInfoModify.do")) {
+			MainCommand uModify = new MemberInfoModifyCMD();
+			uModify.excute(request, response);
 		}
-		// 비밀번호 변경 완료시 --- 변경완료가 안된다.
-		else if (cmd.equals("/findPwSucceed.do")) {
+		// 가게회원 비밀번호 변경
+		else if (cmd.equals("/shopInfoModify.do")) {
+			MainCommand sModify = new ShopInfoModifyCMD();
+			sModify.excute(request, response);
+		}
+
+		// 비밀번호 변경 기능 (ChangePwCMD 에서 sendRedirect 했을때 어떻게 .do로 매핑?)
+		// 그냥 .do?로 해서 넘기면 되나? 그러면 url에 ?값은 어떻게 받지?)
+		else if (cmd.equals("/changePw.do")) {
 			MainCommand ChangePw = new ChangePwCMD();
 			ChangePw.excute(request, response);
 		}

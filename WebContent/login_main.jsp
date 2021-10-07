@@ -28,11 +28,11 @@
 			</form>
 			<br/>
 					<div class="form-row float-right">
-						<form method="post" action="find_id.jsp">
+						<form method="post" action="findIdView.do">
 							<input type="submit" class="btn btn-primary form-control" value="아이디 찾기" >
 						</form>
 						&nbsp;
-						<form method="post" action="find_pw.jsp">
+						<form method="post" action="findPwView.do">
 							<input type="submit" class="btn btn-primary form-control" value="비밀번호 찾기" >
 						</form>
 					</div>

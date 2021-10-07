@@ -29,14 +29,14 @@ public class FindIdCMD implements MainCommand {
 			String sid = sdao.sfindID(name, phone);  
 			
 			if (sid != null && mid == null) {
-				response.sendRedirect("FoodTruckPage/idcheck.jsp?id=" + sid);
+				response.sendRedirect("idcheck.jsp?id=" + sid);
 			} else if (mid != null && sid == null) {
-				response.sendRedirect("FoodTruckPage/idcheck.jsp?id=" + mid);
+				response.sendRedirect("idcheck.jsp?id=" + mid);
 			} else if (mid == null && mid == null) {
-				response.sendRedirect("FoodTruckPage/idcheck.jsp");
+				response.sendRedirect("idcheck.jsp");
 			}
 		}else {
-			response.sendRedirect("FoodTruckPage/find_id.jsp");
+			response.sendRedirect("findId.do");
 		}
 	}
 		

@@ -28,14 +28,14 @@ public class ChangePwCMD implements MainCommand {
 				int mresult = new MemberInfoDao().update(id, pw1);
 				int sresult = new SManagerInfoDao().update(id, pw1);
 				if (1 == sresult && 1!=mresult) {
-					response.sendRedirect("FoodTruckPage/find_pw_next.jsp?id="+id);
+					response.sendRedirect("find_pw_next.jsp?id="+id);
 				} else if(1==mresult && 1!=sresult){
-					response.sendRedirect("FoodTruckPage/find_pw_next.jsp?id="+id);
+					response.sendRedirect("find_pw_next.jsp?id="+id);
 				}
 			} else {
 				request.getSession().setAttribute("messageType", "실패메시지");
 				request.getSession().setAttribute("messageContent", "일치하는 정보가 없습니다.");
-				response.sendRedirect("FoodTruckPage/find_pw_next.jsp");
+				response.sendRedirect("find_pw_next.jsp");
 			}
 			
 		}

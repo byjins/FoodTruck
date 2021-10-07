@@ -26,10 +26,11 @@
 			<!-- <form name = "form1" method="post" action="signup_member_process.jsp"> -->
 			<h3 style="text-align: center;">아이디 검색결과</h3>
 			<br/><br/>
-			<% if(id!=null){%><h2>아이디 : <%=id %></h2><%}
+			<% if(id!=null){%><h2>아이디 : <%=id %></h2>
+			<%}
 			else {%><h2>일치하는 아이디가 없습니다.</h2><%} %>
 			<br/><br/>
-			<form action = "find_pw.jsp">
+			<form action = "loginmain.do">
 			<input type="submit" class="btn btn-info form-control" value="비밀번호 찾기">
 			</form>
 		</div>

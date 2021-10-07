@@ -79,7 +79,7 @@
 
 <% if(mId!=null){ %>
 <%System.out.println(mDto); %>
-<form action="ChangePw.do" method="post">
+<form action="mebmerInfoModify.do" method="post">
   <table class="table">
     <thead class="thead-light">
     
@@ -122,7 +122,7 @@
   
   
   <%}else if(sId != null){%>
-  <form action ="../ShopInfoModify" method="post">
+  <form action ="shopInfoModify.do" method="post">
   <table class="table">
     <thead class="thead-light">
       <tr>

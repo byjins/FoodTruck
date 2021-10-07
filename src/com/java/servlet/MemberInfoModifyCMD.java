@@ -33,16 +33,16 @@ public class MemberInfoModifyCMD implements MainCommand {
 			if(1==result) {
 				request.getSession().setAttribute("messageType", "성공메시지");
 				request.getSession().setAttribute("messageContent", "비밀번호 변경 성공!");
-				response.sendRedirect("FoodTruckPage/modify.jsp");
+				response.sendRedirect("modify.do");
 			}else {
 				request.getSession().setAttribute("messageType", "실패메시지");
 				request.getSession().setAttribute("messageContent", "업데이트 실패!");
-				response.sendRedirect("FoodTruckPage/modify.jsp");
+				response.sendRedirect("modify.do");
 			}
 		} else {
 			request.getSession().setAttribute("messageType", "실패메시지");
 			request.getSession().setAttribute("messageContent", "현재비밀번호 및 변경비밀번호 미일치");
-			response.sendRedirect("FoodTruckPage/modify.jsp");
+			response.sendRedirect("modify.do");
 		}
 		
 	}

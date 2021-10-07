@@ -41,7 +41,7 @@ function passwordCheckFunction(){
 			<!-- <form name = "form1" method="post" action="signup_member_process.jsp"> -->
 			<h3 style="text-align: center;">비밀번호 변경</h3>
 			<br>
-			<form action="../ChangePw" method = "post">
+			<form action="changePw.do" method = "post">
 			<input type="hidden" id="id" name="id" value="<%=id%>">
 			<div class="col-sm-12">
 				<input type="password" class="form-control" id="password1"
