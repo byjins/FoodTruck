@@ -186,7 +186,7 @@
 		    <%smdtos = smdao.infoAll(sdtos.get(i).getShopNum());//현재 영업중인 가게의 정보를 가져온다
 		 	for(int q = 0; q<smdtos.size(); q++) {%>
 		 		
-		 		var iwContent = '<a href ="/FoodTruck/FoodTruckPage/shop_info.jsp?shop_num=<%=sdtos.get(i).getShopNum()%>"><%=smdtos.get(q).getShopName()%></a>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		 		var iwContent = '<a href ="/FoodTruck/shop_info.do?shop_num=<%=sdtos.get(i).getShopNum()%>"><%=smdtos.get(q).getShopName()%></a>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 				var iwRemoveable = true;
 			<%}%>			    
 		

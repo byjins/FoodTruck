@@ -99,12 +99,12 @@
          alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
-		            <a href="shop_info.jsp?shop_num=<%=dto.getShopNum()%>"><%=dto.getShopName()%></a>
+		            <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>"><%=dto.getShopName()%></a>
 		          </h4>
 			          <p class="card-text"><%=dto.getShopIntro() %></p>
 		        </div>
          <div class="card-footer" align = "right">
-          <a href="shop_info.jsp?shop_num=<%=dto.getShopNum()%>" class="btn btn-primary">가게정보</a>
+          <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>" class="btn btn-primary">가게정보</a>
         </div>
       </div>
     </div>
@@ -138,12 +138,12 @@
          alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
-		            <a href="shop_info.jsp?shop_num=<%=dto.getShopNum()%>"><%=dto.getShopName()%></a> <!-- 가게이름 -->
+		            <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>"><%=dto.getShopName()%></a> <!-- 가게이름 -->
 		          </h4>
 			          <p class="card-text"><%=dto.getShopIntro() %></p>
 		        </div>
          <div class="card-footer" align = "right">
-          <a href="shop_info.jsp?shop_num=<%=dto.getShopNum()%>" class="btn btn-primary">가게정보</a>
+          <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>" class="btn btn-primary">가게정보</a>
         </div>
       </div>
     </div>

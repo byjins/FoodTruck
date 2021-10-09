@@ -64,7 +64,7 @@
             <a class="nav-link" href="signupmain.do">회원가입</a>
           </li>
          <li class="nav-item">
-			<form action="map.jsp">
+			<form action="map.do">
 				<button type="submit" class="btn btn-light">지도</button>
 			</form>
           </li>
@@ -81,11 +81,11 @@
             <a class="nav-link" href="logout.do">로그아웃</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="shop_management.jsp?shop_num=<%=sdto.getNum()%>">가게관리</a>
+            <a class="nav-link" href="shop_management.do?shop_num=<%=sdto.getNum()%>">가게관리</a>
           </li>
     	
 		  <li class="nav-item">
-			<form action="map.jsp">
+			<form action="map.do">
 				<button type="submit" class="btn btn-light">지도</button>
 			</form>
           </li>
@@ -109,7 +109,7 @@
             <a class="nav-link" href="logout.do">로그아웃</a>
           </li>
 		  <li class="nav-item">
-			<form action="map.jsp">
+			<form action="map.do">
 				<button type="submit" class="btn btn-light">지도</button>
 			</form>
           </li>
@@ -119,7 +119,7 @@
         </ul>
      	<ul class="navbar-nav ml-auto xs-auto">
         	<li class="nav-item">
-     				<form class="form-inline " method = "get" action ="map.jsp">
+     				<form class="form-inline " method = "get" action ="map.do">
      					 <div class="input-group">
      	 				 <input class="form-control col-xs-8 col-sm-8 col-md-8 col-lg-8 " type="text" placeholder="검색" name = "search">
      	 				 <span class="input-group-append">

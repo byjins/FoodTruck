@@ -30,9 +30,9 @@ public class FindPwCMD implements MainCommand {
 		int mresult = mdao.accountCheck(id, name, phone);
 		
 		if(1==sresult&&0==mresult) {
-			response.sendRedirect("pwcheck.jsp?id=" + id);
+			response.sendRedirect("pwCheckView.do?id=" + id);
 		}else if(1==mresult&&0==sresult){
-			response.sendRedirect("pwcheck.jsp?id=" + id);
+			response.sendRedirect("pwCheckView.do?id=" + id);
 		}
 		
 	}

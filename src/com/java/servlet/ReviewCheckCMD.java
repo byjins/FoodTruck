@@ -30,7 +30,7 @@ public class ReviewCheckCMD implements MainCommand {
 		dao.insert_review(id, num, comment, score);
 		
 		try {
-			response.sendRedirect("FoodTruckPage/shop_info.jsp?shop_num=" + num);
+			response.sendRedirect("shop_info.do?shop_num=" + num);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

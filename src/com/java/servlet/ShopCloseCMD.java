@@ -37,7 +37,7 @@ public class ShopCloseCMD implements MainCommand {
 			
 			SgDao.updateDao(0.0, 0.0, num, 0);
 			
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("main.do");
 		}
 		
 }
