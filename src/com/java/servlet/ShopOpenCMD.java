@@ -42,10 +42,10 @@ public class ShopOpenCMD implements MainCommand {
               ShopGeolocationDao SgDao = new ShopGeolocationDao();
               SgDao.updateDao(areaX, areaY, num,1);
               
-          	   response.sendRedirect("map.jsp");
+          	   response.sendRedirect("map.do");
           }
           else {
-       	   response.sendRedirect("map.jsp");
+       	   response.sendRedirect("map.do");
           }
 		
 	}

@@ -29,11 +29,11 @@ public class FindIdCMD implements MainCommand {
 			String sid = sdao.sfindID(name, phone);  
 			
 			if (sid != null && mid == null) {
-				response.sendRedirect("idcheck.jsp?id=" + sid);
+				response.sendRedirect("idCheckView.do?id=" + sid);
 			} else if (mid != null && sid == null) {
-				response.sendRedirect("idcheck.jsp?id=" + mid);
+				response.sendRedirect("idCheckView.do?id=" + mid);
 			} else if (mid == null && mid == null) {
-				response.sendRedirect("idcheck.jsp");
+				response.sendRedirect("idcheckView.do");
 			}
 		}else {
 			response.sendRedirect("findId.do");

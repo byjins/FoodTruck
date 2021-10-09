@@ -16,6 +16,7 @@ import com.java.servlet.LoginMemberCMD;
 import com.java.servlet.LoginShopCMD;
 import com.java.servlet.MainCommand;
 import com.java.servlet.MemberInfoModifyCMD;
+import com.java.servlet.ReviewCheckCMD;
 import com.java.servlet.ShopCloseCMD;
 import com.java.servlet.ShopInfoModifyCMD;
 import com.java.servlet.ShopIntroModifyCMD;
@@ -60,9 +61,16 @@ public class MainController extends HttpServlet {
 		else if (cmd.equals("/findIdView.do")) {
 			viewPage = "find_id.jsp";
 		}
+		else if (cmd.equals("/idCheckView.do")) {
+			viewPage = "idcheck.jsp";
+		}
 		// 패스워드찾기 뷰 페이지
 		else if (cmd.equals("/findPwView.do")) {
 			viewPage = "find_pw.jsp";
+		}
+		// 패스워드 검증 뷰 페이지
+		else if (cmd.equals("/pwCheckView.do")) {
+			viewPage = "pwcheck.jsp";
 		}
 		// 아이디 찾기 기능
 		else if (cmd.equals("/findId.do")) {
@@ -161,15 +169,35 @@ public class MainController extends HttpServlet {
 		}
 
 		// 비밀번호 변경 기능 (ChangePwCMD 에서 sendRedirect 했을때 어떻게 .do로 매핑?)
-		// 그냥 .do?로 해서 넘기면 되나? 그러면 url에 ?값은 어떻게 받지?)
 		else if (cmd.equals("/changePw.do")) {
 			MainCommand ChangePw = new ChangePwCMD();
 			ChangePw.excute(request, response);
+		}
+		//비밀번호 변경 후 뷰 페이지
+		else if (cmd.equals("/find_pw_next.do")) {
+			viewPage = "find_pw_next.jsp";
 		}
 		// 가게정보수정
 		else if (cmd.equals("/ShopIntroModify.do")) {
 			MainCommand ShopIntroModify = new ShopIntroModifyCMD();
 			ShopIntroModify.excute(request, response);
+		}
+		//가게관리 뷰페이지
+		else if (cmd.equals("/shop_management.do")) {
+			viewPage = "shop_management.jsp";
+		}
+		//맵 뷰페이지
+		else if (cmd.equals("/map.do")) {
+			viewPage = "map.jsp";
+		}
+		//리뷰 체크
+		else if (cmd.equals("/ReviewCheck.do")) {
+			MainCommand rCheck = new ReviewCheckCMD();
+			rCheck.excute(request, response);
+		}
+		//가게 정보 뷰 페이지
+		else if (cmd.equals("/shop_info.do")) {
+			viewPage = "shop_info.jsp";
 		}
 
 		if (viewPage != null) {

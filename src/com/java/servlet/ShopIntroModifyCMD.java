@@ -22,7 +22,7 @@ public class ShopIntroModifyCMD implements MainCommand {
 		dao.shop_update(s_num, s_intro);
 		
 		try {
-			response.sendRedirect("FoodTruckPage/shop_management.jsp?shop_num=" + s_num);
+			response.sendRedirect("shop_management.do?shop_num=" + s_num);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

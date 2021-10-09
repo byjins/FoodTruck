@@ -28,9 +28,9 @@ public class ChangePwCMD implements MainCommand {
 				int mresult = new MemberInfoDao().update(id, pw1);
 				int sresult = new SManagerInfoDao().update(id, pw1);
 				if (1 == sresult && 1!=mresult) {
-					response.sendRedirect("find_pw_next.jsp?id="+id);
+					response.sendRedirect("find_pw_next.do?id="+id);
 				} else if(1==mresult && 1!=sresult){
-					response.sendRedirect("find_pw_next.jsp?id="+id);
+					response.sendRedirect("find_pw_next.do?id="+id);
 				}
 			} else {
 				request.getSession().setAttribute("messageType", "실패메시지");

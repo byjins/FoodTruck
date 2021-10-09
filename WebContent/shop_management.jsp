@@ -267,7 +267,7 @@
 						<ul class="pagination justify-content-center">
 							<c:forEach var="i" begin="<%=startpage%>" end="<%=endpage%>"
 								step="1">
-								<li class="page-item"><a class="page-link" href="shop_management.jsp?shop_num=<%=num %>&page=${i }"><c:out value="${i }" /></a></li>
+								<li class="page-item"><a class="page-link" href="shop_management.do?shop_num=<%=num %>&page=${i }"><c:out value="${i }" /></a></li>
 							</c:forEach>
 						</ul>
 					</div>

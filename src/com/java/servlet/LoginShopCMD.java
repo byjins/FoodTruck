@@ -44,7 +44,7 @@ public class LoginShopCMD implements MainCommand {
 				   String str="";
 				   str = "<script language='javascript'>";
 				   str += "alert('"+ msg + "');";   //얼럿창 띄우기
-				   str += "document.location.href='/FoodTruck/login_shop.jsp'";    //이전페이지로 가기
+				   str += "document.location.href='/FoodTruck/loginshopview.do'";    //이전페이지로 가기
 				   str += "</script>";
 				   out.print(str);
 			}

@@ -191,7 +191,7 @@ $(document).ready(function() {
                String today = sf.format(now);
                %>
 
-               <form action="../ReviewCheck" method="post">
+               <form action="ReviewCheck.do" method="post">
                   <input type="hidden" name="shop_num" value="<%=num%>">
                   <div class="card my-3">
                      <h5 class="card-header">
@@ -279,7 +279,7 @@ $(document).ready(function() {
                      <c:forEach var="i" begin="<%=startpage%>" end="<%=endpage%>"
                         step="1">
                         <li class="page-item"><a class="page-link"
-                           href="shop_info.jsp?shop_num=<%=num %>&page=${i }"><c:out
+                           href="shop_info.do?shop_num=<%=num %>&page=${i }"><c:out
                                  value="${i }" /></a></li>
                      </c:forEach>
                   </ul>
