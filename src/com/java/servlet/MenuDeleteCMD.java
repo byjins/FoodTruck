@@ -26,7 +26,7 @@ public class MenuDeleteCMD implements MainCommand {
 		dao.menu_delete(s_num, m_num);
 
 		try {
-			response.sendRedirect("FoodTruckPage/shop_management.do?shop_num=" + s_num);
+			response.sendRedirect("shop_management.do?shop_num=" + s_num);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

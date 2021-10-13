@@ -17,7 +17,7 @@
 	<div class="container col-lg-6 col-md-8 col-sm-6 col-xs-4">
 
 		<div class="jumbotron" style="padding-top: 70px; margin-top: 50px;">
-			<form method="post" action="signupmember.do">
+			<form method="post" action="signupmemberview.do">
 				<br> <input type="submit" class="btn btn-info form-control"
 					value="일반회원 가입하기">
 			</form>

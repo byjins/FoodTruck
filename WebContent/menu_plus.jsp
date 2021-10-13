@@ -23,7 +23,7 @@
 		} else if(m_name != "" || m_price != "" || m_intro != ""){
 			alert("입력한 메뉴를 추가합니다.");
 			menu_plus.method = "post";
-			menu_plus.action = "../MenuPlus";
+			menu_plus.action = "MenuPlus.do";
 			menu_plus.submit();
 		}
 	}
@@ -39,7 +39,7 @@
 
 		<div class="jumbotron" style="padding-top: 100px; margin-top: 70px;">
 		<div class="content">
-			<form name="menu_plus" action="../MenuPlus" method="post">
+			<form name="menu_plus" action="MenuPlus.do" method="post">
 				<h3 style="text-align: center;">메 뉴 추 가</h3>
 				<input type="hidden" id="shop_num" name ="shop_num" value=<%=num %>>
 				<br>

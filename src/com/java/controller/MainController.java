@@ -16,6 +16,8 @@ import com.java.servlet.LoginMemberCMD;
 import com.java.servlet.LoginShopCMD;
 import com.java.servlet.MainCommand;
 import com.java.servlet.MemberInfoModifyCMD;
+import com.java.servlet.MenuDeleteCMD;
+import com.java.servlet.MenuPlusCMD;
 import com.java.servlet.ReviewCheckCMD;
 import com.java.servlet.ShopCloseCMD;
 import com.java.servlet.ShopInfoModifyCMD;
@@ -163,7 +165,7 @@ public class MainController extends HttpServlet {
 			uModify.excute(request, response);
 		}
 		// 가게회원 비밀번호 변경
-		else if (cmd.equals("/shopInfoModify.do")) {
+		else if (cmd.equals("/ShopInfoModify.do")) {
 			MainCommand sModify = new ShopInfoModifyCMD();
 			sModify.excute(request, response);
 		}
@@ -195,11 +197,24 @@ public class MainController extends HttpServlet {
 			MainCommand rCheck = new ReviewCheckCMD();
 			rCheck.excute(request, response);
 		}
+		//메뉴 삭제
+		else if (cmd.equals("/MenuDelete.do")) {
+			MainCommand mDelete = new MenuDeleteCMD();
+			mDelete.excute(request, response);
+		}
+		//메뉴 삭제
+		else if (cmd.equals("/MenuPlus.do")) {
+			MainCommand mPlus = new MenuPlusCMD();
+			mPlus.excute(request, response);
+		}
 		//가게 정보 뷰 페이지
 		else if (cmd.equals("/shop_info.do")) {
 			viewPage = "shop_info.jsp";
 		}
 
+		else if (cmd.equals("/shop_info.do")) {
+			viewPage = "shop_info.jsp";
+		}
 		if (viewPage != null) {
 			// 해당 요청 viewPage에 맞는 jsp View로 forward
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
