@@ -69,7 +69,7 @@
 		} else if(s_intro != ""){
 			alert("가게소개를 수정합니다.");
 			infomodify.method = "post";
-			infomodify.action = "../ShopIntroModify";
+			infomodify.action = "ShopIntroModify.do";
 			infomodify.submit();
 		}
 	}
@@ -159,7 +159,7 @@
 								
 							</h5>
 							<h5>
-								<form name="infomodify" action="../ShopIntroModify" method="post">
+								<form name="infomodify" action="ShopIntroModify.do" method="post">
 									<input type="hidden" name="shop_num" value="<%=num%>">
 									<textarea name="introarea" class="form-control" rows="3" placeholder="<%=S_intro %>" style="resize: none; font-size: 15pt;"></textarea>
 									<input type="button" class="btn btn-primary" value="가게정보 수정"  onclick="infomodi()" style="float:right; margin-top:-150px;"/>
@@ -179,28 +179,6 @@
 					String today = sf.format(now);
 					%>
 
-					<form action="../ReviewCheck" method="post">
-						<input type="hidden" name="shop_num" value="<%=num%>">
-						<div class="card my-3">
-							<h5 class="card-header">
-								코멘트 &nbsp;&nbsp;<%=today%></h5>
-							<div class="card-body">
-
-								<div class="form-group">
-									<textarea class="form-control" name="comment" rows="3"></textarea>
-								</div>
-								<!-- 별점 -->
-								<div class="pt-3">
-									<h5>별점</h5>
-									<input id="input-2" name="rating" class="rating rating-loading"
-										data-min="0.5" data-max="5" data-step="0.5" value="2"
-										data-size="sm">
-								</div>
-								<script src="js/rating.js"></script>
-								<button type="submit" class="btn btn-primary">글쓰기</button>
-							</div>
-						</div>
-					</form>
 					<!-- 페이징 -->
 					<%!
 					int listcnt, startpage, endpage;
@@ -310,7 +288,7 @@
 									<td><%=M_name%></td>
 									<td><%=M_price%></td>
 									<td><%=M_intro%></td>
-									<td><form action="../MenuDelete" method="post">
+									<td><form action="MenuDelete.do" method="post">
 										<input type="hidden" id="shop_num" name ="shop_num" value=<%=num %> />
 										<input type="hidden" id="menu_num" name ="menu_num" value=<%=M_num %> />
 										<input type="submit" class="btn btn-primary" value="삭제" />

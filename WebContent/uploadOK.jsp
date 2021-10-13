@@ -15,7 +15,7 @@
 	String s_num = request.getParameter("shop_num");
 	out.println(s_num+"<br/>");
 	
-	String path = application.getRealPath("FoodTruckPage/img");
+	String path = application.getRealPath("/img");
 	
 	String filename = s_num+".jpg";
 	
@@ -52,7 +52,7 @@
 	
 	
 
-	response.sendRedirect("shop_management.jsp?shop_num="+s_num);
+	response.sendRedirect("shop_management.do?shop_num="+s_num);
 %>
 </body>
 </html>
