@@ -1,22 +1,24 @@
 package com.java.db.dto;
 
 public class RoadShopDto {
-	String road_num,city_class,city_subclass,road_main,road_sub,road_type;
+	private String road_num;
+	private Double posx;
+	private Double posy;
+	private String road_type;
 	
 	public RoadShopDto() {
 		
 	}
 
-	public RoadShopDto(String road_num, String city_class, String city_subclass, String road_main, String road_sub,
-			String road_type) {
+	
+	public RoadShopDto(String road_num, Double posx, Double posy, String road_type) {
 		super();
 		this.road_num = road_num;
-		this.city_class = city_class;
-		this.city_subclass = city_subclass;
-		this.road_main = road_main;
-		this.road_sub = road_sub;
+		this.posx = posx;
+		this.posy = posy;
 		this.road_type = road_type;
 	}
+
 
 	public String getRoad_num() {
 		return road_num;
@@ -26,36 +28,20 @@ public class RoadShopDto {
 		this.road_num = road_num;
 	}
 
-	public String getCity_class() {
-		return city_class;
+	public Double getPosx() {
+		return posx;
 	}
 
-	public void setCity_class(String city_class) {
-		this.city_class = city_class;
+	public void setPosx(Double posx) {
+		this.posx = posx;
 	}
 
-	public String getCity_subclass() {
-		return city_subclass;
+	public Double getPosy() {
+		return posy;
 	}
 
-	public void setCity_subclass(String city_subclass) {
-		this.city_subclass = city_subclass;
-	}
-
-	public String getRoad_main() {
-		return road_main;
-	}
-
-	public void setRoad_main(String road_main) {
-		this.road_main = road_main;
-	}
-
-	public String getRoad_sub() {
-		return road_sub;
-	}
-
-	public void setRoad_sub(String road_sub) {
-		this.road_sub = road_sub;
+	public void setPosy(Double posy) {
+		this.posy = posy;
 	}
 
 	public String getRoad_type() {
@@ -65,5 +51,8 @@ public class RoadShopDto {
 	public void setRoad_type(String road_type) {
 		this.road_type = road_type;
 	}
+	
+	
+
 
 }
