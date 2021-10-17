@@ -25,6 +25,7 @@ import com.java.servlet.ShopIntroModifyCMD;
 import com.java.servlet.ShopOpenCMD;
 import com.java.servlet.ShopRegisterCMD;
 import com.java.servlet.ShopRegisterCheckCMD;
+import com.java.servlet.UserPositionCheckCMD;
 import com.java.servlet.UserRegisterCMD;
 import com.java.servlet.UserRegisterCheckCMD;
 
@@ -62,8 +63,7 @@ public class MainController extends HttpServlet {
 		// 아이디찾기 뷰 페이지
 		else if (cmd.equals("/findIdView.do")) {
 			viewPage = "find_id.jsp";
-		}
-		else if (cmd.equals("/idCheckView.do")) {
+		} else if (cmd.equals("/idCheckView.do")) {
 			viewPage = "idcheck.jsp";
 		}
 		// 패스워드찾기 뷰 페이지
@@ -73,6 +73,11 @@ public class MainController extends HttpServlet {
 		// 패스워드 검증 뷰 페이지
 		else if (cmd.equals("/pwCheckView.do")) {
 			viewPage = "pwcheck.jsp";
+		}
+		// 유저 근처가게 받아오는 기능
+		else if (cmd.equals("/UserPositionCheck.do")) {
+			MainCommand userPosition = new UserPositionCheckCMD();
+			userPosition.excute(request, response);
 		}
 		// 아이디 찾기 기능
 		else if (cmd.equals("/findId.do")) {
@@ -175,7 +180,7 @@ public class MainController extends HttpServlet {
 			MainCommand ChangePw = new ChangePwCMD();
 			ChangePw.excute(request, response);
 		}
-		//비밀번호 변경 후 뷰 페이지
+		// 비밀번호 변경 후 뷰 페이지
 		else if (cmd.equals("/find_pw_next.do")) {
 			viewPage = "find_pw_next.jsp";
 		}
@@ -184,30 +189,30 @@ public class MainController extends HttpServlet {
 			MainCommand ShopIntroModify = new ShopIntroModifyCMD();
 			ShopIntroModify.excute(request, response);
 		}
-		//가게관리 뷰페이지
+		// 가게관리 뷰페이지
 		else if (cmd.equals("/shop_management.do")) {
 			viewPage = "shop_management.jsp";
 		}
-		//맵 뷰페이지
+		// 맵 뷰페이지
 		else if (cmd.equals("/map.do")) {
 			viewPage = "map.jsp";
 		}
-		//리뷰 체크
+		// 리뷰 체크
 		else if (cmd.equals("/ReviewCheck.do")) {
 			MainCommand rCheck = new ReviewCheckCMD();
 			rCheck.excute(request, response);
 		}
-		//메뉴 삭제
+		// 메뉴 삭제
 		else if (cmd.equals("/MenuDelete.do")) {
 			MainCommand mDelete = new MenuDeleteCMD();
 			mDelete.excute(request, response);
 		}
-		//메뉴 삭제
+		// 메뉴 삭제
 		else if (cmd.equals("/MenuPlus.do")) {
 			MainCommand mPlus = new MenuPlusCMD();
 			mPlus.excute(request, response);
 		}
-		//가게 정보 뷰 페이지
+		// 가게 정보 뷰 페이지
 		else if (cmd.equals("/shop_info.do")) {
 			viewPage = "shop_info.jsp";
 		}

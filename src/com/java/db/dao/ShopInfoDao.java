@@ -194,31 +194,44 @@ public class ShopInfoDao {
 
 	}
 	
-	public ArrayList<ShopInfoDto> shopvalSelect(Boolean val) {
-		Connection con = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		String query = "";
-		if(val){ 
-			query = "SELECT shop_info.*, shop_manager.shop_name FROM shop_info, shop_manager\r\n"
-					+ "WHERE shop_info.shop_num = shop_manager.shop_num\r\n"
-					+ "ORDER BY shop_score DESC";
-		}else{ 
-			//query = "SELECT * FROM shop_info, review WHERE shop_info.shop_num = review.shop_num  GROUP BY  review.shop_num ORDER BY COUNT(*) desc";
-			  query = "SELECT ifnull(a.shop_num,'0000000-000-0000-00000') AS non ,b.* , c.shop_name\r\n"
-			  		+ "FROM review a   RIGHT OUTER JOIN shop_info  b \r\n"
-			  		+ "ON a.shop_num =  b.shop_num JOIN shop_manager c \r\n"
-			  		+ "ON c.shop_num = b.shop_num\r\n"
-			  		+ "GROUP BY a.shop_num\r\n"
-			  		+ "ORDER BY 1 DESC ";
-		}
+	public ArrayList<ShopInfoDto> shopReviewSelect(double userX, double userY) {
 		ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
+		
+		String query = "SELECT \r\n"
+		  		+ "	ifnull(a.shop_num,'0000000-000-0000-00000') AS non \r\n"
+		  		+ "	,b.shop_num\r\n"
+		  		+ "	,b.shop_score\r\n"
+		  		+ "	,b.shop_areax\r\n"
+		  		+ "	,b.shop_areay\r\n"
+		  		+ "	,b.shop_intro\r\n"
+		  		+ "	,b.shop_img\r\n"
+		  		+ "	,b.shop_stat\r\n"
+		  		+ "	,c.shop_name\r\n"
+		  		+ "FROM review a   RIGHT OUTER JOIN (\r\n"
+		  		+ "	SELECT *,\r\n"
+		  		+ "		(6371*acos(cos(radians(?))*cos(radians(shop_areax))\r\n"
+		  		+ "		*cos(radians(shop_areay)-radians(?))\r\n"
+		  		+ "		+sin(radians(?))*sin(radians(shop_areax))))\r\n"
+		  		+ "		AS distance\r\n"
+		  		+ "	FROM shop_info\r\n"
+		  		+ "	HAVING DISTANCE <= 2\r\n"
+		  		+ "	ORDER BY distance   \r\n"
+		  		+ "	LIMIT 0,3\r\n"
+		  		+ ")  b\r\n"
+		  		+ "ON a.shop_num =  b.shop_num JOIN shop_manager c\r\n"
+		  		+ "ON c.shop_num = b.shop_num\r\n"
+		  		+ "GROUP BY a.shop_num\r\n"
+		  		+ "ORDER BY count(a.shop_num) DESC";
+		
+		Connection con = null;
+		ResultSet rs = null;
 		try {
 			con = DriverManager.getConnection(url, uid, pwd);
-			stmt = con.createStatement();
-			//pstmt.setString(1, "val");
-			
-			rs = stmt.executeQuery(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setDouble(1, userX);
+			pstmt.setDouble(2, userY);
+			pstmt.setDouble(3, userX);
+			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				String shop_num = rs.getString("shop_num");
@@ -252,6 +265,67 @@ public class ShopInfoDao {
 		}
 		return dtos;
 	}
+	
+	public ArrayList<ShopInfoDto> shopScoreSelect(double userX, double userY) {
+		ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
+		
+		String query = "SELECT b.*, shop_manager.shop_name FROM (\r\n"
+				+ "	SELECT *,\r\n"
+				+ "		(6371*acos(cos(radians(?))*cos(radians(shop_areax))\r\n"
+				+ "		*cos(radians(shop_areay)-radians(?))\r\n"
+				+ "		+sin(radians(?))*sin(radians(shop_areax))))\r\n"
+				+ "		AS distance\r\n"
+				+ "	FROM shop_info\r\n"
+				+ "	HAVING DISTANCE <= 2\r\n"
+				+ "	ORDER BY distance   \r\n"
+				+ "	LIMIT 0,3\r\n"
+				+ ") AS b, shop_manager\r\n"
+				+ "WHERE b.shop_num = shop_manager.shop_num\r\n"
+				+ "ORDER BY shop_score DESC";
+		
+		Connection con = null;
+		ResultSet rs = null;
+		try {
+			con = DriverManager.getConnection(url, uid, pwd);
+			pstmt = con.prepareStatement(query);
+			pstmt.setDouble(1, userX);
+			pstmt.setDouble(2, userY);
+			pstmt.setDouble(3, userX);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String shop_num = rs.getString("shop_num");
+				Double shop_score = rs.getDouble("shop_score");
+				Double areax = rs.getDouble("shop_areax");
+				Double areay = rs.getDouble("shop_areay");
+				String shop_intro = rs.getString("shop_intro");
+				String shop_img = rs.getString("shop_img");
+				String shop_name = rs.getString("shop_name");
+
+				ShopInfoDto dto = new ShopInfoDto(shop_num, shop_score, areax, areay, shop_intro, shop_img, shop_name);
+				dtos.add(dto);
+			}
+			while(dtos.size()<3) {
+				ShopInfoDto dto = new ShopInfoDto("",0.0,0.0,0.0,"가게정보없음",null,"가게이름");
+				dtos.add(dto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return dtos;
+	}
+	
 	
 	public void shop_update(String shopnum, String intro) {
 		String query = "update shop_info set shop_intro=? where shop_num=?";
