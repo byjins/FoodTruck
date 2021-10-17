@@ -88,7 +88,8 @@ System.out.println(userX+"_"+userY);
         </div>-->
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon" aria-hidden="tr
+        ue"></span>
         <span class="sr-only">Previous</span>
       </a>
       <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
@@ -128,7 +129,7 @@ System.out.println(userX+"_"+userY);
       <div class="card h-100">
       <a href="#">
       <img class="card-img-top"
-      <% if(null==dto1.getShopimg()){%>src="http://placehold.it/700x400"<%}
+      <% if(null==dto1.getShopimg()){%>src="http://placehold.it/400x200"<%}
       else { %>src=<%=dto1.getShopimg()%><%}%> alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
@@ -151,10 +152,10 @@ System.out.println(userX+"_"+userY);
       <a href="#">
       <img class="card-img-top"
       <% if(null==dto1.getShopimg()){%>
-    	  src="http://placehold.it/700x400"
+    	  src="http://placehold.it/400x200"
     	  <%}else { %>
          src=<%=dto1.getShopimg()%> 
-         
+         	width="400px" height="200px"
         <%  }%>
          alt=""></a>
         <div class="card-body">
@@ -194,7 +195,7 @@ System.out.println(userX+"_"+userY);
       <a href="#">
       <img class="card-img-top" 
       <% if(null==dto2.getShopimg()){%>
-    	  src="http://placehold.it/700x400"
+    	  src="http://placehold.it/400x200"
     	  <%}else { %>
          src=<%=dto2.getShopimg()%> 
         <%  }%>
@@ -219,10 +220,10 @@ System.out.println(userX+"_"+userY);
       <a href="#">
       <img class="card-img-top"
       <% if(null==dto1.getShopimg()){%>
-    	  src="http://placehold.it/700x400"
+    	  src="http://placehold.it/400x200"
     	  <%}else { %>
          src=<%=dto1.getShopimg()%> 
-         
+         	width="400px" height="200px"
         <%  }%>
          alt=""></a>
         <div class="card-body">
