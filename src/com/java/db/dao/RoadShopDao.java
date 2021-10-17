@@ -34,14 +34,12 @@ public class RoadShopDao {
 
 			while (rs.next()) {
 				String road_num = rs.getString("road_num");
-				String city_class = rs.getString("city_class");
-				String city_subclass = rs.getString("city_subclass");
-				String road_main = rs.getString("road_main");
-				String road_sub = rs.getString("road_sub");
+				Double posx = rs.getDouble("posx");
+				Double posy = rs.getDouble("posy");
 				String road_type = rs.getString("road_type");
 				
 				
-				RoadShopDto dto = new RoadShopDto(road_num,city_class,city_subclass,road_main,road_sub,road_type);
+				RoadShopDto dto = new RoadShopDto(road_num,posx,posy,road_type);
 				dtos.add(dto);
 			}
 		} catch (Exception e) {

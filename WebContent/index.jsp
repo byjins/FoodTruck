@@ -3,7 +3,7 @@
 <%@page import="com.java.db.dao.ShopInfoDao"%>
 <%@page import="com.java.db.dto.ShopInfoDto"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="utf-8">
@@ -14,8 +14,46 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <jsp:include page="style.jsp"></jsp:include>
 </head>
-<body>
+<script>
+$(document).ready(function() {
+		if (navigator.geolocation) {
+			// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+			navigator.geolocation.getCurrentPosition(function(position) {
+				userX = position.coords.latitude; // 위도
+				userY = position.coords.longitude; // 경도
+				//ajax 호출
+				$.ajax({
+				type : 'GET',
+				url : 'UserPositionCheck.do',
+				data : {"userX": userX, "userY": userY},
+				dataType: 'json',
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",  
+				success : function(result){
+					$('#dataReview').empty();
+					$('#dataScore').empty();
+					$('#dataReview').append(result.review);
+					$('#dataScore').append(result.score);
+					$('#dataReview').load();
+					$('#dataScore').load();
+				},
+				error: function(result){
+				}
+			})
+				
+			});
+		} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+			alert("실패했습니다");
 
+		}
+});
+</script>
+<body>
+<%
+Double userX = 37.56674327625219;;
+Double userY = 126.97957478404084;
+
+System.out.println(userX+"_"+userY);
+%>
 
   <!-- Navigation -->
 	<jsp:include page = "nav.jsp"/>
@@ -70,85 +108,137 @@
     <table class="table">
     <thead class="thead-light">
       <tr>
-        <th><h4>평점순 가게정보</h4></th>
+        <th><h4>근처 리뷰순 가게정보</h4></th>
       </tr>
     </thead>
     <tbody>
     </tbody>
   </table>
-    <div class="row" id="data">
-    <% ArrayList<ShopInfoDto> dtos = new ArrayList<ShopInfoDto>();
+    <div class="row" id="dataReview">
+    <% ArrayList<ShopInfoDto> dtos1 = new ArrayList<ShopInfoDto>();
 	ShopInfoDao dao = new ShopInfoDao();
-    ShopInfoDto dto = new ShopInfoDto();
-    dtos = dao.shopvalSelect(true);
+    ShopInfoDto dto1 = new ShopInfoDto();
+    dtos1 = dao.shopReviewSelect(userX,userY);
 
-    
+    if(null!=dtos1){
     for(int i=0;i<3;i++) {
-		dto = dtos.get(i);
+		dto1 = dtos1.get(i);
 		%>
     <div class="col-lg-4 col-sm-6 portfolio-item" id="item">
       <div class="card h-100">
       <a href="#">
       <img class="card-img-top"
-      <% if(null==dto.getShopimg()){%>
-    	  src="http://placehold.it/400x200"
-    	  <%}else { %>
-         src=<%=dto.getShopimg()%> 
-        <%  }%>
-         alt="" width="400px" height="200px"></a>
+      <% if(null==dto1.getShopimg()){%>src="http://placehold.it/700x400"<%}
+      else { %>src=<%=dto1.getShopimg()%><%}%> alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
-		            <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>"><%=dto.getShopName()%></a>
+		            <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
 		          </h4>
-			          <p class="card-text"><%=dto.getShopIntro() %></p>
+			          <p class="card-text"><%=dto1.getShopIntro() %></p>
 		        </div>
          <div class="card-footer" align = "right">
-          <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>" class="btn btn-primary">가게정보</a>
+          <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>" class="btn btn-primary">가게정보</a>
         </div>
       </div>
     </div>
     <%
 		}
+    }else{
+    	 for(int i=0;i<3;i++) {
+		%>
+    <div class="col-lg-4 col-sm-6 portfolio-item" id="item">
+      <div class="card h-100">
+      <a href="#">
+      <img class="card-img-top"
+      <% if(null==dto1.getShopimg()){%>
+    	  src="http://placehold.it/700x400"
+    	  <%}else { %>
+         src=<%=dto1.getShopimg()%> 
+         
+        <%  }%>
+         alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+		            <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
+		          </h4>
+			          <p class="card-text"><%=dto1.getShopIntro() %></p>
+		        </div>
+         <div class="card-footer" align = "right">
+          <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>" class="btn btn-primary">가게정보</a>
+        </div>
+      </div>
+    </div>
+    <% }
+    }
     %>
 	</div>
 
 	<table class="table">
     <thead class="thead-light">
       <tr>
-        <th><h4>리뷰순 가게정보</h4></th>
+        <th><h4>근처 평점순 가게정보</h4></th>
       </tr>
     </thead>
   </table>
-    <div class="row">
-    <% 
-    dtos = dao.shopvalSelect(false);
-	for(int i=0;i<3;i++) {
-		dto = dtos.get(i);
+    <div class="row" id="dataScore">
+    <% ArrayList<ShopInfoDto> dtos2 = new ArrayList<ShopInfoDto>();
+    ShopInfoDto dto2 = new ShopInfoDto();
+    dtos2 = dao.shopScoreSelect(userX,userY);
+
+    if(null!=dtos2){
+    for(int i=0;i<3;i++) {
+		dto2 = dtos2.get(i);
 		%>
     <div class="col-lg-4 col-sm-6 portfolio-item">
       <div class="card h-100">
       <a href="#">
       <img class="card-img-top" 
-      <% if(null==dto.getShopimg()){%>
-    	  src="http://placehold.it/400x200"
+      <% if(null==dto2.getShopimg()){%>
+    	  src="http://placehold.it/700x400"
     	  <%}else { %>
-         src=<%=dto.getShopimg()%> 
+         src=<%=dto2.getShopimg()%> 
         <%  }%>
-         alt="" width="400px" height="200px"></a>
+         alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
-		            <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>"><%=dto.getShopName()%></a> <!-- 가게이름 -->
+		            <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>"><%=dto2.getShopName()%></a> <!-- 가게이름 -->
 		          </h4>
-			          <p class="card-text"><%=dto.getShopIntro() %></p>
+			          <p class="card-text"><%=dto2.getShopIntro() %></p>
 		        </div>
          <div class="card-footer" align = "right">
-          <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>" class="btn btn-primary">가게정보</a>
+          <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>" class="btn btn-primary">가게정보</a>
         </div>
       </div>
     </div>
-    <%
+	<%
 		}
-    %>
+    }else{
+    for(int i=0;i<3;i++) {%>
+	    <div class="col-lg-4 col-sm-6 portfolio-item" id="item">
+      <div class="card h-100">
+      <a href="#">
+      <img class="card-img-top"
+      <% if(null==dto1.getShopimg()){%>
+    	  src="http://placehold.it/700x400"
+    	  <%}else { %>
+         src=<%=dto1.getShopimg()%> 
+         
+        <%  }%>
+         alt=""></a>
+        <div class="card-body">
+          <h4 class="card-title">
+		            <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
+		          </h4>
+			          <p class="card-text"><%=dto1.getShopIntro() %></p>
+		        </div>
+         <div class="card-footer" align = "right">
+          <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>" class="btn btn-primary">가게정보</a>
+        </div>
+      </div>
+    </div>
+	
+	<%}
+    }%>
 	</div>
     <!-- /.row -->
 

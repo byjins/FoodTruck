@@ -91,7 +91,7 @@
 			mapOption = {
 				center : new kakao.maps.LatLng(37.7462521357531,
 						127.024000986311), // 지도의 중심좌표
-				level : 3
+				level : 1
 			// 지도의 확대 레벨
 			};
 
@@ -102,7 +102,7 @@
 		    var clusterer = new kakao.maps.MarkerClusterer({
 		        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
 		        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-		        minLevel: 6 // 클러스터 할 최소 지도 레벨 
+		        minLevel: 3 // 클러스터 할 최소 지도 레벨 
 		    });
 
 			//검색했을때 검색한 가게로 이동  -정현---------------------------------------------------------------------
@@ -164,7 +164,7 @@
 		    var markers = [];
 			var TimageSrc = "data:image/png;base64,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"; 
 			   // 트럭마커 이미지의 이미지 크기 입니다
-		    var TimageSize = new kakao.maps.Size(50, 50); 
+		    var TimageSize = new kakao.maps.Size(30, 30); 
 		    // 트럭마커 이미지를 생성합니다    
 		    var TmarkerImage = new kakao.maps.MarkerImage(TimageSrc, TimageSize); 
 		 
@@ -219,63 +219,65 @@
 
 		  //주소-좌표 변환 객체를 생성합니다--------------------------------------정현-------------------------
 		  //거리가게,구두수선대를 분류하여 마커를 생성합니다
-
-		    var geocoder = new kakao.maps.services.Geocoder();
-
-		    <%
+		  		<%
 		    	ArrayList<RoadShopDto> roadDto = new ArrayList<RoadShopDto>();
 		    	RoadShopDao roadDao = new RoadShopDao();
 		    	
 		    	roadDto = roadDao.RoadShopSelect();
+		    	%>
 		    	
-		    	for(int i = 0; i<roadDto.size(); i++) {
-                
-		    %>
+		    	//지도가 확대,축소,이동할때이벤트
+				  kakao.maps.event.addListener(map, 'idle', function(){
+			          var bounds = map.getBounds(); //지도의 영역값을 가져온다
+					  var markers = [];
+					  var marker = [];
+					  var posx = [];
+					  var posy = [];
+		   		      
+					<%	
+				    	for(int i = 0; i<roadDto.size(); i++) {              
+				    %>
 
-		    var city_main ='<%=roadDto.get(i).getCity_class()%>';
-		    var city_sub = '<%=roadDto.get(i).getCity_subclass()%>';
-		    var road_main = '<%=roadDto.get(i).getRoad_main()%>';
-		   	var road_sub = '<%=roadDto.get(i).getRoad_sub()%>';
-		    
-		    var adress ='서울특별시'+' '+city_main+' '+city_sub+' '+road_main+' '+road_sub;
-		       
-		    //주소로 좌표를 검색합니다
-		    geocoder.addressSearch(adress, function(result, status) {
-		       		
-		    	var markers = [];
-		     // 정상적으로 검색이 완료됐으면 
-		      if (status === kakao.maps.services.Status.OK) {
-		    	  
-		    	console.log(adress);
-			    <%
-				String shoe = "구두수선대";
-			    if((roadDto.get(i).getRoad_type()).equals(shoe)){%>
-			    	var ShoesimageSrc = "data:image/png;base64,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";
-			    	var ShoesimageSize = new kakao.maps.Size(50, 50);     
-			    	var markerImage = new kakao.maps.MarkerImage(ShoesimageSrc, ShoesimageSize);
-			    <%}else{%>
-			    	var MarketimageSrc = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADFElEQVR4Xu2bTWsTQRjH/2k8FsGU2heMgjVQ0OMq1YPRHhTFq+I3iOBFRPAzKIInofXuRe+KLYrrQavusQu17aUK6W4gPUgPSSpdmXV3m46zLyNJus/u5FK6fXaY5zf/52Vm0gJy/ink3H8oABEKYHCWAJwjrpKvAGYAOCI/ohRwHsAn4s77078A4LMsgKcA7o2MVXStWqtSBGHo83rTXmNzZ77clwHAlPEDwLGzl2pm6WjlNEUATXtt2dDnzwD4CeCEKAzCQsCVf6EwVL9y8/EkRef/ztlxFl493HScXeaDMAzCAJCXv79ohj6nN+310DAQAQjkr1VryyNjFSYhsp+mvWoa+nMWwsIwEAHokv+jCaBAvFeIDgORc5mRf5Iw4AFkSv4+gKhqwAPImPx9BG4YWI6zO8FXAx6AJ/9Tula9Q7L5CcvW3z7MfdxqrF/kmyIeAGt+ymRTfrKJs2pw3DflAbwGcC3ZOGSt3gC4HgaA98rdQa2s/HafT08fcn9S+x0I3/bH1XgFgOKK8wpVClAhoHJAaK5LlATJFry9if83gPcALhMH8MU7FBW6EaeAyL4gbWD8PiUq6/NzVgAkV3FfYyT5bt/NlQK8Vl2FQETjk9oc0G63WppWauzsdIKtapKYKZenlhYXv7Orr2CzNnAFaFrJ3N7+JXV5Mjx82DSMreCden3Dmp2dGk/idLdNsVi0TLPtvndgOaCXAIpDsDrvEAtiw4Z18jbGUwFAdtVE9r4CFACKCsh9CHQlH6lo8A8u2EukQyAA8Iz7EsZdr9MOea4AeIetSRTQ6qB15AYa5VHUV19gJlVVYBAKCBz2kqQCkKY+YBBJkIYCpGrA3gVLkhxAA0Afq4CXBO3yKDZzmQR5ceUuCSoAHIF0KqCPSTDVCsj9Zkhy4YXmpDdDvQQgO1ZmToRIH4rKrlq/7A/sULRfDsmO2wsAWbgNjuO277aYvxwV/l9N3IgE/x74LQRw9dYTgj7FT/ntywe+kQLwDwnvgRsCuVdAvJjIW4SGQO6rAPmllXVA9jtCsuOn3j73AP4A2umLbkY4vmgAAAAASUVORK5CYII=";
-			    	var MarketimageSize = new kakao.maps.Size(45, 45);     
-			    	var markerImage = new kakao.maps.MarkerImage(MarketimageSrc, MarketimageSize);
-			    <%}%>
-		         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-		
-		         // 결과값으로 받은 위치를 마커로 표시합니다
-		         var marker = new kakao.maps.Marker({
-		             map: map,
-		             position: coords,
-		             image:markerImage
-		           
-		         });
+				    var posx ='<%=roadDto.get(i).getPosx()%>';
+				    var posy = '<%=roadDto.get(i).getPosy()%>';
+				    
+				    //영역내의 마커 찍기
+	                   if(bounds.contain(new kakao.maps.LatLng(posx,posy))){
+	                    	   <%
+	   						String shoe = "구두수선대";
+	   					    if((roadDto.get(i).getRoad_type()).equals(shoe)){%>
+	   					    	var ShoesimageSrc = "data:image/png;base64,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";
+	   					    	var ShoesimageSize = new kakao.maps.Size(27, 27);     
+	   					    	var markerImage = new kakao.maps.MarkerImage(ShoesimageSrc, ShoesimageSize);
+	   					    <%}else{%>
+	   					    	var MarketimageSrc = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADFElEQVR4Xu2bTWsTQRjH/2k8FsGU2heMgjVQ0OMq1YPRHhTFq+I3iOBFRPAzKIInofXuRe+KLYrrQavusQu17aUK6W4gPUgPSSpdmXV3m46zLyNJus/u5FK6fXaY5zf/52Vm0gJy/ink3H8oABEKYHCWAJwjrpKvAGYAOCI/ohRwHsAn4s77078A4LMsgKcA7o2MVXStWqtSBGHo83rTXmNzZ77clwHAlPEDwLGzl2pm6WjlNEUATXtt2dDnzwD4CeCEKAzCQsCVf6EwVL9y8/EkRef/ztlxFl493HScXeaDMAzCAJCXv79ohj6nN+310DAQAQjkr1VryyNjFSYhsp+mvWoa+nMWwsIwEAHokv+jCaBAvFeIDgORc5mRf5Iw4AFkSv4+gKhqwAPImPx9BG4YWI6zO8FXAx6AJ/9Tula9Q7L5CcvW3z7MfdxqrF/kmyIeAGt+ymRTfrKJs2pw3DflAbwGcC3ZOGSt3gC4HgaA98rdQa2s/HafT08fcn9S+x0I3/bH1XgFgOKK8wpVClAhoHJAaK5LlATJFry9if83gPcALhMH8MU7FBW6EaeAyL4gbWD8PiUq6/NzVgAkV3FfYyT5bt/NlQK8Vl2FQETjk9oc0G63WppWauzsdIKtapKYKZenlhYXv7Orr2CzNnAFaFrJ3N7+JXV5Mjx82DSMreCden3Dmp2dGk/idLdNsVi0TLPtvndgOaCXAIpDsDrvEAtiw4Z18jbGUwFAdtVE9r4CFACKCsh9CHQlH6lo8A8u2EukQyAA8Iz7EsZdr9MOea4AeIetSRTQ6qB15AYa5VHUV19gJlVVYBAKCBz2kqQCkKY+YBBJkIYCpGrA3gVLkhxAA0Afq4CXBO3yKDZzmQR5ceUuCSoAHIF0KqCPSTDVCsj9Zkhy4YXmpDdDvQQgO1ZmToRIH4rKrlq/7A/sULRfDsmO2wsAWbgNjuO277aYvxwV/l9N3IgE/x74LQRw9dYTgj7FT/ntywe+kQLwDwnvgRsCuVdAvJjIW4SGQO6rAPmllXVA9jtCsuOn3j73AP4A2umLbkY4vmgAAAAASUVORK5CYII=";
+	   					    	var MarketimageSize = new kakao.maps.Size(25, 25);     
+	   					    	var markerImage = new kakao.maps.MarkerImage(MarketimageSrc, MarketimageSize);
+	   					    <%}%>
+	   				        
+	   			   		    var coords = new kakao.maps.LatLng(posx,posy);
 
-			    markers.push(marker);
-				// 클러스터러에 마커들을 추가합니다
-			    clusterer.addMarkers(markers);
-		     }
-		      
-		      });    
-		
-		    <%}%>
+	   			   		    var marker = new kakao.maps.Marker({
+	   			   		             map: map,
+	   			   		             position: coords,
+	   			   		             image:markerImage
+	   			   		           
+	   			   		         });
+		                    console.log(coords);
+							
+						    markers.push(marker);
+							// 클러스터러에 마커들을 추가합니다
+						    clusterer.addMarkers(markers);     
+
+	                    }
+
+	                   
+
+				    <%}%>
+
+
+				  });
+
 	
 		
 		    
@@ -289,6 +291,9 @@
 			// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
 			var zoomControl = new kakao.maps.ZoomControl();
 			map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+			
+			//맵확대 4레벨까지 제한
+			map.setMaxLevel(4);
 		</script>
 
 
