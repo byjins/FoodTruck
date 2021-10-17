@@ -36,7 +36,6 @@
  }
 .Menu {
    position: absolute;
-
    top: 10px;
 }
 </style>
@@ -69,23 +68,46 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function() {
+ 	$(document).ready(function() {
 
-   // 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
-   var floatPosition = parseInt($("#menu").css('top'));
-   // 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+   		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+   		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+   		var floatPosition = parseInt($("#menu").css('top'));
+		var useragent = navigator.userAgent.toLowerCase();
+		var Width = $(window).width();
+		var Height = $(window).height();
+		
+		$(window).resize(function() {
+			Width = $(window).width();
+			Height = $(window).height();
+		})	
+		
+		console.log(Width);
+		console.log(Height);
+					
+		if(useragent.indexOf("windows") > -1 || useragent.indexOf("mac") > -1) {
+			console.log("pc");
+			$(window).scroll(function() {
+				if(Width > 565) {
+					// 현재 스크롤 위치를 가져온다.
+					var scrollTop = $(window).scrollTop();
+					var newPosition = scrollTop + floatPosition;
+					console.log("new포지션" + newPosition);
+							$("#menu").stop().animate({
+						    	"top" : newPosition
+						      }, 500);
+				} if(Width < 560) {
+					$("#menu").stop().animate({
+				    	"top" : 0
+				      }, 0);
+				}
+			}).scroll(); 
+			
+		}  else {
+			console.log("mobile");
+		}
+}); 
 
-   $(window).scroll(function() {
-      // 현재 스크롤 위치를 가져온다.
-      var scrollTop = $(window).scrollTop();
-      var newPosition = scrollTop + floatPosition + "px";
-      $("#menu").stop().animate({
-         "top" : newPosition
-      }, 500);
-
-   }).scroll();
-
-});
 </script>
 </head>
 
@@ -137,7 +159,7 @@ $(document).ready(function() {
       <div class="row">
 
          <!-- Post Content Column -->
-         <div class="col-md-8">
+         <div class="col-sm-8">
 
             <!-- 가게 메인 사진 -->
             <div class="shop mb-4">
@@ -149,11 +171,12 @@ $(document).ready(function() {
                <%
                } else {
                %>
-               <img class="img-fluid rounded" src=<%=S_dto.getShopimg()%> alt="">
+               <img class="img-fluid rounded" src=<%=S_dto.getShopimg()%> alt="" style="width:700px; height:400px;">
                <%
                }
                %>
-               <hr>
+               </div>
+
                <!-- 가게 정보 표시 -->
                <div class="shop md-4">
                   <div class="shop-body">
@@ -284,7 +307,7 @@ $(document).ready(function() {
                      </c:forEach>
                   </ul>
                </div>
-<%--                <!-- 메뉴  -->
+<%-- 원래 가게메뉴 위치          <!-- 메뉴  -->
 
                <div class="card my-4">
                   <h5 class="card-header">
@@ -332,11 +355,11 @@ $(document).ready(function() {
 
             </div>
 
-         </div>
+
          <!-- /.Post Content Column -->
 
          <!-- Sidebar Widgets Column  -->
-         <div class="col-md-4">
+         <div class="col-sm-4">
             <!-- Side Widget -->
                <div id="menu" class="card my-4" style="width: 25rem;">
                   <h5 class="card-header">가게 메뉴</h5>
@@ -377,16 +400,17 @@ $(document).ready(function() {
                      </table>
                   </div>
                </div>
-            </div> 
-         </div>
-      <!-- /.Sidebar Widgets Column -->
-         </div> 
-          <!-- /.row -->
-       <!-- /.container -->
+            </div>  <!-- /.Sidebar Widgets Column -->
+              </div>
+         </div>   <!-- /.row -->
+       
+         <!-- /.container -->
+    
    
       <!-- Footer -->
-      <jsp:include page="footer.jsp"></jsp:include>
-
+      <div id="footer">
+      	<jsp:include page="footer.jsp"></jsp:include>
+	  </div>
       <!-- Bootstrap core JavaScript -->
       <script src="vendor/jquery/jquery.min.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

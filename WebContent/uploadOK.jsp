@@ -31,8 +31,8 @@
 			
 	MultipartRequest multi = new MultipartRequest(request,path,size,"utf-8", new DefaultFileRenamePolicy());
 	
-	file = multi.getFilesystemName("test");
-	oriFile = multi.getOriginalFileName("test");
+	file = multi.getFilesystemName("imgfile");
+	oriFile = multi.getOriginalFileName("imgfile");
 	//String uploadDir =this.getClass().getResource("").getPath();
 	 
 	out.print("저장될 파일 이름 : " + file+"<br/>");

@@ -91,12 +91,11 @@
       <a href="#">
       <img class="card-img-top"
       <% if(null==dto.getShopimg()){%>
-    	  src="http://placehold.it/700x400"
+    	  src="http://placehold.it/400x200"
     	  <%}else { %>
          src=<%=dto.getShopimg()%> 
-         
         <%  }%>
-         alt=""></a>
+         alt="" width="400px" height="200px"></a>
         <div class="card-body">
           <h4 class="card-title">
 		            <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>"><%=dto.getShopName()%></a>
@@ -131,11 +130,11 @@
       <a href="#">
       <img class="card-img-top" 
       <% if(null==dto.getShopimg()){%>
-    	  src="http://placehold.it/700x400"
+    	  src="http://placehold.it/400x200"
     	  <%}else { %>
          src=<%=dto.getShopimg()%> 
         <%  }%>
-         alt=""></a>
+         alt="" width="400px" height="200px"></a>
         <div class="card-body">
           <h4 class="card-title">
 		            <a href="shop_info.do?shop_num=<%=dto.getShopNum()%>"><%=dto.getShopName()%></a> <!-- 가게이름 -->
