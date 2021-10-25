@@ -130,7 +130,7 @@ System.out.println(userX+"_"+userY);
       <a href="#">
       <img class="card-img-top"
       <% if(null==dto1.getShopimg()){%>src="http://placehold.it/400x200"<%}
-      else { %>src=<%=dto1.getShopimg()%><%}%> alt=""></a>
+      else { %>src=<%=dto1.getShopimg()%>width="400px" height="200px"<%}%> alt=""></a>
         <div class="card-body">
           <h4 class="card-title">
 		            <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
@@ -197,7 +197,7 @@ System.out.println(userX+"_"+userY);
       <% if(null==dto2.getShopimg()){%>
     	  src="http://placehold.it/400x200"
     	  <%}else { %>
-         src=<%=dto2.getShopimg()%> 
+         src=<%=dto2.getShopimg()%> width="400px" height="200px"
         <%  }%>
          alt=""></a>
         <div class="card-body">
