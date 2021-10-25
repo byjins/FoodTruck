@@ -42,10 +42,10 @@ public class UserPositionCheckCMD implements MainCommand {
 						+ "      <a href=\'#\'>"
 						+ "      <img class=\'card-img-top\'";
 						        if(null==dto1.getShopimg()){
-						        	str1 +="src=\'http://placehold.it/400x200\'";
+						        	str1 +=" src=\'http://placehold.it/400x200\'";
 						        }
 						        else { 
-						        	str1 += "src=\'"+ dto1.getShopimg()+"width=\"400px\" height=\"200px\"\'";
+						        	str1 += " src=\'"+ dto1.getShopimg()+"' width=\'400px\' height=\'200px\'";
 						        }
 				        str1 += " alt=\'\'></a>"
 						+ "<div class=\'card-body\'>"
@@ -75,7 +75,7 @@ public class UserPositionCheckCMD implements MainCommand {
 						        	str2 +=" src=\'http://placehold.it/400x200\'";
 						        }
 						        else { 
-						        	str2 += "src=\'"+ dto1.getShopimg()+"width=\"400px\" height=\"200px\"\'";
+						        	str2 += " src=\'"+ dto1.getShopimg()+"' width=\'400px\' height=\'200px\'";
 						        }
 				        str2 += " alt=\'\'></a>"
 						+ "<div class=\'card-body\'>"
@@ -93,10 +93,11 @@ public class UserPositionCheckCMD implements MainCommand {
 			}
 		}
 		
-		/*
-		 * System.out.println(userX+"__"+userY); System.out.println("str1: "+ str1);
-		 * System.out.println("str2: "+ str2);
-		 */
+		
+		  System.out.println(userX+"__"+userY); 
+		  System.out.println("str1: "+ str1);
+		  System.out.println("str2: "+ str2);
+		 
 		String result = "{\"review\": \""+str1.toString()+"\", \"score\": \""+str2.toString()+"\"}";
 
 		out.println(result);
