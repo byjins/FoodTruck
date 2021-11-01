@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<div id = "test">123</div>
+<div id = "test">1231234</div>
 <p id="name">홍길동</p>
 
 <script>
