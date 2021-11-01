@@ -1,9 +1,11 @@
 <%@page import="com.java.db.dao.ShopInfoDao"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="java.util.Enumeration"%>
 <%@page import ="java.io.File" %>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,7 @@
 	String s_num = request.getParameter("shop_num");
 	out.println(s_num+"<br/>");
 	
-	String path = application.getRealPath("/img");
+	String path = application.getRealPath("img");
 	
 	String filename = s_num+".jpg";
 	

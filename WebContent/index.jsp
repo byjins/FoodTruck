@@ -33,8 +33,8 @@ $(document).ready(function() {
 					$('#dataScore').empty();
 					$('#dataReview').append(result.review);
 					$('#dataScore').append(result.score);
-					$('#dataReview').load();
-					$('#dataScore').load();
+					$('#dataReview').on('load');
+					$('#dataScore').on('load');
 				},
 				error: function(result){
 				}
@@ -62,7 +62,6 @@ System.out.println(userX+"_"+userY);
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
       <div class="carousel-inner" role="listbox">
         <!-- Slide One - Set the background image for this slide in the line below -->
@@ -133,7 +132,7 @@ System.out.println(userX+"_"+userY);
       	</a>
       <%}else{%>
       <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>">
-      	<img class="card-img-top" src=<%=dto1.getShopimg()%>width="400px" height="200px" alt="">
+      	<img class="card-img-top" src=<%=dto1.getShopimg()%> width="400px" height="200px" alt="">
       </a>
       <%} %>
         <div class="card-body">
@@ -157,7 +156,7 @@ System.out.println(userX+"_"+userY);
       	</a>
       <%}else{%>
       <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>">
-      	<img class="card-img-top" src=<%=dto1.getShopimg()%>width="400px" height="200px" alt="">
+      	<img class="card-img-top" src=<%=dto1.getShopimg()%> width="400px" height="200px" alt="">
       </a>
       <%} %>
         <div class="card-body">
@@ -197,7 +196,7 @@ System.out.println(userX+"_"+userY);
       	</a>
       <%}else{%>
       <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>">
-      	<img class="card-img-top" src=<%=dto2.getShopimg()%>width="400px" height="200px" alt="">
+      	<img class="card-img-top" src=<%=dto2.getShopimg()%> width="400px" height="200px" alt="">
       </a>
       <%} %>
         <div class="card-body">
@@ -220,7 +219,7 @@ System.out.println(userX+"_"+userY);
       	</a>
       <%}else{%>
       <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>">
-      	<img class="card-img-top" src=<%=dto2.getShopimg()%>width="400px" height="200px" alt="">
+      	<img class="card-img-top" src=<%=dto2.getShopimg()%> width="400px" height="200px" alt="">
       </a>
       <%} %>
         <div class="card-body">
