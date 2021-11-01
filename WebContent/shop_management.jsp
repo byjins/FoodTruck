@@ -60,7 +60,8 @@
 <!-- Custom styles for this template -->
 <link href="css/modern-business.css" rel="stylesheet">
 <!-- Jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 	function infomodi() {
 		var s_intro = infomodify.introarea.value;
@@ -75,9 +76,22 @@
 
 	function plusmenu() {
 		var plus_window;
+
 		plus_window = window.open("menu_plus.jsp", "menuplus",
 				"width=500, height=450, left=900, top=150");
 		document.forms['menuplus'].submit();
+	}
+
+	window.onload = function() {
+		document
+				.querySelector('.custom-file-input')
+				.addEventListener(
+						'change',
+						function(e) {
+							var fileName = document.getElementById("imgfile").files[0].name;
+							var nextSibling = e.target.nextElementSibling
+							nextSibling.innerText = fileName
+						})
 	}
 </script>
 
@@ -89,7 +103,7 @@
 	String num;%>
 
 	<%
-	ShopInfoDto S_dto = new ShopInfoDto();
+		ShopInfoDto S_dto = new ShopInfoDto();
 	ShopInfoDao S_dao = new ShopInfoDao();
 
 	num = request.getParameter("shop_num");
@@ -103,7 +117,7 @@
 
 	<!-- 평점 -->
 	<%
-	ArrayList<ShopInfoDto> S_dtos = new ArrayList<ShopInfoDto>();
+		ArrayList<ShopInfoDto> S_dtos = new ArrayList<ShopInfoDto>();
 	S_dtos = S_dao.shop_score(num);
 
 	for (int i = 0; i < S_dtos.size(); i++) {
@@ -130,28 +144,33 @@
 				<!-- 가게 메인 사진 -->
 				<div class="shop mb-4">
 					<%
-					if (null == S_dto.getShopimg()) {
+						if (null == S_dto.getShopimg()) {
 					%>
-					<img class="img-fluid rounded" src="http://placehold.it/700x400" alt="" width="700" height="400">
+					<img class="img-fluid rounded" src="http://placehold.it/700x400"
+						alt="" width="700" height="400">
 					<%
-					} else {
+						} else {
 					%>
-					<img class="img-fluid rounded" src=<%=S_dto.getShopimg()%> alt="" name="img_field" style="width: 700px; height: 400px;">
+					<img class="img-fluid rounded" src=<%=S_dto.getShopimg()%> alt=""
+						name="img_field" style="width: 700px; height: 400px;">
 					<%
-					}
+						}
 					%>
-					<form name="img_upload" action="uploadOK.jsp?shop_num=<%=num%>" method="post" enctype="multipart/form-data">
+					<form name="img_upload" action="uploadOK.jsp?shop_num=<%=num%>"
+						method="post" enctype="multipart/form-data">
 						<div class="row mt-2">
 							<div class="col-sm-10">
 								<div class="custom-file">
-									<input type="file" id="imgfile" name="imgfile"> 
-									<label class="custom-file-label" for="imgfile" data-browse="Browse">이미지를 선택해주세요</label>
+									<input type="file" class="custom-file-input" id="imgfile"
+										name="imgfile"> <label class="custom-file-label"
+										for="imgfile">이미지를 선택해주세요</label>
 								</div>
 							</div>
 							<div class="col-sm-2">
-								<input type="submit" value="업로드" class="btn btn-primary" style="margin: 0px 0px 0px -5px;">
+								<input type="submit" value="업로드" class="btn btn-primary"
+									style="margin: 0px 0px 0px -5px;">
+							</div>
 						</div>
-					</div>
 					</form>
 				</div>
 
@@ -198,7 +217,7 @@
 	int M_num, M_price;%>
 
 						<%
-						ArrayList<MenuDto> M_dtos = new ArrayList<MenuDto>();
+							ArrayList<MenuDto> M_dtos = new ArrayList<MenuDto>();
 						MenuDao M_dao = new MenuDao();
 						M_dtos = M_dao.menuinfo(num);
 						%>
@@ -212,10 +231,10 @@
 								<th>삭제</th>
 							</tr>
 							<%
-							for (int i = 0; i < M_dtos.size(); i++) {
+								for (int i = 0; i < M_dtos.size(); i++) {
 							%>
 							<%
-							M_num = M_dtos.get(i).getMenuNum();
+								M_num = M_dtos.get(i).getMenuNum();
 							M_name = M_dtos.get(i).getMenuName();
 							M_price = M_dtos.get(i).getMenuPrice();
 							M_intro = M_dtos.get(i).getMenuIntro();
@@ -232,7 +251,7 @@
 											class="btn btn-primary" value="삭제" />
 									</form></td>
 								<%
-								}
+									}
 								%>
 							</tr>
 						</table>
@@ -248,7 +267,7 @@
 				<!-- 댓글창 -->
 				<h4>리뷰</h4>
 				<%
-				//날짜 표시
+					//날짜 표시
 				Date now = new Date();
 				SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
 				String today = sf.format(now);
@@ -256,11 +275,11 @@
 
 				<!-- 페이징 -->
 				<%!int listcnt, startpage, endpage;
-							int pages;
-							int range = 1;%>
+				int pages;
+				int range = 1;%>
 
 				<%
-				PaginationDto P_dto = new PaginationDto();
+					PaginationDto P_dto = new PaginationDto();
 				PagingCountDao Pcount_dao = new PagingCountDao();
 				PagingListDao Plist_dao = new PagingListDao();
 
@@ -276,13 +295,13 @@
 
 				<!-- 댓글 -->
 				<%!int review_num = 0;
-					Double review_score = null;
-					String review_date = null;
-					String review_comment = null;
-					String review_id = null;%>
+						Double review_score = null;
+						String review_date = null;
+						String review_comment = null;
+						String review_id = null;%>
 
 				<%
-				ArrayList<ReviewDto> R_dtos = new ArrayList<ReviewDto>();
+					ArrayList<ReviewDto> R_dtos = new ArrayList<ReviewDto>();
 				PagingListDao R_pagingdao = new PagingListDao();
 				ReviewDao R_dao = new ReviewDao();
 
@@ -292,11 +311,11 @@
 				<div class="card mb-4">
 
 					<%
-					for (int i = 0; i < R_dtos.size(); i++) {
+						for (int i = 0; i < R_dtos.size(); i++) {
 					%>
 
 					<%
-					review_id = R_dtos.get(i).getMemberId();
+						review_id = R_dtos.get(i).getMemberId();
 					review_date = R_dtos.get(i).getReviewDate();
 					review_score = R_dtos.get(i).getreviewScore();
 					review_comment = R_dtos.get(i).getReviewComment();
@@ -312,7 +331,7 @@
 					<hr>
 
 					<%
-					}
+						}
 					%>
 
 					<!-- 페이징 -->

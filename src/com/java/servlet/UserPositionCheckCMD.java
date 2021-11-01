@@ -33,16 +33,22 @@ public class UserPositionCheckCMD implements MainCommand {
 
 		PrintWriter out = response.getWriter();
 		String str1 = ""; //Review
-		String str2 = ""; //Scroe
+		String str2 = ""; //Score
 		if (null != dtos1) {
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 6; i++) {
 				dto1 = dtos1.get(i);
 				str1 += "    <div class=\'col-lg-4 col-sm-6 portfolio-item\' id=\'item\'>"
-						+ "      <div class=\'card h-100\'>"
-						+ "      <a href=\'#\'>"
-						+ "      <img class=\'card-img-top\'";
+						+ "      <div class=\'card h-100\'>";
+								if(null==dto1.getShopNum()) {
+									str1 += "<a href=\'#\'>"
+											+ "      <img class=\'card-img-top\'";
+								}
+								else {
+									str1 += "<a href=\'shop_info.do?shop_num="+dto1.getShopNum()+"\'>"
+											+ "      <img class=\'card-img-top\'";
+								}
 						        if(null==dto1.getShopimg()){
-						        	str1 +=" src=\'http://placehold.it/400x200\'";
+						        	str1 +=" src=\'http://placehold.it/400x230\'";
 						        }
 						        else { 
 						        	str1 += " src=\'"+ dto1.getShopimg()+"' width=\'400px\' height=\'200px\'";
@@ -54,9 +60,6 @@ public class UserPositionCheckCMD implements MainCommand {
 						+ "</h4>"
 						+ "<p class=\'card-text\'>"+dto1.getShopIntro()+"</p>"
 						+ "</div>"
-						+ "<div class=\'card-footer\' align = \'right\'>"
-						+ "<a href=\'shop_info.do?shop_num="+dto1.getShopNum()+"\' class=\'btn btn-primary\'>가게정보</a>"
-						+ "</div>"
 						+ "</div>"
 						+ "</div>";
 				        
@@ -65,14 +68,19 @@ public class UserPositionCheckCMD implements MainCommand {
 
 		dtos1 = dao.shopScoreSelect(userX, userY);
 		if (null != dtos1) {
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 6; i++) {
 				dto1 = dtos1.get(i);
 				str2 += "<div class=\'col-lg-4 col-sm-6 portfolio-item\' id=\'item\'>"
-						+ "<div class=\'card h-100\'>"
-						+ "<a href=\'#\'>"
-						+ "<img class=\'card-img-top\'";
+						+ "<div class=\'card h-100\'>";
+								if(null==dto1.getShopNum()) {
+									str2 +=  "<a href=\'#'>"
+											+ "<img class=\'card-img-top\'";
+								}else {
+									 str2 += "<a href=\'shop_info.do?shop_num="+dto1.getShopNum()+"\'>"
+												+ "<img class=\'card-img-top\'";
+								}
 						        if(null==dto1.getShopimg()){
-						        	str2 +=" src=\'http://placehold.it/400x200\'";
+						        	str2 +=" src=\'http://placehold.it/400x230\'";
 						        }
 						        else { 
 						        	str2 += " src=\'"+ dto1.getShopimg()+"' width=\'400px\' height=\'200px\'";
@@ -84,9 +92,6 @@ public class UserPositionCheckCMD implements MainCommand {
 						+ "</h4>"
 						+ "<p class=\'card-text\'>"+dto1.getShopIntro()+"</p>"
 						+ "</div>"
-						+ "<div class=\'card-footer\' align = \'right\'>"
-						+ "<a href=\'shop_info.do?shop_num="+dto1.getShopNum()+"\' class=\'btn btn-primary\'>가게정보</a>"
-						+ "</div>"
 						+ "</div>"
 						+ "</div>";
 				        
@@ -94,9 +99,11 @@ public class UserPositionCheckCMD implements MainCommand {
 		}
 		
 		
-		  System.out.println(userX+"__"+userY); 
+		
+		  System.out.println(userX+"__"+userY);
 		  System.out.println("str1: "+ str1);
 		  System.out.println("str2: "+ str2);
+		 
 		 
 		String result = "{\"review\": \""+str1.toString()+"\", \"score\": \""+str2.toString()+"\"}";
 

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.java.servlet.ChangePwCMD;
 import com.java.servlet.FindIdCMD;
 import com.java.servlet.FindPwCMD;
+import com.java.servlet.ImageUpLoadCMD;
 import com.java.servlet.LoginMemberCMD;
 import com.java.servlet.LoginShopCMD;
 import com.java.servlet.MainCommand;
@@ -212,11 +213,16 @@ public class MainController extends HttpServlet {
 			MainCommand mPlus = new MenuPlusCMD();
 			mPlus.excute(request, response);
 		}
+		// 이미지 업로드
+		else if (cmd.equals("/ImageUpload.do")) {
+			MainCommand imageUpload = new ImageUpLoadCMD();
+			imageUpload.excute(request, response);
+		}
 		// 가게 정보 뷰 페이지
 		else if (cmd.equals("/shop_info.do")) {
 			viewPage = "shop_info.jsp";
 		}
-
+			
 		else if (cmd.equals("/shop_info.do")) {
 			viewPage = "shop_info.jsp";
 		}

@@ -245,8 +245,8 @@ public class ShopInfoDao {
 				ShopInfoDto dto = new ShopInfoDto(shop_num, shop_score, areax, areay, shop_intro, shop_img, shop_name);
 				dtos.add(dto);
 			}
-			while(dtos.size()<3) {
-				ShopInfoDto dto = new ShopInfoDto("",0.0,0.0,0.0,"가게정보없음",null,"가게이름");
+			while(dtos.size()<6) {
+				ShopInfoDto dto = new ShopInfoDto(null,0.0,0.0,0.0,"가게정보없음",null,"가게이름");
 				dtos.add(dto);
 			}
 		} catch (Exception e) {
@@ -305,8 +305,8 @@ public class ShopInfoDao {
 				ShopInfoDto dto = new ShopInfoDto(shop_num, shop_score, areax, areay, shop_intro, shop_img, shop_name);
 				dtos.add(dto);
 			}
-			while(dtos.size()<3) {
-				ShopInfoDto dto = new ShopInfoDto("",0.0,0.0,0.0,"가게정보없음",null,"가게이름");
+			while(dtos.size()<6) {
+				ShopInfoDto dto = new ShopInfoDto(null,0.0,0.0,0.0,"가게정보없음",null,"가게이름");
 				dtos.add(dto);
 			}
 		} catch (Exception e) {

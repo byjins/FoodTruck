@@ -107,7 +107,7 @@ System.out.println(userX+"_"+userY);
 
     <!-- Portfolio Section -->
     <table class="table">
-    <thead class="thead-light">
+    <thead class="thead-dark">
       <tr>
         <th><h4>근처 리뷰순 가게정보</h4></th>
       </tr>
@@ -122,51 +122,50 @@ System.out.println(userX+"_"+userY);
     dtos1 = dao.shopReviewSelect(userX,userY);
 
     if(null!=dtos1){
-    for(int i=0;i<3;i++) {
+    for(int i=0;i<6;i++) {
 		dto1 = dtos1.get(i);
 		%>
     <div class="col-lg-4 col-sm-6 portfolio-item" id="item">
       <div class="card h-100">
-      <a href="#">
-      <img class="card-img-top"
-      <% if(null==dto1.getShopimg()){%>src="http://placehold.it/400x200"<%}
-      else { %>src=<%=dto1.getShopimg()%>width="400px" height="200px"<%}%> alt=""></a>
+      <%if(null==dto1.getShopNum()){%>
+	 	<a href="#">
+      		<img class="card-img-top" src="http://placehold.it/400x230" alt="">
+      	</a>
+      <%}else{%>
+      <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>">
+      	<img class="card-img-top" src=<%=dto1.getShopimg()%>width="400px" height="200px" alt="">
+      </a>
+      <%} %>
         <div class="card-body">
           <h4 class="card-title">
 		            <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
 		          </h4>
 			          <p class="card-text"><%=dto1.getShopIntro() %></p>
 		        </div>
-         <div class="card-footer" align = "right">
-          <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>" class="btn btn-primary">가게정보</a>
-        </div>
       </div>
     </div>
     <%
 		}
     }else{
-    	 for(int i=0;i<3;i++) {
+    	 for(int i=0;i<6;i++) {
 		%>
     <div class="col-lg-4 col-sm-6 portfolio-item" id="item">
       <div class="card h-100">
-      <a href="#">
-      <img class="card-img-top"
-      <% if(null==dto1.getShopimg()){%>
-    	  src="http://placehold.it/400x200"
-    	  <%}else { %>
-         src=<%=dto1.getShopimg()%> 
-         	width="400px" height="200px"
-        <%  }%>
-         alt=""></a>
+            <%if(null==dto1.getShopNum()){%>
+	 	<a href="#">
+      		<img class="card-img-top" src="http://placehold.it/400x230" alt="">
+      	</a>
+      <%}else{%>
+      <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>">
+      	<img class="card-img-top" src=<%=dto1.getShopimg()%>width="400px" height="200px" alt="">
+      </a>
+      <%} %>
         <div class="card-body">
           <h4 class="card-title">
 		            <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
 		          </h4>
 			          <p class="card-text"><%=dto1.getShopIntro() %></p>
 		        </div>
-         <div class="card-footer" align = "right">
-          <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>" class="btn btn-primary">가게정보</a>
-        </div>
       </div>
     </div>
     <% }
@@ -175,7 +174,7 @@ System.out.println(userX+"_"+userY);
 	</div>
 
 	<table class="table">
-    <thead class="thead-light">
+    <thead class="thead-dark">
       <tr>
         <th><h4>근처 평점순 가게정보</h4></th>
       </tr>
@@ -187,54 +186,49 @@ System.out.println(userX+"_"+userY);
     dtos2 = dao.shopScoreSelect(userX,userY);
 
     if(null!=dtos2){
-    for(int i=0;i<3;i++) {
+    for(int i=0;i<6;i++) {
 		dto2 = dtos2.get(i);
 		%>
     <div class="col-lg-4 col-sm-6 portfolio-item">
       <div class="card h-100">
-      <a href="#">
-      <img class="card-img-top" 
-      <% if(null==dto2.getShopimg()){%>
-    	  src="http://placehold.it/400x200"
-    	  <%}else { %>
-         src=<%=dto2.getShopimg()%> width="400px" height="200px"
-        <%  }%>
-         alt=""></a>
+            <%if(null==dto2.getShopNum()){%>
+	 	<a href="#">
+      		<img class="card-img-top" src="http://placehold.it/400x230" alt="">
+      	</a>
+      <%}else{%>
+      <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>">
+      	<img class="card-img-top" src=<%=dto2.getShopimg()%>width="400px" height="200px" alt="">
+      </a>
+      <%} %>
         <div class="card-body">
           <h4 class="card-title">
 		            <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>"><%=dto2.getShopName()%></a> <!-- 가게이름 -->
 		          </h4>
 			          <p class="card-text"><%=dto2.getShopIntro() %></p>
 		        </div>
-         <div class="card-footer" align = "right">
-          <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>" class="btn btn-primary">가게정보</a>
-        </div>
       </div>
     </div>
 	<%
 		}
     }else{
-    for(int i=0;i<3;i++) {%>
+    for(int i=0;i<6;i++) {%>
 	    <div class="col-lg-4 col-sm-6 portfolio-item" id="item">
       <div class="card h-100">
-      <a href="#">
-      <img class="card-img-top"
-      <% if(null==dto1.getShopimg()){%>
-    	  src="http://placehold.it/400x200"
-    	  <%}else { %>
-         src=<%=dto1.getShopimg()%> 
-         	width="400px" height="200px"
-        <%  }%>
-         alt=""></a>
+           <%if(null==dto2.getShopNum()){%>
+	 	<a href="#">
+      		<img class="card-img-top" src="http://placehold.it/400x230" alt="">
+      	</a>
+      <%}else{%>
+      <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>">
+      	<img class="card-img-top" src=<%=dto2.getShopimg()%>width="400px" height="200px" alt="">
+      </a>
+      <%} %>
         <div class="card-body">
           <h4 class="card-title">
-		            <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
+		            <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>"><%=dto2.getShopName()%></a>
 		          </h4>
-			          <p class="card-text"><%=dto1.getShopIntro() %></p>
+			          <p class="card-text"><%=dto2.getShopIntro() %></p>
 		        </div>
-         <div class="card-footer" align = "right">
-          <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>" class="btn btn-primary">가게정보</a>
-        </div>
       </div>
     </div>
 	
