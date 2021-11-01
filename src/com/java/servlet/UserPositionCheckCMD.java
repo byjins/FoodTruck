@@ -55,9 +55,13 @@ public class UserPositionCheckCMD implements MainCommand {
 						        }
 				        str1 += " alt=\'\'></a>"
 						+ "<div class=\'card-body\'>"
-						+ "<h4 class=\'card-title\'>"
-						+ "<a href=\'shop_info.do?shop_num="+dto1.getShopNum()+"\'>"+dto1.getShopName()+"</a>"
-						+ "</h4>"
+						+ "<h4 class=\'card-title\'>";
+				        if(null==dto1.getShopNum()) {
+							str1 += "<a href=\'#'>"+dto1.getShopName()+"</a>";
+						}else {
+							 str1 += "<a href=\'shop_info.do?shop_num="+dto1.getShopNum()+"\'>"+dto1.getShopName()+"</a>";
+						}
+						str1+= "</h4>"
 						+ "<p class=\'card-text\'>"+dto1.getShopIntro()+"</p>"
 						+ "</div>"
 						+ "</div>"
@@ -87,9 +91,13 @@ public class UserPositionCheckCMD implements MainCommand {
 						        }
 				        str2 += " alt=\'\'></a>"
 						+ "<div class=\'card-body\'>"
-						+ "<h4 class=\'card-title\'>"
-						+ "<a href=\'shop_info.do?shop_num="+dto1.getShopNum()+"\'>"+dto1.getShopName()+"</a>"
-						+ "</h4>"
+						+ "<h4 class=\'card-title\'>";
+				        if(null==dto1.getShopNum()) {
+							str2 += "<a href=\'#'>"+dto1.getShopName()+"</a>";
+						}else {
+							 str2 += "<a href=\'shop_info.do?shop_num="+dto1.getShopNum()+"\'>"+dto1.getShopName()+"</a>";
+						}
+						str2 += "</h4>"
 						+ "<p class=\'card-text\'>"+dto1.getShopIntro()+"</p>"
 						+ "</div>"
 						+ "</div>"
