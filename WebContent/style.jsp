@@ -21,5 +21,11 @@ body {
 footer {
 	margin-top: auto;
 }
+#mainSpan {
+font-size:22px;
+}
+#mainStrong{
+color:#FF8000;
+}
  </style>
 

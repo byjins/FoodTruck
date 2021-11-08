@@ -136,10 +136,16 @@ System.out.println(userX+"_"+userY);
       </a>
       <%} %>
         <div class="card-body">
-          <h4 class="card-title">
-		            <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
-		          </h4>
-			          <p class="card-text"><%=dto1.getShopIntro() %></p>
+        <span id = "mainSpan">
+        <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
+        </span>
+        <%if(dto1.getShopNum()!=null){ %>
+		       <strong id="mainStrong"><%=dto1.getShopScore() %></strong>
+		       <%}else{ %>
+		       <strong id="mainStrong"></strong>
+		       <%} %>
+			   <p class="card-text"><%=dto1.getShopIntro() %></p>
+			          
 		        </div>
       </div>
     </div>
@@ -160,10 +166,15 @@ System.out.println(userX+"_"+userY);
       </a>
       <%} %>
         <div class="card-body">
-          <h4 class="card-title">
-		            <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
-		          </h4>
-			          <p class="card-text"><%=dto1.getShopIntro() %></p>
+             <span id = "mainSpan">
+        <a href="shop_info.do?shop_num=<%=dto1.getShopNum()%>"><%=dto1.getShopName()%></a>
+        </span>
+        <%if(dto1.getShopNum()!=null){ %>
+		       <strong id="mainStrong"><%=dto1.getShopScore() %></strong>
+		       <%}else{ %>
+		       <strong id="mainStrong"></strong>
+		       <%} %>
+			   <p class="card-text"><%=dto1.getShopIntro() %></p>
 		        </div>
       </div>
     </div>
@@ -200,10 +211,16 @@ System.out.println(userX+"_"+userY);
       </a>
       <%} %>
         <div class="card-body">
-          <h4 class="card-title">
-		            <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>"><%=dto2.getShopName()%></a> <!-- 가게이름 -->
-		          </h4>
-			          <p class="card-text"><%=dto2.getShopIntro() %></p>
+         <span id = "mainSpan">
+        <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>"><%=dto2.getShopName()%></a>
+        </span>
+        <%if(dto2.getShopNum()!=null){ %>
+		       <strong id="mainStrong"><%=dto2.getShopScore() %></strong>
+		       <%}else{ %>
+		       <strong id="mainStrong"></strong>
+		       <%} %>
+			   <p class="card-text"><%=dto2.getShopIntro() %></p>
+			          
 		        </div>
       </div>
     </div>
@@ -223,10 +240,15 @@ System.out.println(userX+"_"+userY);
       </a>
       <%} %>
         <div class="card-body">
-          <h4 class="card-title">
-		            <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>"><%=dto2.getShopName()%></a>
-		          </h4>
-			          <p class="card-text"><%=dto2.getShopIntro() %></p>
+               <span id = "mainSpan">
+        <a href="shop_info.do?shop_num=<%=dto2.getShopNum()%>"><%=dto2.getShopName()%></a>
+        </span>
+        <%if(dto2.getShopNum()!=null){ %>
+		       <strong id="mainStrong"><%=dto2.getShopScore() %></strong>
+		       <%}else{ %>
+		       <strong id="mainStrong"></strong>
+		       <%} %>
+			   <p class="card-text"><%=dto2.getShopIntro() %></p>
 		        </div>
       </div>
     </div>

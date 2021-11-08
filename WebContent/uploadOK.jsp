@@ -17,7 +17,7 @@
 	String s_num = request.getParameter("shop_num");
 	out.println(s_num+"<br/>");
 	
-	String path = application.getRealPath("img");
+	String path = application.getRealPath("/img");
 	
 	String filename = s_num+".jpg";
 	
