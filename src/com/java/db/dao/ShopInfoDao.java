@@ -216,7 +216,7 @@ public class ShopInfoDao {
 		  		+ "	FROM shop_info\r\n"
 		  		+ "	HAVING DISTANCE <= 3\r\n"
 		  		+ "	ORDER BY distance   \r\n"
-		  		+ "	LIMIT 0,3\r\n"
+		  		+ "	LIMIT 0,6\r\n"
 		  		+ ")  b\r\n"
 		  		+ "ON a.shop_num =  b.shop_num JOIN shop_manager c\r\n"
 		  		+ "ON c.shop_num = b.shop_num\r\n"
@@ -278,7 +278,7 @@ public class ShopInfoDao {
 				+ "	FROM shop_info\r\n"
 				+ "	HAVING DISTANCE <= 3\r\n"
 				+ "	ORDER BY distance   \r\n"
-				+ "	LIMIT 0,3\r\n"
+				+ "	LIMIT 0,6\r\n"
 				+ ") AS b, shop_manager\r\n"
 				+ "WHERE b.shop_num = shop_manager.shop_num\r\n"
 				+ "ORDER BY shop_score DESC";
