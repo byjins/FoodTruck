@@ -57,45 +57,48 @@
         <ul class="navbar-nav xs-auto">
 	
           <%if (mId == null && sId == null) { %>
-          <li class="nav-item">
+          <li class="nav-item" style="margin: 3px 0px 3px 0px" >
             <a class="nav-link" href="loginmain.do">로그인</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" style="margin: 3px 0px 3px 0px" >
             <a class="nav-link" href="signupmain.do">회원가입</a>
           </li>
-         <li class="nav-item">
+         <li class="nav-item" style="margin: 3px 0px 3px 0px" >
 			<form action="map.do">
 				<button type="submit" class="btn btn-light">지도</button>
 			</form>
           </li>
           
           <!-- 사장님 로그인 -->
-          <%}else if(sId != null){ 
-          SManagerInfoDto sdto = new SManagerInfoDto();
-          SManagerInfoDao sdao = new SManagerInfoDao();
-          sdto = sdao.info(sId);%>
-          <li class="nav-item">
+          <%
+          	}else if(sId != null){ 
+         		SManagerInfoDto sdto = new SManagerInfoDto();
+          		SManagerInfoDao sdao = new SManagerInfoDao();
+         		sdto = sdao.info(sId);
+          %>
+          <li class="nav-item" style="margin: 3px 0px 3px 0px" >
             <a class="nav-link" href="myinfo.do"><%=sId %>님</a>
           </li>
-          <li class="nav-item">
+          
+          <li class="nav-item" style="margin: 3px 0px 3px 0px" >
             <a class="nav-link" href="logout.do">로그아웃</a>
           </li>
-          <li class="nav-item">
+          
+          <li class="nav-item" style="margin: 3px 0px 3px 0px">
             <a class="nav-link" href="shop_management.do?shop_num=<%=sdto.getNum()%>">가게관리</a>
           </li>
     	
-		  <li class="nav-item">
+		  <li class="nav-item" style="margin: 3px 0px 3px 0px" >
 			<form action="map.do">
-				<button type="submit" class="btn btn-light">지도</button>
+				<button type="submit" class="btn btn-light">지도</button>&nbsp
 			</form>
           </li>
-      	 <li>
-
-				<input type="button" class="btn btn-info" onclick="openPosition()" value = "영업시작">		
-		
+          
+      	  <li style="margin: 3px 0px 3px 0px">
+			<input type="button" class="btn btn-info" onclick="openPosition()" value = "영업시작" >&nbsp		
           </li>
             
- 		 <li>
+ 		  <li style="margin: 3px 0px 3px 0px">
 			<form action="shopclose.do">
 				<button type="submit" class="btn btn-info">영업종료</button>
 			</form>
