@@ -100,13 +100,13 @@
           </li>
           <!-- 이용자 로그인 -->
           <%}else if(mId != null){ %> 
-          <li class="nav-item">
+          <li class="nav-item" style="margin: 3px 0px 3px 0px">
             <a class="nav-link" href="myinfo.do"><%=mId %>님</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" style="margin: 3px 0px 3px 0px">
             <a class="nav-link" href="logout.do">로그아웃</a>
           </li>
-		  <li class="nav-item">
+		  <li class="nav-item" style="margin: 3px 0px 3px 0px">
 			<form action="map.do">
 				<button type="submit" class="btn btn-light">지도</button>
 			</form>
@@ -116,7 +116,7 @@
       
         </ul>
      	<ul class="navbar-nav ml-auto xs-auto">
-        	<li class="nav-item">
+        	<li class="nav-item" style="margin: 3px 0px 3px 0px">
      				<form class="form-inline " method = "get" action ="map.do">
      					 <div class="input-group">
      	 				 <input class="form-control col-xs-8 col-sm-8 col-md-8 col-lg-8 " type="text" placeholder="검색" name = "search">

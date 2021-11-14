@@ -97,7 +97,7 @@
 
 </head>
 
-<body>
+<body >
    <%!String S_name, S_intro;
    Double S_score, S_areax, S_areay;
    String num;%>
@@ -150,7 +150,7 @@
                <%
                   if (null == S_dto.getShopimg()) {
                %>
-               <img class="img-fluid rounded" src="http://placehold.it/730x400"
+               <img class="img-fluid rounded" src="http://placehold.it/이미지"
                   alt="" width="730" height="400">
                <%
                   } else {
@@ -245,10 +245,10 @@
                         <td><%=M_name%></td>
                         <td><%=M_price%></td>
                         <td><%=M_intro%></td>
-                        <td><form action="MenuDelete.do" method="post" style="margin: 0px -10px;">
+                        <td><form action="MenuDelete.do" method="post" style="margin: 0px -3px;">
                               <input type="hidden" id="shop_num" name="shop_num"value=<%=num%> /> 
                               <input type="hidden" id="menu_num"name="menu_num" value=<%=M_num%> /> 
-                              <input type="submit"class="btn btn-primary" value="삭제" />
+                              <input type="submit"class="btn btn-danger btn-sm" style="font-size:7px" value="삭제" />
                            </form></td>
                         <%
                            }

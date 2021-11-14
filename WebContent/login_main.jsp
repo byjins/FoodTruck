@@ -17,7 +17,7 @@
 	<!-- 로그인 -->
 	<br/><br/><br/><br/>
 
-	<div class="container col-lg-6 col-md-8 col-sm-6 col-xs-4">
+	<div class="container col-lg-6 col-md-8 col-sm-8 col-xs-4">
 
 		<div class="jumbotron" style="padding-top: 70px; margin-top: 50px;">
 			<form method="post" action="loginmemberview.do">
