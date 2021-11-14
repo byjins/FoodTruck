@@ -10,12 +10,7 @@
 <title>로그인</title>
 
 
-<style type="text/css">
-#searchbtn {
-	margin: 0px 130px 0px 0px;
-}
-</style>
-</head>
+
   <script>
     function openPosition(){
    if (navigator.geolocation) {
@@ -39,7 +34,7 @@
     }
 
    </script>
-<body>
+
 <%
 	String mId = (String)session.getAttribute("member_id");   //사업자
 	String sId = (String)session.getAttribute("shop_id");   //이용자		 
@@ -135,5 +130,6 @@
       </div>
     </div>
   </nav>
-</body>
+</head>
+
 </html>
