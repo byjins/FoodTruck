@@ -57,7 +57,8 @@ System.out.println(userX+"_"+userY);
 
   <!-- Navigation -->
 	<jsp:include page = "nav.jsp"/>
-  <header>
+	
+  	<header>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -79,7 +80,7 @@ System.out.println(userX+"_"+userY);
           </div>
         </div>
         <!-- Slide Three - Set the background image for this slide in the line below -->
-<!-- 		     <div class="carousel-item" style="background-image: url(img/slide3.jpg)">
+		<!-- <div class="carousel-item" style="background-image: url(img/slide3.jpg)">
           <div class="carousel-caption d-none d-md-block">
             <h3>Third Slide</h3>
             <p>This is a description for the third slide.</p>
