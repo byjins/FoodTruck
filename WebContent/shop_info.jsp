@@ -21,6 +21,15 @@
 
 
 <style type="text/css">
+
+tr th {
+	font-size: 12px;
+}
+
+tr td {
+	font-size: 12px;
+}
+
 .shop {
    position: relative;
    display: -ms-flexbox;
@@ -73,6 +82,7 @@
    		// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
    		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
    		var floatPosition = parseInt($("#menu").css('top'));
+   		var newmenu = $('#menu').html();
 		var useragent = navigator.userAgent.toLowerCase();
 		var Width = $(window).width();
 		var Height = $(window).height();
@@ -81,18 +91,16 @@
 			Width = $(window).width();
 			Height = $(window).height();
 		})	
-		
-		console.log(Width);
-		console.log(Height);
 					
 		if(useragent.indexOf("windows") > -1 || useragent.indexOf("mac") > -1) {
 			console.log("pc");
+			$('#mobilemenu').hide();
 			$(window).scroll(function() {
 				if(Width > 565) {
 					// 현재 스크롤 위치를 가져온다.
 					var scrollTop = $(window).scrollTop();
 					var newPosition = scrollTop + floatPosition;
-					console.log("new포지션" + newPosition);
+					
 							$("#menu").stop().animate({
 						    	"top" : newPosition
 						      }, 500);
@@ -105,6 +113,10 @@
 			
 		}  else {
 			console.log("mobile");
+			$('#pcmenu').empty();
+			$('#mobilemenu').append(newmenu);
+			$('#mobilemenu').on('load');
+		
 		}
 }); 
 
@@ -122,33 +134,35 @@
 
 
 
-      <%!String S_name, S_intro;
-   Double S_score, S_areax, S_areay;
-   String num;%>
+      <%!
+      	String S_name, S_intro;
+   	 	Double S_score, S_areax, S_areay;
+   	  	String num;
+   	  %>
 
       <%
-      String id = request.getParameter("id");
-      ShopInfoDto S_dto = new ShopInfoDto();
-      ShopInfoDao S_dao = new ShopInfoDao();
+      	 String id = request.getParameter("id");
+     	 ShopInfoDto S_dto = new ShopInfoDto();
+     	 ShopInfoDao S_dao = new ShopInfoDao();
 
-      num = request.getParameter("shop_num");
-      S_dto = S_dao.shopinfo(num);
+     	 num = request.getParameter("shop_num");
+     	 S_dto = S_dao.shopinfo(num);
 
-      S_name = S_dto.getShopName();
-      S_intro = S_dto.getShopIntro();
-      S_score = S_dto.getShopScore();
-      S_areax = S_dto.getShopAreaX();
-      S_areay = S_dto.getShopAreaY();
+     	 S_name = S_dto.getShopName();
+      	 S_intro = S_dto.getShopIntro();
+      	 S_score = S_dto.getShopScore();
+     	 S_areax = S_dto.getShopAreaX();
+      	 S_areay = S_dto.getShopAreaY();
       %>
 
       <!-- 평점 -->
       <%
-      ArrayList<ShopInfoDto> S_dtos = new ArrayList<ShopInfoDto>();
-      S_dtos = S_dao.shop_score(num);
+     	 ArrayList<ShopInfoDto> S_dtos = new ArrayList<ShopInfoDto>();
+     	 S_dtos = S_dao.shop_score(num);
 
-      for (int i = 0; i < S_dtos.size(); i++) {
-         S_score = S_dtos.get(i).getShopScore();
-      }
+     	 for (int i = 0; i < S_dtos.size(); i++) {
+         	S_score = S_dtos.get(i).getShopScore();
+      	 }
       %>
 
 
@@ -178,50 +192,56 @@
                </div>
 
                <!-- 가게 정보 표시 -->
-               <div class="shop md-4">
+               <div class="shop sm-4">
                   <div class="shop-body">
                      <hr>
-
-
-                     <h5 style="text-align: center;">
-                        <b><%=S_name%></b>
-                     </h5>
+                     	<h5 style="text-align: center;">
+                       		<b><%=S_name%></b>
+                     	</h5>
                      <hr>
 
                      <h4>
                         <b>상세 정보</b>
                      </h4>
+                     
                      <br>
+                     
                      <h5>
                         <b>가게소개</b>
                      </h5>
+                     
                      <h5>
                         =><%=S_intro%></h5>
                      <h5>
                         평점 :<%=S_score%></h5>
                      <hr>
-
                   </div>
                </div>
+               
+               <!-- mobile일때 메뉴 위치 -->
+               <div id="mobilemenu" class="card"></div>
+               
+               <!-- 가게평점 -->
                <%
-               S_dao.score_update(S_score, num);
+                  	S_dao.score_update(S_score, num);
                %>
+               
                <!-- 댓글창 -->
                <%
-               //날짜 표시
-               Date now = new Date();
-               SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
-               String today = sf.format(now);
+               		//날짜 표시
+               		Date now = new Date();
+               		SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd");
+               		String today = sf.format(now);
                %>
 
                <form action="ReviewCheck.do" method="post">
                   <input type="hidden" name="shop_num" value="<%=num%>">
                   <div class="card my-3">
                      <h5 class="card-header">
-                        코멘트 &nbsp;&nbsp;<%=today%></h5>
+                        <b>코멘트</b> &nbsp;&nbsp;<%=today%></h5>
                      <div class="card-body">
                         <div class="form-group">
-                           <textarea class="form-control" name="comment" rows="3"></textarea>
+                           <textarea class="form-control" name="comment" rows="3" style="resize: none"></textarea>
                         </div>
                         <!-- 별점 -->
                         <div class="pt-3">
@@ -236,7 +256,7 @@
                   </div>
                </form>
                <!-- 페이징 -->
-               <%!   int listcnt, startpage, endpage;
+               <%!  int listcnt, startpage, endpage;
                   int pages;
                   int range = 1;%>
 
@@ -271,6 +291,7 @@
                %>
 
                <div class="card mb-4">
+                  <h5 class="card-header"><b>리뷰</b></h5>
 
                   <%
                   for (int i = 0; i < R_dtos.size(); i++) {
@@ -282,6 +303,7 @@
                   review_score = R_dtos.get(i).getreviewScore();
                   review_comment = R_dtos.get(i).getReviewComment();
                   %>
+ 
                   <div class="card-body">
                      <h5 class="mt-0"><%=review_id%>
                         |
@@ -307,62 +329,16 @@
                      </c:forEach>
                   </ul>
                </div>
-<%-- 원래 가게메뉴 위치          <!-- 메뉴  -->
-
-               <div class="card my-4">
-                  <h5 class="card-header">
-                     <b>가게 메뉴 </b>
-                  </h5>
-                  <div class="card-body">
-                     <%!   String M_name, M_intro;
-                        int M_num, M_price;%>
-
-                     <%
-                     ArrayList<MenuDto> M_dtos = new ArrayList<MenuDto>();
-                     MenuDao M_dao = new MenuDao();
-                     M_dtos = M_dao.menuinfo(num);
-                     %>
-                     <!-- 메뉴출력 -->
-
-                     <table class="table">
-                        <tr>
-                           <th>메뉴번호</th>
-                           <th>메뉴이름</th>
-                           <th>메뉴가격</th>
-                           <th>메뉴소개</th>
-                        </tr>
-                        <%
-                        for (int i = 0; i < M_dtos.size(); i++) {
-                        %>
-                        <%
-                        M_num = M_dtos.get(i).getMenuNum();
-                        M_name = M_dtos.get(i).getMenuName();
-                        M_price = M_dtos.get(i).getMenuPrice();
-                        M_intro = M_dtos.get(i).getMenuIntro();
-                        %>
-                        <tr>
-                           <td><%=M_num%></td>
-                           <td><%=M_name%></td>
-                           <td><%=M_price%></td>
-                           <td><%=M_intro%></td>
-                           <%
-                           }
-                           %>
-                        </tr>
-                     </table>
-                  </div>
-               </div> --%>
-
             </div>
 
 
          <!-- /.Post Content Column -->
 
          <!-- Sidebar Widgets Column  -->
-         <div class="col-sm-4">
-            <!-- Side Widget -->
-               <div id="menu" class="card my-4" style="width: 25rem;">
-                  <h5 class="card-header">가게 메뉴</h5>
+         <div class="col-sm-4" id="pcmenu">
+            <!-- Side Widget --> 
+               <div id="menu" class="card my-4">
+                  <h5 class="card-header"><b>가게 메뉴</b></h5>
                   <div class="card-body">
                   <%!   String M_name, M_intro;
                         int M_num, M_price;%>
@@ -372,7 +348,7 @@
                      MenuDao M_dao = new MenuDao();
                      M_dtos = M_dao.menuinfo(num);
                      %>
-                     <table class="table">
+                     <table class="table table-hover">
                         <tr>
                            <th>메뉴번호</th>
                            <th>메뉴이름</th>
@@ -401,6 +377,7 @@
                   </div>
                </div>
             </div>  <!-- /.Sidebar Widgets Column -->
+  
               </div>
          </div>   <!-- /.row -->
        
