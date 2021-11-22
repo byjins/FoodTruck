@@ -83,6 +83,7 @@ tr td {
    		// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
    		var floatPosition = parseInt($("#menu").css('top'));
    		var newmenu = $('#menu').html();
+   		var maindiv = $('#maindiv');
 		var useragent = navigator.userAgent.toLowerCase();
 		var Width = $(window).width();
 		var Height = $(window).height();
@@ -117,7 +118,7 @@ tr td {
 			$('#mobilemenu').append(newmenu);
 			$('#mobilemenu').on('load');
 		
-		}
+		} 
 }); 
 
 </script>
@@ -173,8 +174,8 @@ tr td {
       <div class="row">
 
          <!-- Post Content Column -->
-         <div class="col-sm-8">
 
+			  <div class="col-sm-8" id="maindiv">
             <!-- 가게 메인 사진 -->
             <div class="shop mb-4">
                <%

@@ -133,13 +133,13 @@
 
 		<!-- Page Heading/Breadcrumbs -->
 
-		<h1 class="mt-4 mb-3">가게 정보</h1>
+		<div class="mt-4 mb-3"></div>
 
 		<!-- row -->
 		<div class="row">
 
 			<!-- Post Content Column -->
-			<div class="col-sm-8">
+			<div class="col-sm-8" style="float: none; margin: 0 auto;">
 
 				<!-- 가게 메인 사진 -->
 				<div class="shop mb-4">
@@ -159,16 +159,15 @@
 					<form name="img_upload" action="uploadOK.jsp?shop_num=<%=num%>"
 						method="post" enctype="multipart/form-data">
 						<div class="row mt-2">
-							<div class="col-sm-10">
+							<div class="col-xs-4 col-sm-8 col-md-9 col-lg-10">
 								<div class="custom-file">
 									<input type="file" class="custom-file-input" id="imgfile"
 										name="imgfile"> <label class="custom-file-label"
 										for="imgfile">이미지를 선택해주세요</label>
 								</div>
 							</div>
-							<div class="col-sm-2">
-								<input type="submit" value="업로드" class="btn btn-primary"
-									style="margin: 0px 0px 0px 23px;">
+							<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2">
+								<input type="submit" value="업로드" class="btn btn-primary">
 							</div>
 						</div>
 					</form>
@@ -361,7 +360,7 @@
 
 	</div>
 	<!-- /.container -->
-	</div>
+
 	<!-- Footer -->
 	<jsp:include page="footer.jsp"></jsp:include>
 
