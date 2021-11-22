@@ -147,9 +147,10 @@
 
 
       
-      // 트럭마커 이미지의 이미지 주소입니다---------------
-         
-          <%//정현------- 가게 출력------------------------------------------------------------------------------
+
+          <%
+          
+          //정현------- 가게 출력------
 
          ArrayList<SManagerInfoDto> smdtos = new ArrayList<SManagerInfoDto>();
          SManagerInfoDao smdao = new SManagerInfoDao();
@@ -215,7 +216,6 @@
           <%}%> 
 
 
-        //주소-좌표 변환 객체를 생성합니다--------------------------------------정현-------------------------
         //거리가게,구두수선대를 분류하여 마커를 생성합니다
               <%
              ArrayList<RoadShopDto> roadDto = new ArrayList<RoadShopDto>();
