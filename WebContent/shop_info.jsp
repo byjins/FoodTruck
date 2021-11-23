@@ -23,6 +23,7 @@
 
 tr th {
 	font-size: 12px;
+
 }
 
 tr td {
@@ -242,9 +243,7 @@ tr td {
                         <!-- 별점 -->
                         <div class="pt-3">
                            <h5>별점</h5>
-                           <input id="input-2" name="rating" class="rating rating-loading"
-                              data-min="0.5" data-max="5" data-step="0.5" value="2"
-                              data-size="sm">
+                           <input id="input-2" name="rating" class="rating rating-loading" data-min="0.5" data-max="5" data-step="0.5" value="2" data-size="sm">
                         </div>
                         <script src="js/rating.js"></script>
                         <button type="submit" class="btn btn-primary">글쓰기</button>
@@ -343,24 +342,24 @@ tr td {
                      	 MenuDao M_dao = new MenuDao();
                      	 M_dtos = M_dao.menuinfo(num);
                      %>
-                     <table class="table">
+                     <table class="table" style="text-align: center;">
                         <tr>
-                           <th>메뉴번호</th>
+                           <!-- <th>메뉴번호</th> -->
                            <th>메뉴이름</th>
                            <th>메뉴가격</th>
-                           <th>메뉴소개</th>
+                           <th >메뉴소개</th>
                         </tr>
                         <%
                         	for (int i = 0; i < M_dtos.size(); i++) {
                         %>
                         <%
-                        	M_num = M_dtos.get(i).getMenuNum();
+                        	/* M_num = M_dtos.get(i).getMenuNum(); */
                         	M_name = M_dtos.get(i).getMenuName();
                         	M_price = M_dtos.get(i).getMenuPrice();
                         	M_intro = M_dtos.get(i).getMenuIntro();
                         %>
                         <tr>
-                           <td><%=M_num%></td>
+                           <%-- <td><%=M_num%></td> --%>
                            <td><%=M_name%></td>
                            <td><%=M_price%></td>
                            <td><%=M_intro%></td>
