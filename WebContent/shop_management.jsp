@@ -213,7 +213,7 @@ tr td {
 					<h5 class="card-header">
 						<b>가게 메뉴 </b>
 					</h5>
-					<div class="card-body">
+					<div class="card-body" style="padding: 1rem;">
 						<%!
 							String M_name, M_intro;
 							int M_num, M_price;
@@ -226,9 +226,9 @@ tr td {
 						%>
 						
 						<!-- 메뉴출력 -->
-						<table class="table">
+						<table class="table" style="text-align: center;">
 							<tr>
-								<th>메뉴번호</th>
+								<!-- <th>메뉴번호</th> -->
 								<th>메뉴이름</th>
 								<th>메뉴가격</th>
 								<th>메뉴소개</th>
@@ -239,18 +239,18 @@ tr td {
 								for (int i = 0; i < M_dtos.size(); i++) {
 							%>
 							<%
-								M_num = M_dtos.get(i).getMenuNum();
+								/* M_num = M_dtos.get(i).getMenuNum(); */
 								M_name = M_dtos.get(i).getMenuName();
 								M_price = M_dtos.get(i).getMenuPrice();
 								M_intro = M_dtos.get(i).getMenuIntro();
 							%>
 							
 							<tr>
-								<td><%=M_num%></td>
+								<%-- <td><%=M_num%></td> --%>
 								<td><%=M_name%></td>
 								<td><%=M_price%></td>
 								<td><%=M_intro%></td>
-								<td><form action="MenuDelete.do" method="post" style="margin: 0px -10px;">
+								<td><form action="MenuDelete.do" method="post">
 										<input type="hidden" id="shop_num" name="shop_num" value=<%=num%>/> 
 										<input type="hidden" id="menu_num" name="menu_num" value=<%=M_num%> /> 
 										<input type="submit" class="btn btn-primary" value="삭제" />
